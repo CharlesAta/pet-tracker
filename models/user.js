@@ -25,7 +25,12 @@ const userSchema = new Schema({
       type: String,
       required: true
   },
-  pet: {type: Schema.Types.ObjectId, ref: 'Pet'}
+  notification: {
+      type: Boolean,
+      required: true,
+      default: false
+  },
+  post: {type: [Schema.Types.ObjectId], ref: 'Post'}
 }, {
   timestamps: true,
   toJSON: {
