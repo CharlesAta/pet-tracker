@@ -27,7 +27,6 @@ const userSchema = new Schema({
   },
   notification: {
       type: Boolean,
-      required: true,
       default: false
   },
   post: {type: [Schema.Types.ObjectId], ref: 'Post'}
