@@ -12,6 +12,10 @@ export default function SignUpForm() {
         error:"",
     })
 
+    const handleChange = (evt) => {
+        setState({...state, [evt.target.name]: evt.target.value, error: ''}
+        )};
+
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         try {
@@ -23,10 +27,10 @@ export default function SignUpForm() {
               email: state.email, 
               password: state.password, 
               phoneNumber: state.phoneNumber, 
-              postalCode:state.postalCode
+              postalCode: state.postalCode
             })
         })
-        console.log(fetchResponse)
+
         if (!fetchResponse.ok) throw new Error('Fetch failed - Bad request')
     
         let token = await fetchResponse.json()
@@ -47,15 +51,15 @@ export default function SignUpForm() {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group>
                         <Form.Label>Name</Form.Label>
-                        <Form.Control name="name" type="text" required/>
+                        <Form.Control name="name" value={state.name} onChange={handleChange} type="text" required/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control name="email" type="email" required/>
+                        <Form.Control name="email" type="email" value={state.email} onChange={handleChange} required/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="password" type="password" required />
+                        <Form.Control name="password" type="password" value={state.password} onChange={handleChange} required />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Password Confirmation</Form.Label>
@@ -63,11 +67,11 @@ export default function SignUpForm() {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Phone Number</Form.Label>
-                        <Form.Control name="phoneNumber" type="tel" required />
+                        <Form.Control name="phoneNumber" type="tel" value={state.phoneNumber} onChange={handleChange} required />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Postal Code</Form.Label>
-                        <Form.Control name="postalCode"  type="text" required />
+                        <Form.Control name="postalCode"  type="text" value={state.postalCode} onChange={handleChange} required />
                     </Form.Group>
                     <Button type="submit" className="me-2 mt-3">Sign Up</Button>
                 </Form>
