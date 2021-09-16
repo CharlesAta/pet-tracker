@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import "./LoginForm.css";
 
 export default function LoginForm(props) {
   const [state, setState] = useState({
@@ -39,7 +40,7 @@ export default function LoginForm(props) {
 
   return (
     <div>
-      <Container className="justify-content-end d-flex">
+      <Container className="justify-content-center d-flex text-left">
         <Form onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Control
@@ -69,7 +70,7 @@ export default function LoginForm(props) {
           <Button className="LoginButton" variant="primary" type="submit" >
             Log In
           </Button>
-          <Container className="justify-content-start d-flex flex-column">
+          <Container className="justify-content-start d-flex flex-column text">
             <Form.Text>Forgot password?</Form.Text>
             <Form.Text>Don't have account yet?</Form.Text>
           </Container>

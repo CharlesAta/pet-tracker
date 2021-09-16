@@ -5,11 +5,16 @@ import ReportPet from "../ReportPet/ReportPet";
 import MainContent from "../MainContent/MainContent";
 import { Route } from 'react-router-dom';
 import Testimonial from "../../components/Testimonial/Testimonial";
-import { Navbar, Container, Nav, Jumbotron } from "react-bootstrap";
+import { Navbar, Container, Nav, Jumbotron, Row, Col } from "react-bootstrap";
 import Search from "../../components/Search/Search";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
+
 
 export default function App() {
   const [user, setUser] = useState(null);
+
+  const [showLogin, setShowLogin] = useState(true)
 
   const setUserInState = (incomingUserData) => {
     setUser(incomingUserData);
@@ -39,11 +44,32 @@ export default function App() {
       <Jumbotron>
         <Container>
           <Search />
+          <Row className="d-flex">
+            <Col sm={6}>I lost my pet</Col>
+            <Col sm={6}>I found a pet</Col>
+          </Row>
         </Container>
       </Jumbotron>
       <main className="App">
         <MainContent />
-        {user ? <ReportPet /> : <AuthPage setUserInState={setUserInState} />}
+      <Container>
+        <Row>
+          <Col sm={6}>SIGN IN TO GET ALERT</Col>
+            <Col sm={6}>
+
+            <h3 onClick={() => setShowLogin(!showLogin)}>
+                {showLogin ? 'SIGN UP' : 'LOG IN'}
+            </h3>
+            {showLogin?
+            <LoginForm setUserInState={setUserInState}/>:
+            <SignUpForm setUserInState={setUserInState}/>}
+
+        </Col>
+              {/* <AuthPage setUserInState={setUserInState} /></Col> */}
+        </Row>
+        {/* {user ? <ReportPet /> : <AuthPage setUserInState={setUserInState} />} */}
+      </Container>
+
         <Container className="Testimonials">
           <Testimonial />
           <Testimonial />
