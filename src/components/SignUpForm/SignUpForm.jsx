@@ -38,7 +38,7 @@ export default function SignUpForm() {
             const userDoc = JSON.parse(atob(token.split(".")[1])).user;
             this.props.setUserInState(userDoc);
         } catch (err) {
-            console.log("SignupForm error", err);
+            console.log("SignupForm error", err.message);
             setState({ error: "Sign Up Failed - Try Again" });
         }
     };
