@@ -13,6 +13,14 @@ export default function App() {
     setUser(incomingUserData)
   } 
 
+  useEffect(() => {
+    let token = localStorage.getItem('token')
+    if (token) {
+      let userDoc = JSON.parse(atob(token.split('.')[1])).user // decode jwt token
+      setUser({user: userDoc})      
+    }
+  }, [])
+
   return (
     <main className="App">
       <Route path='/postings' render={(props) => (

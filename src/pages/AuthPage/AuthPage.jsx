@@ -3,7 +3,7 @@ import './AuthPage.css';
 import LoginForm from "../../components/LoginForm/LoginForm";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
-export default function AuthPage() {
+export default function AuthPage(props) {
 
     const [showLogin, setShowLogin] = useState(true)
 
@@ -13,8 +13,8 @@ export default function AuthPage() {
                 {showLogin ? 'SIGN UP' : 'LOG IN'}
             </h3>
             {showLogin?
-            <LoginForm/>:
-            <SignUpForm/>}
+            <LoginForm setUserInState={props.setUserInState}/>:
+            <SignUpForm setUserInState={props.setUserInState}/>}
         </div>
     )
 }
