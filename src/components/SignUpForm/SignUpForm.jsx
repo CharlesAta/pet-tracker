@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Container, Form, Button } from 'react-bootstrap';
 
-export default function SignUpForm() {
+export default function SignUpForm(props) {
 
     const [state, setState] =  useState({
         name: "",
@@ -14,7 +14,7 @@ export default function SignUpForm() {
 
     const handleChange = (evt) => {
         setState({...state, [evt.target.name]: evt.target.value, error: ''}
-        )};
+    )};
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
@@ -37,7 +37,8 @@ export default function SignUpForm() {
         localStorage.setItem("token", token);
     
         const userDoc = JSON.parse(atob(token.split('.')[1])).user;
-        this.props.setUserInState(userDoc)
+        // this.props.setUserInState(userDoc)
+        props.setUserInState(userDoc)
         
         } catch (err) {
           console.log("SignupForm error", err)
@@ -59,11 +60,11 @@ export default function SignUpForm() {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="password" type="password" value={state.password} onChange={handleChange} required />
+                        <Form.Control name="password" type="password" value={state.password} onChange={handleChange} required minlength="6"/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Password Confirmation</Form.Label>
-                        <Form.Control name="password2" type="password" required />
+                        <Form.Control name="password2" type="password" required minlength="6"/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Phone Number</Form.Label>

@@ -3,6 +3,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import ReportPet from '../ReportPet/ReportPet';
 import MainContent from "../MainContent/MainContent";
+import {Route} from 'react-router-dom';
 
 export default function App() {
 
@@ -14,9 +15,14 @@ export default function App() {
 
   return (
     <main className="App">
-      <MainContent />
+      <Route path='/postings' render={(props) => (
+        <MainContent {...props}/>
+      )}/>
       {user ? 
-        <ReportPet />:
+        <Route path='/report' render={(props) => (
+          <ReportPet {...props}/> 
+          )}/>
+          :
         <AuthPage setUserInState={setUserInState}/>
       }
   </main>

@@ -6,6 +6,7 @@ module.exports = {
 }
 
 async function create(req, res) {
+  console.log("SEING THIS", req.body)
     try {
       const user = await UserModel.create({
           name: req.body.name, 
@@ -17,6 +18,7 @@ async function create(req, res) {
       console.log(user)
        
       const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
+      console.log(token)
       res.status(200).json(token);
       
     } catch (err) {
