@@ -23,15 +23,16 @@ export default function LandingPage() {
       <Container>
         <Row>
           <Col sm={6}>SIGN IN TO GET ALERT</Col>
-          <Col sm={6}>
-            <h3 onClick={() => setShowLogin(!showLogin)}>
+          <Col className="mt-3"sm={6}>
+          <LoginForm setUserInState={setUserInState} />
+            {/* <h3 onClick={() => setShowLogin(!showLogin)}>
               {showLogin ? "SIGN UP" : "LOG IN"}
             </h3>
             {showLogin ? (
               <LoginForm setUserInState={setUserInState} />
             ) : (
               <SignUpForm setUserInState={setUserInState} />
-            )}
+            )} */}
           </Col>
         </Row>
         {/* {user ? <ReportPet /> : <AuthPage setUserInState={setUserInState} />} */}

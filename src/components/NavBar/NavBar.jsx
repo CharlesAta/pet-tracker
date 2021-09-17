@@ -8,7 +8,7 @@ export default function NavBar() {
     return (
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="link1">PAWAY</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/">PAWAY</Navbar.Brand>
           <Nav className="ml-auto bar">
             <Nav.Link as={NavLink} to="/reportpet">I Lost My Pet</Nav.Link>
             <Nav.Link href="link1">I Found A Pet</Nav.Link>
