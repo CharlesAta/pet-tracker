@@ -9,7 +9,7 @@ export default function Testimonial() {
         bg="light"
         text="dark"
         style={{ width: "18rem" }}
-        className="mb-2 text-center TestimonialCard"
+        className="mb-2 text-center TestimonialCard align-items-center"
       >
         <Col xs={6} md={4} className="d-flex justify-content-center">
           <Image
