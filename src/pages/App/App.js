@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
-import MainContent from "../MainContent/MainContent";
-import { Route, Switch, Link, Redirect } from "react-router-dom";
-import Testimonial from "../../components/Testimonial/Testimonial";
-import { Container, Row, Col } from "react-bootstrap";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import SignUpForm from "../../components/SignUpForm/SignUpForm";
-import NavBar from "../../components/NavBar/NavBar";
-import JumboTron from "../../components/JumboTron/JumboTron";
+import PetPostings from "../PetPostings/PetPostings";
+import { Route, Switch, Redirect } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage";
 import ReportPet from "../ReportPet/ReportPet";
+// import Switch from "react-bootstrap/esm/Switch";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -31,20 +26,22 @@ export default function App() {
 
   return (
     <>
+    <Switch>
       <Route path='/postings' render={(props) => (
-            <MainContent {...props} />
+            <PetPostings {...props} />
           )}/>
       <Route exact path='/' render={(props) => (
             <LandingPage {...props} />
           )}/>
 
-      <Route path='/reportpet' render={(props) => (
+      <Route path='/reportpet/:status(lost|found)' render={(props) => (
         <ReportPet {...props} user={user}/>
         )}/>
       <Route path='/account' render={(props) => (
         <AuthPage {...props} user={user}/>
         )}/>
-      
+        <Route render={()=> <Redirect to="/" />} />
+      </Switch>
     </>
   );
 }
