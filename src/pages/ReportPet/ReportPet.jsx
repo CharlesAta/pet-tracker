@@ -18,15 +18,12 @@ export default function ReportPet(props) {
     status: "",
   });
 
-  const petStatus = ({match}) => {
+
+  useEffect(() => {
     if (props.match.params.status === "lost" || props.match.params.status === "found") {
       setPetState({status: props.match.params.status})
     }
-  } 
-  
-  useEffect(() => {
-   petStatus(props.match);
-  });
+  }, [props.match.params.status]);
 
 
 
