@@ -182,15 +182,10 @@ export default function PostForm(props) {
           </div>
           <MDBInput
             label="Describe pet's characteristics or personality"
-            icon="exclamation-circle deep-orange-text pr-3"
             name="description"
             type="textarea"
             value={props.petState.description}
             onChange={props.handleChange}
-            containerClass='d-flex flex-row-reverse'
-            className='ml-0 mr-5'
-            labelClass='ml-0'
-
             required
           />
           {/* <Form.Group className="mt-3">
