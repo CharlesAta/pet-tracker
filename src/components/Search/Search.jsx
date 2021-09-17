@@ -11,7 +11,7 @@ export default function Search() {
     <div>
       <Container>
         <Form onSubmit={handleSubmit}>
-          <Form.Row>
+          <Form.Row className="align-items-center">
             <Form.Group className="search" size="sm" as={Col}>
               <Form.Control
                 type="text"

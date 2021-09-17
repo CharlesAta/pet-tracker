@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import "./LoginForm.css";
+import { MDBInput } from "mdbreact";
 
 export default function LoginForm(props) {
   const [state, setState] = useState({
@@ -10,7 +11,7 @@ export default function LoginForm(props) {
   });
 
   const handleChange = (evt) => {
-    setState({ ...state, [evt.target.name]: evt.target.value, error: "" })
+    setState({ ...state, [evt.target.name]: evt.target.value, error: "" });
   };
 
   const handleSubmit = async (evt) => {
@@ -42,7 +43,25 @@ export default function LoginForm(props) {
     <div>
       <Container className="justify-content-center d-flex text-left">
         <Form onSubmit={handleSubmit}>
-          <Form.Group>
+          <MDBInput
+            label="Email"
+            icon="envelope"
+            name="email"
+            type="text"
+            value={state.email}
+            onChange={handleChange}
+            required
+          />
+          <MDBInput
+            label="Password"
+            icon="key"
+            type="password"
+            name="password"
+            value={state.password}
+            onChange={handleChange}
+            required
+          />
+          {/* <Form.Group>
             <Form.Control
               placeholder="Email"
               type="text"
@@ -61,13 +80,13 @@ export default function LoginForm(props) {
               onChange={handleChange}
               required
             />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Text>
             <Form.Group className="mb-3">
               <Form.Check type="checkbox" label="Remember me" />
             </Form.Group>
           </Form.Text>
-          <Button className="LoginButton" variant="primary" type="submit" >
+          <Button className="LoginButton" variant="primary" type="submit">
             Log In
           </Button>
           <Container className="justify-content-start d-flex flex-column text">

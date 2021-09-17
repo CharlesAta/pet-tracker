@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
 import Search from "../../components/Search/Search";
+import "./JumboTron.css";
 
 export default function JumboTron() {
   return (
