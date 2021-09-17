@@ -26,9 +26,8 @@ export default function ReportPet(props) {
   }, [props.match.params.status]);
 
 
-
   const handleChange = (evt) => {
-    setState({ ...petState, [evt.target.name]: evt.target.value, error: "" });
+    setPetState({ ...petState, [evt.target.name]: evt.target.value });
   };
 
   const handleSubmit = (evt) => {

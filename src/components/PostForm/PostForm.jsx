@@ -112,10 +112,14 @@ export default function PostForm(props) {
             <Col>
             <MDBInput
             label="Breed"
+            icon="none pr-3"
             name="breed"
             type="text"
             value={props.petState.breed}
             onChange={props.handleChange}
+            containerClass='d-flex flex-row-reverse'
+            className='ml-0 mr-5'
+            labelClass='ml-0'
             required
           />
               {/* <Form.Group>
@@ -131,10 +135,14 @@ export default function PostForm(props) {
             <Col>
             <MDBInput
             label="Phone Number"
+            icon="none pr-3"
             name="phoneNumber"
             type="tel"
             value={props.petState.phoneNumber}
             onChange={props.handleChange}
+            containerClass='d-flex flex-row-reverse'
+            className='ml-0 mr-5'
+            labelClass='ml-0'
             required
           />
               {/* <Form.Group>
