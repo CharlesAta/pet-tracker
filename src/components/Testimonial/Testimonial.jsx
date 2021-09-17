@@ -11,7 +11,7 @@ export default function Testimonial() {
         style={{ width: "18rem" }}
         className="mb-2 text-center TestimonialCard"
       >
-        <Col xs={6} md={4}>
+        <Col xs={6} md={4} className="d-flex justify-content-center">
           <Image
             src="https://thefanboyseo.com/wp-content/uploads/2021/09/20210906_1731113069733424769805562.jpg"
             roundedCircle
@@ -27,25 +27,4 @@ export default function Testimonial() {
       </Card>
     </>
   );
-}
-
-{
-  /* <Card
-bg='light'
-text='dark'
-style={{ width: '18rem' }}
-className="mb-2 text-center TestimonialCard"
->
-<Card.Header><Image
-          src="https://thefanboyseo.com/wp-content/uploads/2021/09/20210906_1731113069733424769805562.jpg"
-          roundedCircle
-          className="TestimonialImage"
-        /></Card.Header>
-<Card.Body>
-  <Card.Title>Name </Card.Title>
-  <Card.Text>
-    Review
-  </Card.Text>
-</Card.Body>
-</Card> */
 }
