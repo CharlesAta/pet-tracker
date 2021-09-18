@@ -3,52 +3,8 @@ import "./PostForm.css";
 import { Button, Row, Col, Form } from "react-bootstrap";
 import { MDBInput } from "mdbreact";
 import Map from "../Map/Map";
-// import usePlacesAutocomplete, {
-//   getGeocode,
-//   getLatLng,
-// } from "use-places-autocomplete";
 import PlacesAutocomplete from "../PlacesAutocomplete/PlacesAutocomplete";
-
-// const PlacesAutocomplete = () => {
-//   const {
-//     ready,
-//     value,
-//     suggestions: { status, data },
-//     setValue,
-//     clearSuggestions,
-//   } = usePlacesAutocomplete({
-//     requestOptions: {
-//       /* Define search scope here */
-//       location: { lat: () => 43.6532, lng: () => -79.3832 },
-//       radius: 100 * 1000,
-//     },
-//     debounce: 300,
-//   });
-
-//   const ref = useOnclickOutside(() => {
-//     // When user clicks outside of the component, we can dismiss
-//     // the searched suggestions by calling this method
-//     clearSuggestions();
-//   });
-
-//   const handleSelect =
-//     ({ description }) =>
-//     () => {
-//       // When user selects a place, we can replace the keyword without request data from API
-//       // by setting the second parameter to "false"
-//       setValue(description, false);
-//       clearSuggestions();
-
-//       // Get latitude and longitude via utility functions
-//       getGeocode({ address: description })
-//         .then((results) => getLatLng(results[0]))
-//         .then(({ lat, lng }) => {
-//           console.log("📍 Coordinates: ", { lat, lng });
-//         })
-//         .catch((error) => {
-//           console.log("😱 Error: ", error);
-//         });
-//     };
+import Radius from "../Radius/Radius";
 
 export default function PostForm(props) {
   return (
@@ -142,71 +98,29 @@ export default function PostForm(props) {
             />
           </Col>
         </Row>
+        <Row>
+          <Col>
         <PlacesAutocomplete setPetState={props.setPetState} petState={props.petState} handleChange={props.handleChange} />
+        </Col>
 
-        {/* <MDBInput
-            label="Last known location"
-            name="location"
-            icon="exclamation-circle deep-orange-text pr-3"
-            type="text"
-            value={props.petState.location}
-            onChange={props.handleChange}
-            containerClass="d-flex flex-row-reverse"
-            className="ml-0 mr-5"
-            labelClass="ml-0"
-            required
-          /> */}
+
+          <Col>
+          <Radius setPetState={props.setPetState} petState={props.petState}/>
+          </Col>
+          </Row>
+          <Row>
           <div className="d-flex justify-content-center">
-            <Map lat={props.petState.lat} lng={props.petState.lng} location={props.petState.location}/>
+            <Map lat={props.petState.lat} radius={props.petState.radius} lng={props.petState.lng} location={props.petState.location}/>
           </div>
+          </Row>
           <MDBInput
             label="Describe pet's characteristics or personality"
             name="description"
-            icon="exclamation-circle deep-orange-text pr-3"
             type="textarea"
             value={props.petState.description}
             onChange={props.handleChange}
-            containerClass="d-flex flex-row-reverse"
-            className="ml-0 mr-5"
-            labelClass="ml-0"
-            required
+
           />
-          {/* <Form.Group className="mt-3">
-            <textarea
-              className="form-control"
-              rows="3"
-              placeholder="Describe pet's characteristics or personality"
-              type="text"
-              name="location"
-              value={props.petState.location}
-              onChange={props.handleChange}
-              containerClass="d-flex flex-row-reverse"
-              className="ml-0 mr-5"
-              labelClass="ml-0"         
-            />
-          </Form.Group>
-        <MDBInput
-          label="Last known location"
-          icon="exclamation-circle deep-orange-text pr-1"
-          name="location"
-          type="text"
-          value={props.petState.location}
-          onChange={props.handleChange}
-          containerClass="d-flex flex-row-reverse"
-          className="ml-0 mr-5"
-          labelClass="ml-0"
-          required
-        />
-        <div className="d-flex justify-content-center">
-          <Map />
-        </div>
-        <MDBInput
-          label="Describe pet's characteristics or personality"
-          name="description"
-          type="textarea"
-          value={props.petState.description}
-          onChange={props.handleChange}
-        /> */}
         <div className="text-right">
           <Form.Text>
             <Form.Group className="text">

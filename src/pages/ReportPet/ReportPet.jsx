@@ -22,6 +22,7 @@ export default function ReportPet(props) {
     description: "",
     status: "",
     photo: "https://i.imgur.com/e05qeJD.jpg",
+    radius: [500]
   });
 
   useEffect(() => {
@@ -82,7 +83,8 @@ const handleSubmit = async (evt) => {
       status: props.match.params.status,
       photo: "https://i.imgur.com/e05qeJD.jpg",
       lat: "",
-      lng: ""
+      lng: "",
+      radius: [500]
     }) 
   } catch (err) {
     console.error("Error:", err) 

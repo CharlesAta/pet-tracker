@@ -2,21 +2,17 @@ import React, {useState, useEffect} from 'react'
 import "./Map.css"
 import {
   GoogleMap,
-  useJsApiLoader
-} from "@react-google-maps/api";
-
-// import useOnclickOutside from "react-cool-onclickoutside";
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+  Circle,
+} from "@react-google-maps/api"; // npm install react-google-maps/api
+import { Range } from 'react-range'; // npm install react-range
 
 const containerStyle = {
   width: '800px',
   height: '400px'
 };
-
-// const center = {
-//   lat: 43.651070,
-//   lng: -79.347015
-// };
-
 
 function Map(props) {
   const { isLoaded } = useJsApiLoader({
@@ -35,10 +31,10 @@ function Map(props) {
     if (props.lat && props.lng) {
       setCenter({lat: props.lat, lng: props.lng})
       console.log("zoom", zoom)
-      setZoom(15)
+      setZoom(14.5)
       console.log("atMap", props.lat, props.lng)
    }
-  }, [props.location, props.lat, props.lng])
+  }, [props.location, props.lat, props.lng, props.radius])
   
   
   return isLoaded ? (
@@ -46,9 +42,10 @@ function Map(props) {
         mapContainerStyle={containerStyle}
         center={center}
         zoom={zoom}
-
       >
-        { /* Child components, such as markers, info windows, etc. */ }
+      <Marker position={ center } />
+      <Circle
+      center ={ center } radius = {props.radius[0]} options={{strokeColor: "#ff0000"}} />
         <></>
       </GoogleMap>
   ) : <></>

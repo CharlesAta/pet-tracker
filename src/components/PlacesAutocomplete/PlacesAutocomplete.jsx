@@ -22,7 +22,6 @@ export default function PlacesAutocomplete(props) {
       clearSuggestions,
     } = usePlacesAutocomplete({
       requestOptions: {
-        /* Define search scope here */
         location: { lat: () => 43.6532, lng: () => -79.3832 },
         radius: 100 * 1000,
       },
@@ -33,20 +32,14 @@ export default function PlacesAutocomplete(props) {
     const handleSelect =
       ({description}) => 
       () => {
-        // When user selects a place, we can replace the keyword without request data from API
-        // by setting the second parameter to "false"
         setValue(description, false);
 
         clearSuggestions();
-        
-        // Get latitude and longitude via utility functions
+
         getGeocode({ address: description })
         .then((results) => getLatLng(results[0]))
         .then(({ lat, lng }) => {
             console.log("📍 Coordinates: ", { lat, lng });            
-            // console.log("description", description)
-            // console.log("lat", lat )
-            // console.log("lng", lng )
             props.setPetState({...props.petState, lat, lng, location: description})
         })
         .catch((error) => {
@@ -86,9 +79,7 @@ export default function PlacesAutocomplete(props) {
     </>
   );
 };
-//
-// 
-//
+
 
 {/* <MDBInput
 label="Last known location"
