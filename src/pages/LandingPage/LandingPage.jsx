@@ -8,6 +8,7 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import NavBar from "../../components/NavBar/NavBar";
 import JumboTron from "../../components/JumboTron/JumboTron";
+import "./LandingPage.css"
 
 export default function LandingPage() {
   const [showLogin, setShowLogin] = useState(true);
@@ -37,7 +38,7 @@ export default function LandingPage() {
         </Row>
         {/* {user ? <ReportPet /> : <AuthPage setUserInState={setUserInState} />} */}
       </Container>
-
+      
       <Container className="Testimonials">
         <Testimonial />
         <Testimonial />

@@ -87,16 +87,59 @@ export default function PostForm(props) {
               label="Phone Number"
               icon="none pr-3"
               name="phoneNumber"
-              type="tel"
+              type="number"
               value={props.petState.phoneNumber}
               onChange={props.handleChange}
               containerClass="d-flex flex-row-reverse"
               className="ml-0 mr-5"
               labelClass="ml-0"
-              
             />
           </Col>
         </Row>
+
+        <MDBInput
+            label="Last known location"
+            name="location"
+            icon="exclamation-circle deep-orange-text pr-3"
+            type="text"
+            value={props.petState.location}
+            onChange={props.handleChange}
+            containerClass="d-flex flex-row-reverse"
+            className="ml-0 mr-5"
+            labelClass="ml-0"
+            required
+          />
+
+
+          <div className="d-flex justify-content-center">
+            <Map />
+          </div>
+          <MDBInput
+            label="Describe pet's characteristics or personality"
+            name="description"
+            icon="exclamation-circle deep-orange-text pr-3"
+            type="textarea"
+            value={props.petState.description}
+            onChange={props.handleChange}
+            containerClass="d-flex flex-row-reverse"
+            className="ml-0 mr-5"
+            labelClass="ml-0"
+            required
+          />
+          {/* <Form.Group className="mt-3">
+            <textarea
+              className="form-control"
+              rows="3"
+              placeholder="Describe pet's characteristics or personality"
+              type="text"
+              name="location"
+              value={props.petState.location}
+              onChange={props.handleChange}
+              containerClass="d-flex flex-row-reverse"
+              className="ml-0 mr-5"
+              labelClass="ml-0"         
+            />
+          </Form.Group>
         <MDBInput
           label="Last known location"
           icon="exclamation-circle deep-orange-text pr-1"
@@ -118,7 +161,7 @@ export default function PostForm(props) {
           type="textarea"
           value={props.petState.description}
           onChange={props.handleChange}
-        />
+        /> */}
         <div className="text-right">
           <Form.Text>
             <Form.Group className="text">
