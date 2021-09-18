@@ -17,6 +17,8 @@ export default function ReportPet(props) {
     breed: "",
     phoneNumber: "",
     location: "",
+    lat: "",
+    lng: "",
     description: "",
     status: "",
     photo: "https://i.imgur.com/e05qeJD.jpg",
@@ -79,6 +81,8 @@ const handleSubmit = async (evt) => {
       description: "",
       status: props.match.params.status,
       photo: "https://i.imgur.com/e05qeJD.jpg",
+      lat: "",
+      lng: ""
     }) 
   } catch (err) {
     console.error("Error:", err) 

@@ -7,11 +7,11 @@ import {
     Combobox,
     ComboboxInput,
     ComboboxPopover,
-    ComboboxOption,
     ComboboxList
   } from "@reach/combobox"; 
   import "@reach/combobox/styles.css"
   import "./PlacesAutocomplete.css";
+  import { MDBInput } from "mdbreact";
 
 export default function PlacesAutocomplete(props) {
     const {
@@ -36,30 +36,31 @@ export default function PlacesAutocomplete(props) {
     });
   
     const handleSelect =
-      ({description }) => 
+      ({description}) => 
       () => {
         // When user selects a place, we can replace the keyword without request data from API
         // by setting the second parameter to "false"
         setValue(description, false);
-        clearSuggestions();
 
+        clearSuggestions();
+        
         // Get latitude and longitude via utility functions
         getGeocode({ address: description })
-          .then((results) => getLatLng(results[0]))
-          .then(({ lat, lng }) => {
-            console.log("📍 Coordinates: ", { lat, lng });
-          })
-          .catch((error) => {
+        .then((results) => getLatLng(results[0]))
+        .then(({ lat, lng }) => {
+            console.log("📍 Coordinates: ", { lat, lng });            
+            console.log("description", description)
+            console.log("lat", lat )
+            console.log("lng", lng )
+            props.setPetState({...props.petState, lat, lng, location: description})
+        })
+        .catch((error) => {
             console.log("😱 Error: ", error);
-          });
+        });
       };
 
     const handleInput = (e) => {
-        console.log("handleInputevent", e)
-        console.log(value)
         setValue(e.target.value);
-        console.log(value)
-        props.setPetState({...props.petState, location: value})
     };
 
     const renderSuggestions = () =>
@@ -75,108 +76,21 @@ export default function PlacesAutocomplete(props) {
         </li>
       );
     });
-    const handleClick = (evt) => {
-      handleInput(evt)
-    }
 
   return (
-
-    <Combobox onSelect={handleSelect} aria-labelledby="demo">
-       <ComboboxInput value={value} onChange={handleInput} disabled={!ready} />
+    <div ref={ref} className="mb-3">
+    <Combobox style={{border: "none", margingBottom: "10%"}} className="form-control ml-0 mr-5" onSelect={handleSelect} aria-labelledby="demo">
+       <ComboboxInput style={{border: "none", borderBottom: "1px solid black"}} value={value} onChange={handleInput} disabled={!ready} placeholder="Last seen location" />
        <ComboboxPopover >
          <ComboboxList>
            {status === "OK" &&
-            data.map(({ place_id, description }) => (
-              <ComboboxOption key={place_id} value={description} onClick={handleClick}/>
-            ))}
+            renderSuggestions()}
         </ComboboxList>
       </ComboboxPopover>
     </Combobox>
+    </div>
   );
-
-    // <div ref={ref}>
-    // <Combobox>
-    // <ComboboxInput
-    //     value={value}
-    //     onChange={handleInput}
-    //     disabled={!ready}
-    //     placeholder="Where are you going?"
-    //   />
-    //   <ComboboxPopover>
-    //   {status === "OK" && <ul>{renderSuggestions()} </ul>}
-    //   </ComboboxPopover>
-    // </Combobox>
-    // </div>
-//     <div ref={ref}>
-//     <Combobox onSelect={async (address) => {
-//       setValue(address, false);
-//       clearSuggestions();
-//       try {
-//         const results = await getGeocode({ address });
-//         const { lat, lng } = await getLatLng(results[0]);
-//         // panTo({ lat, lng });
-//         // setMarkers((current) => [
-//         //   ...current, {
-//         //     lat,
-//         //     lng,
-//         //     time: new Date(),
-//         //     submitted: false,
-//         //   }
-//         // ])
-//       } catch (error) {
-//         console.log("😱 Error: ", error);
-//       }
-//     }}>
-//       <ComboboxInput className="combobox" value={value} onChange={(e) => {
-//         setValue(e.target.value)
-//       }} disabled={!ready} placeholder="Enter an address" />
-//       <ComboboxPopover>
-//         {status === "OK" &&
-//           data.map(({ id, description }) => (
-//             <ComboboxOption key={id} value={description} />
-//           ))}
-//       </ComboboxPopover>
-//     </Combobox>
-//   </div>
-
-
-    // <Combobox onClick={handleSelect(suggestion)} aria-labelledby="demo">
-    //   <ComboboxInput value={value} onChange={handleInput} disabled={!ready} />
-    //   <ComboboxPopover>
-    //     <ComboboxList>
-    //       {status === "OK" &&
-    //         data.map(({ place_id, description }) => (
-    //           <ComboboxOption key={place_id} value={description} />
-    //         ))}
-    //     </ComboboxList>
-    //   </ComboboxPopover>
-    // </Combobox>
-  
 };
-
-    {/* <Combobox onSelect={handleSelect} aria-labelledby="demo">
-       <ComboboxInput value={value} onChange={handleInput} disabled={!ready} />
-       <ComboboxPopover>
-         <ComboboxList>
-          {status === "OK" && <ul>{renderSuggestions()}</ul>}
-        </ComboboxList>
-      </ComboboxPopover>
-    </Combobox> */}
-
-
-
-
-
-{/* <input
-        value={value}
-        onChange={handleInput}
-        // disabled={!ready}
-        placeholder="Where are you going?"
-      />
-      {status === "OK" && <ul>{renderSuggestions()}</ul>} */}
-
-
-
 
 
 {/* <MDBInput

@@ -14,6 +14,8 @@ const postSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref:'User'},
     postalCode: {type: String, required: true},
     location: {type: String, required: true},
+    lat: {type: String},
+    lng: {type: String},
     status:{
         type: String,
         enum: ["lost", "found"],
