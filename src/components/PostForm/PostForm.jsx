@@ -3,6 +3,52 @@ import "./PostForm.css";
 import { Button, Row, Col, Form } from "react-bootstrap";
 import { MDBInput } from "mdbreact";
 import Map from "../Map/Map";
+// import usePlacesAutocomplete, {
+//   getGeocode,
+//   getLatLng,
+// } from "use-places-autocomplete";
+import PlacesAutocomplete from "../PlacesAutocomplete/PlacesAutocomplete";
+
+// const PlacesAutocomplete = () => {
+//   const {
+//     ready,
+//     value,
+//     suggestions: { status, data },
+//     setValue,
+//     clearSuggestions,
+//   } = usePlacesAutocomplete({
+//     requestOptions: {
+//       /* Define search scope here */
+//       location: { lat: () => 43.6532, lng: () => -79.3832 },
+//       radius: 100 * 1000,
+//     },
+//     debounce: 300,
+//   });
+
+//   const ref = useOnclickOutside(() => {
+//     // When user clicks outside of the component, we can dismiss
+//     // the searched suggestions by calling this method
+//     clearSuggestions();
+//   });
+
+//   const handleSelect =
+//     ({ description }) =>
+//     () => {
+//       // When user selects a place, we can replace the keyword without request data from API
+//       // by setting the second parameter to "false"
+//       setValue(description, false);
+//       clearSuggestions();
+
+//       // Get latitude and longitude via utility functions
+//       getGeocode({ address: description })
+//         .then((results) => getLatLng(results[0]))
+//         .then(({ lat, lng }) => {
+//           console.log("📍 Coordinates: ", { lat, lng });
+//         })
+//         .catch((error) => {
+//           console.log("😱 Error: ", error);
+//         });
+//     };
 
 export default function PostForm(props) {
   return (
@@ -96,8 +142,9 @@ export default function PostForm(props) {
             />
           </Col>
         </Row>
+        <PlacesAutocomplete setPetState={props.setPetState} petState={props.petState} handleChange={props.handleChange} />
 
-        <MDBInput
+        {/* <MDBInput
             label="Last known location"
             name="location"
             icon="exclamation-circle deep-orange-text pr-3"
@@ -108,11 +155,9 @@ export default function PostForm(props) {
             className="ml-0 mr-5"
             labelClass="ml-0"
             required
-          />
-
-
+          /> */}
           <div className="d-flex justify-content-center">
-            <Map />
+            <Map location={props.petState.location}/>
           </div>
           <MDBInput
             label="Describe pet's characteristics or personality"

@@ -96,7 +96,7 @@ const handleSubmit = async (evt) => {
           <UploadImage handleChange={handleChange}/>
           <h3 style={{zIndex: 2}}>Status: {petState.status.toLocaleUpperCase()}</h3>
         </div>
-        <PostForm petState={petState} handleSubmit={handleSubmit} handleChange={handleChange} />
+        <PostForm petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
       </Container>
     </>
   );
