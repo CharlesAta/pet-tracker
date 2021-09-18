@@ -28,12 +28,7 @@ export default function PlacesAutocomplete(props) {
       },
       debounce: 300,
     });
-  
-    const ref = useOnclickOutside(() => {
-      // When user clicks outside of the component, we can dismiss
-      // the searched suggestions by calling this method
-      clearSuggestions();
-    });
+
   
     const handleSelect =
       ({description}) => 
@@ -49,9 +44,9 @@ export default function PlacesAutocomplete(props) {
         .then((results) => getLatLng(results[0]))
         .then(({ lat, lng }) => {
             console.log("📍 Coordinates: ", { lat, lng });            
-            console.log("description", description)
-            console.log("lat", lat )
-            console.log("lng", lng )
+            // console.log("description", description)
+            // console.log("lat", lat )
+            // console.log("lng", lng )
             props.setPetState({...props.petState, lat, lng, location: description})
         })
         .catch((error) => {
@@ -78,9 +73,9 @@ export default function PlacesAutocomplete(props) {
     });
 
   return (
-    <div ref={ref} className="mb-3">
-    <Combobox style={{border: "none", margingBottom: "10%"}} className="form-control ml-0 mr-5" onSelect={handleSelect} aria-labelledby="demo">
-       <ComboboxInput style={{border: "none", borderBottom: "1px solid black"}} value={value} onChange={handleInput} disabled={!ready} placeholder="Last seen location" />
+    <>
+    <Combobox  style={{border: "none"}} className="form-control ml-0 mr-5" className="mb-3" onSelect={handleSelect} aria-labelledby="demo">
+       <ComboboxInput  style={{border: "none", borderBottom: "1px solid black"}} value={value} onChange={handleInput} disabled={!ready} placeholder="Last known location" />
        <ComboboxPopover >
          <ComboboxList>
            {status === "OK" &&
@@ -88,10 +83,12 @@ export default function PlacesAutocomplete(props) {
         </ComboboxList>
       </ComboboxPopover>
     </Combobox>
-    </div>
+    </>
   );
 };
-
+//
+// 
+//
 
 {/* <MDBInput
 label="Last known location"

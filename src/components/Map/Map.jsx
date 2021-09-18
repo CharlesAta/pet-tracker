@@ -5,11 +5,6 @@ import {
   useJsApiLoader
 } from "@react-google-maps/api";
 
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-
 // import useOnclickOutside from "react-cool-onclickoutside";
 
 const containerStyle = {
@@ -22,17 +17,6 @@ const containerStyle = {
 //   lng: -79.347015
 // };
 
-// useEffect(() => {
-  
-
-//   if (props.location) {
-//     const results = await getGeocode(props.location);
-//     const { lat, lng } = await getLatLng(results[0]);
-//     console.log(results)
-//     console.log(lat)
-//     console.log(lng)
-//   }
-// }, [props.location])
 
 function Map(props) {
   const { isLoaded } = useJsApiLoader({
@@ -45,26 +29,23 @@ function Map(props) {
     lat: 43.651070,
     lng: -79.347015
   })
+  const [zoom, setZoom] = useState(10)
 
   useEffect(() => {
-    if (props.location) {
-      console.log(props.location)
-      const fetchLocation =  async () => {
-       const results = await getGeocode(props.location);
-       const { lat, lng } = await getLatLng(results[0]);
-       console.log(results)
-       console.log(lat)
-       console.log(lng)
-     }
+    if (props.lat && props.lng) {
+      setCenter({lat: props.lat, lng: props.lng})
+      console.log("zoom", zoom)
+      setZoom(15)
+      console.log("atMap", props.lat, props.lng)
    }
-  }, [props.location])
+  }, [props.location, props.lat, props.lng])
   
   
   return isLoaded ? (
       <GoogleMap className="mt-3"
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+        zoom={zoom}
 
       >
         { /* Child components, such as markers, info windows, etc. */ }

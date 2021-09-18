@@ -157,7 +157,7 @@ export default function PostForm(props) {
             required
           /> */}
           <div className="d-flex justify-content-center">
-            <Map location={props.petState.location}/>
+            <Map lat={props.petState.lat} lng={props.petState.lng} location={props.petState.location}/>
           </div>
           <MDBInput
             label="Describe pet's characteristics or personality"
