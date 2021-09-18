@@ -16,11 +16,11 @@ const postSchema = new Schema({
     location: {type: String, required: true},
     status:{
         type: String,
-        enum: ["Lost", "Found"],
-        default: "Lost"
+        enum: ["lost", "found"],
         },
     date: {type: Date}, 
-    comment:{type: Schema.Types.ObjectId, ref:'Comment'}
+    comment:{type: Schema.Types.ObjectId, ref:'Comment'},
+    phoneNumber:{type: Number}
   },{
     timestamps: true,
   }
