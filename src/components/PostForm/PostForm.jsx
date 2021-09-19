@@ -1,7 +1,7 @@
 import React from "react";
 import "./PostForm.css";
 import { Button, Row, Col, Form } from "react-bootstrap";
-import { MDBInput } from "mdbreact";
+import { MDBInput} from "mdbreact";
 import Map from "../Map/Map";
 import PlacesAutocomplete from "../PlacesAutocomplete/PlacesAutocomplete";
 import Radius from "../Radius/Radius";
@@ -107,6 +107,23 @@ export default function PostForm(props) {
           <Col>
           <Radius setPetState={props.setPetState} petState={props.petState}/>
           </Col>
+          <Col>
+{/* 
+          <select name="sex" required label="Pet's Sex">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Unknown">Unknown</option>
+          </select> */}
+
+        <select name="sex" onChange={props.handleChange} className="form-control form-control-sm">
+          <option selected>Pet's Sex</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+
+
+          </Col>
           </Row>
           <Row>
           <div className="d-flex justify-content-center">
@@ -119,7 +136,6 @@ export default function PostForm(props) {
             type="textarea"
             value={props.petState.description}
             onChange={props.handleChange}
-
           />
         <div className="text-right">
           <Form.Text>

@@ -38,7 +38,7 @@ export default function App() {
         <ReportPet {...props} user={user}/>
         )}/>
       <Route path='/account' render={(props) => (
-        <AuthPage {...props} user={user}/>
+        <AuthPage {...props} user={user} setUserInState={setUserInState}/>
         )}/>
         <Route render={()=> <Redirect to="/" />} />
       </Switch>

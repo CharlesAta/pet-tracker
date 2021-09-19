@@ -11,8 +11,8 @@ export default function NavBar() {
           <Nav className="ml-auto bar">
             <Nav.Link as={NavLink} to="/reportpet/lost">I Lost My Pet</Nav.Link>
             <Nav.Link as={NavLink} to="/reportpet/found">I Found A Pet</Nav.Link>
-            <Nav.Link href="link1">Search</Nav.Link>
-            <Nav.Link href="link1">Sign In/Log In</Nav.Link>
+            <Nav.Link as={NavLink} to="/postings">Search</Nav.Link>
+            <Nav.Link as={NavLink} to="/account">Sign In/Log In</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

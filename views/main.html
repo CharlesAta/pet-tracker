@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paway</title>
+  </head>
+  <body>
+    <h1>Local Pet Emergency - {{status}} pet!</h1>
+    <br />
+    <h3>{{name}} was reported missing on {{time}}</h3>
+
+    <div>
+      <table align="center" width="100%" cellspacing="10" cellpadding="0">
+        <tr>
+          <td align="center">Species:</td>
+          <td align="center">{{species}}</td>
+        </tr>
+        <tr>
+          <td align="center">Breed:</td>
+          <td align="center">{{breed}}</td>
+        </tr>
+        <tr>
+          <td align="center">Last Seen Location:</td>
+          <td align="center">{{location}}</td>
+        </tr>
+        <tr>
+          <td align="center">Contact Email</td>
+          <td align="center">{{email}}</td>
+        </tr>
+        {{#if phoneNumber}}
+        <tr>
+          <td align="center">Contact Number</td>
+          <td align="center">{{phoneNumber}}</td>
+        </tr>
+        {{else}}
+        <tr>
+          <td align="center">Contact Number</td>
+          <td align="center">No Number Provided</td>
+        </tr>
+        {{/if}}
+      </table>
+    </div>
+  </body>
+</html>

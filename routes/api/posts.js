@@ -4,6 +4,6 @@ const postsCtrl = require('../../controllers/posts');
 
 router.post('/data', postsCtrl.createPost);
 router.post('/image', postsCtrl.createImage);
-
+router.get('/', postsCtrl.postsIndex);
 
 module.exports = router;

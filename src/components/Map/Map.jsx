@@ -7,7 +7,7 @@ import {
   InfoWindow,
   Circle,
 } from "@react-google-maps/api"; // npm install react-google-maps/api
-import { Range } from 'react-range'; // npm install react-range
+import { Range } from 'react-range'; // npm install react-rang
 
 const containerStyle = {
   width: '800px',

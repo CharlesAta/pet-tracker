@@ -61,26 +61,6 @@ export default function LoginForm(props) {
             onChange={handleChange}
             required
           />
-          {/* <Form.Group>
-            <Form.Control
-              placeholder="Email"
-              type="text"
-              name="email"
-              value={state.email}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              placeholder="Password"
-              type="password"
-              name="password"
-              value={state.password}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group> */}
           <Form.Text>
             <Form.Group className="mb-3">
               <Form.Check type="checkbox" label="Remember me" />

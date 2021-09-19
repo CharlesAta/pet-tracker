@@ -9,9 +9,12 @@ module.exports = {
 };
 
 async function create(req, res) {
-
+  console.log(req.body)
   try {
+    
     const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS);
+    console.log(hashedPassword)
+    
     const user = await UserModel.create({
       name: req.body.name,
       email: req.body.email,
@@ -19,6 +22,7 @@ async function create(req, res) {
       phoneNumber: req.body.phoneNumber,
       postalCode: req.body.postalCode,
     });
+    console.log("user", user)
     const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
     console.log(token);
     res.status(200).json(token);
@@ -34,7 +38,6 @@ async function login(req, res) {
     console.log(user)
     if (!(await bcrypt.compare(req.body.password, user.password)))
       throw new Error();
-
     const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
     res.status(200).json(token);
   } catch {

@@ -23,7 +23,8 @@ const postSchema = new Schema({
     date: {type: Date}, 
     radius: {type: Array},
     comment:{type: Schema.Types.ObjectId, ref:'Comment'},
-    phoneNumber:{type: Number}
+    phoneNumber:{type: Number},
+    email:{type: String, required: true}
   },{
     timestamps: true,
   }

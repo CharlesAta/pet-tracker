@@ -9,6 +9,7 @@ import PostForm from "../../components/PostForm/PostForm";
 const axios = require('axios');
 
 export default function ReportPet(props) {
+
   const [petState, setPetState] = useState({
     name: "",
     species: "",
@@ -22,7 +23,8 @@ export default function ReportPet(props) {
     description: "",
     status: "",
     photo: "https://i.imgur.com/e05qeJD.jpg",
-    radius: [500]
+    radius: [500],
+    sex: "Unknown"
   });
 
   useEffect(() => {
@@ -32,12 +34,22 @@ export default function ReportPet(props) {
   }, [props.match.params.status]);
 
   const handleChange = async (evt) => {
+    console.log("evt", evt)
+    console.log("evt.target", evt.target)
     if (evt.target.name === "imageUpload") {
       if (evt.target.files[0]) {
         handleSubmitImage(evt.target.files[0])
         }
       }
      else {
+      setPetState({ ...petState, [evt.target.name]: evt.target.value });
+    }
+  };
+
+  const handleSelect = (evt) => {
+    console.log("evt", evt)
+    console.log("evt.target", evt.target)
+    if (evt.target.name === "sex") {
       setPetState({ ...petState, [evt.target.name]: evt.target.value });
     }
   };
@@ -84,7 +96,8 @@ const handleSubmit = async (evt) => {
       photo: "https://i.imgur.com/e05qeJD.jpg",
       lat: "",
       lng: "",
-      radius: [500]
+      radius: [500],
+      sex: "Unknown"
     }) 
   } catch (err) {
     console.error("Error:", err) 
@@ -97,7 +110,7 @@ const handleSubmit = async (evt) => {
       <NavBar />
       <Container className="justify-content-center d-flex text-left flex-column mt-3">
         <div className="d-flex flex-row">
-          
+
           <PetImage photo={petState.photo}/>
           <UploadImage handleChange={handleChange}/>
           <h3 style={{zIndex: 2}}>Status: {petState.status.toLocaleUpperCase()}</h3>
