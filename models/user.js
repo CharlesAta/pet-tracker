@@ -29,6 +29,11 @@ const userSchema = new Schema({
       type: Boolean,
       default: false
   },
+  role:{
+    type: String,
+    default:"basic",
+    enum: ["basic", "admin"]
+},
   post: {type: [Schema.Types.ObjectId], ref: 'Post'}
 }, {
   timestamps: true,
