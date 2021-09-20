@@ -40,9 +40,12 @@ export default function PlacesAutocomplete(props) {
           try {
             let zipCode = await getZipCode(results[0])
             let {lat, lng} = await getLatLng(results[0])           
-            await props.setPetState({...props.petState, lat, lng, location: description, postalCode: zipCode})
             console.log("ZIP Code: ", zipCode);
-         } catch(error) {
+            if(!zipCode) {
+              zipCode = props.user.postalCode
+            }
+            await props.setPetState({...props.petState, lat, lng, location: description, postalCode: zipCode})
+          } catch(error) {
               console.log("😱 Error: ", error);
           };
         })

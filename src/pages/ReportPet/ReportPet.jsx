@@ -61,9 +61,13 @@ export default function ReportPet(props) {
 
 const handleSubmit = async (evt) => {
   evt.preventDefault();
-  if (!petState.postalCode) {
-    setPetState({postalCode: props.user.postalCode})
-  }
+
+  // if (!petState.postalCode) {
+  //   console.log("SSEEING THIS")
+  //   console.log("postalCode: props.user.postalCode", props.user.postalCode)
+  //   await setPetState({...petState, postalCode: props.user.postalCode})
+  //   console.log({...petState})
+  // }
   try {
     let jwt = localStorage.getItem('token')
     let fetchResponse = await fetch("/api/posts/data", {
@@ -105,9 +109,9 @@ const handleSubmit = async (evt) => {
 
           <PetImage photo={petState.photo}/>
           <UploadImage handleChange={handleChange}/>
-          <h3 style={{zIndex: 2}}>Status: {petState.status.toLocaleUpperCase()}</h3>
+          <h3 style={{zIndex: 2}}>Status: {petState.status.toUpperCase()}</h3>
         </div>
-        <PostForm speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
+        <PostForm user={props.user} speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
       </Container>
     </>
   );

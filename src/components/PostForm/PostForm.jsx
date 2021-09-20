@@ -101,7 +101,7 @@ export default function PostForm(props) {
         </Row>
         <Row>
           <Col>
-        <PlacesAutocomplete setPetState={props.setPetState} petState={props.petState} handleChange={props.handleChange} />
+        <PlacesAutocomplete user={props.user} setPetState={props.setPetState} petState={props.petState} handleChange={props.handleChange} />
         </Col>
           <Col>
           <Radius setPetState={props.setPetState} petState={props.petState}/>

@@ -9,6 +9,8 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import NavBar from "../../components/NavBar/NavBar";
 import JumboTron from "../../components/JumboTron/JumboTron";
 import "./LandingPage.css"
+import "./LandingPage.css"
+
 
 export default function LandingPage(props) {
   const [showLogin, setShowLogin] = useState(true);
@@ -21,7 +23,7 @@ export default function LandingPage(props) {
         <Row>
           <Col sm={6}>SIGN IN TO GET ALERT</Col>
           <Col className="mt-3"sm={6}>
-          <LoginForm setShowLogin={props.setShowLogin}/>
+          <LoginForm setShowLogin={props.setShowLogin} setUser={props.setUser}/>
             {/* <h3 onClick={() => setShowLogin(!showLogin)}>
               {showLogin ? "SIGN UP" : "LOG IN"}
             </h3>
@@ -35,11 +37,15 @@ export default function LandingPage(props) {
         {/* {user ? <ReportPet /> : <AuthPage setUserInState={setUserInState} />} */}
       </Container>
       
+      <div>
+            
+            </div>
       <Container className="Testimonials">
         <Testimonial />
         <Testimonial />
         <Testimonial />
       </Container>
+
     </div>
   );
 }

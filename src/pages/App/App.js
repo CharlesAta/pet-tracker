@@ -7,7 +7,6 @@ import LandingPage from "../LandingPage/LandingPage";
 import ReportPet from "../ReportPet/ReportPet";
 import { Navbar } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBar";
-// import Switch from "react-bootstrap/esm/Switch";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -24,12 +23,12 @@ export default function App() {
   //   setUser(incomingUserData);
   // };
 
-  useEffect( async() => {
-    let token = await localStorage.getItem("token");
+  useEffect( () => {
+    let token = localStorage.getItem("token");
     console.log("token", token)
     if (token) {
       let userDoc = JSON.parse(atob(token.split(".")[1])).user; // decode jwt token
-      await setUser(userDoc);
+      setUser(userDoc);
       console.log("App.js user",user)
       console.log("App.js userDoc",userDoc)
     }
@@ -42,7 +41,7 @@ export default function App() {
             <PetPostings {...props} user={user} />
           )}/>
       <Route exact path='/' render={(props) => (
-            <LandingPage {...props} setShowLogin={setShowLogin} user={user}/>
+            <LandingPage {...props} setShowLogin={setShowLogin} user={user} setUser={setUser}/>
           )}/>
 
       <Route path='/reportpet/:status(lost|found)' render={(props) => (
