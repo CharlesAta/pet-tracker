@@ -9,7 +9,11 @@ const postSchema = new Schema({
         type: String,
         enum: ["Male", "Female", "Unknown"],
         },
-    species: {type: String, required: true},
+    species: {
+      type: String, 
+      required: true,
+      enum: ["Cat", "Dog", "Reptile", "Bird", "Rabbit", "Guinea pig", "Turtle", "Horse", "Rat", "Others"]
+    },
     breed:{type: String},
     user: {type: Schema.Types.ObjectId, ref:'User'},
     postalCode: {type: String, required: true},

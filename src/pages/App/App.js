@@ -10,7 +10,11 @@ import ReportPet from "../ReportPet/ReportPet";
 export default function App() {
   const [user, setUser] = useState(null);
 
-  const [showLogin, setShowLogin] = useState(true);
+  const [searchState, setSearchState] = useState({
+    species:"",
+    name:"",
+    status: ""
+  })
 
   const setUserInState = (incomingUserData) => {
     setUser(incomingUserData);

@@ -127,6 +127,7 @@ export default function SignUpForm(props) {
                     </Button>
                 </Form>
             </Container>
+            <p className="error-message mt-3">&nbsp; {signUpState.error}</p>
         </div>
     );
 }

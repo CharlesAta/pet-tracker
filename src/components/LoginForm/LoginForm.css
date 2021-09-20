@@ -6,3 +6,8 @@
   padding: 0 !important;
   margin: 0 !important;
 }
+
+.error-message {
+  color: red;
+  text-align: center;
+}

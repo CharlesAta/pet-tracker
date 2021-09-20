@@ -17,7 +17,7 @@ export default function AuthPage(props) {
                 className="mb-3"
             >
                 <Tab eventKey="LOG IN" title="Log in">
-                    <LoginForm setUserInState={props.setUserInState}/>
+                    <LoginForm setUserInState={props.setUserInState} setShowLogin={setShowLogin}/>
                 </Tab>
                 <Tab eventKey="SIGN UP" title="Sign Up">
                     <SignUpForm setUserInState={props.setUserInState}/>

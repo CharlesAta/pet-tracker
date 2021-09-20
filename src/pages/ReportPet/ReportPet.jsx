@@ -10,9 +10,11 @@ const axios = require('axios');
 
 export default function ReportPet(props) {
 
+  const speciesOptions = ["Cat", "Dog", "Reptile", "Bird", "Rabbit", "Guinea pig", "Turtle", "Horse", "Rat", "Others"]
+
   const [petState, setPetState] = useState({
     name: "",
-    species: "",
+    species: "Others",
     postalCode: "",
     email: "",
     breed: "",
@@ -34,8 +36,6 @@ export default function ReportPet(props) {
   }, [props.match.params.status]);
 
   const handleChange = async (evt) => {
-    console.log("evt", evt)
-    console.log("evt.target", evt.target)
     if (evt.target.name === "imageUpload") {
       if (evt.target.files[0]) {
         handleSubmitImage(evt.target.files[0])
@@ -47,8 +47,6 @@ export default function ReportPet(props) {
   };
 
   const handleSelect = (evt) => {
-    console.log("evt", evt)
-    console.log("evt.target", evt.target)
     if (evt.target.name === "sex") {
       setPetState({ ...petState, [evt.target.name]: evt.target.value });
     }
@@ -85,7 +83,7 @@ const handleSubmit = async (evt) => {
 
     setPetState({
       name: "",
-      species: "",
+      species: "Others",
       postalCode: "",
       email:"",
       breed: "",
@@ -115,7 +113,7 @@ const handleSubmit = async (evt) => {
           <UploadImage handleChange={handleChange}/>
           <h3 style={{zIndex: 2}}>Status: {petState.status.toLocaleUpperCase()}</h3>
         </div>
-        <PostForm petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
+        <PostForm speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
       </Container>
     </>
   );

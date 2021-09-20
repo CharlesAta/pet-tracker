@@ -5,124 +5,117 @@ import { MDBInput} from "mdbreact";
 import Map from "../Map/Map";
 import PlacesAutocomplete from "../PlacesAutocomplete/PlacesAutocomplete";
 import Radius from "../Radius/Radius";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 
 export default function PostForm(props) {
+  console.log(props.speciesOptions)
   return (
     <>
       <Form onSubmit={props.handleSubmit}>
         <Row className="mt-3">
           <Col>
-            <MDBInput
-              label="Pet Name"
-              icon="exclamation-circle deep-orange-text pr-3"
+          <Form.Group style={{display: "flex", alignItems: "center"}}>
+            <Form.Control
+              placeholder="Pet Name"
               name="name"
               type="text"
               value={props.petState.name}
               onChange={props.handleChange}
-              containerClass="d-flex flex-row-reverse"
-              className="ml-0 mr-5"
-              labelClass="ml-0"
+              className="mt-2 mr-2"
               required
             />
+            <FontAwesomeIcon size="lg" color="red" icon={faExclamationCircle} />
+            </Form.Group>
           </Col>
           <Col>
-            <MDBInput
-              label="Species"
-              icon="exclamation-circle deep-orange-text pr-3"
-              name="species"
-              type="text"
-              value={props.petState.species}
-              onChange={props.handleChange}
-              containerClass="d-flex flex-row-reverse"
-              className="ml-0 mr-5"
-              labelClass="ml-0"
-              required
-            />
+
+            <Form.Group style={{display: "flex", alignItems: "center"}}>
+              <select name="species" 
+              onChange={props.handleChange} 
+              className="select form-select mt-2 mr-2">
+              <option selected>Select Species</option>
+              {props.speciesOptions.map((s) => 
+                <option  value={s}>{s}</option>
+               )}
+            </select>
+            <FontAwesomeIcon size="lg" color="red" icon={faExclamationCircle} />
+            </Form.Group>
+
           </Col>
         </Row>
         <Row>
           <Col>
-            <MDBInput
-              label="Postal Code/City"
-              icon="exclamation-circle deep-orange-text pr-3"
+          <Form.Group style={{display: "flex", alignItems: "center"}}>
+            <Form.Control
+              placeholder="Postal Code/City"
               name="postalCode"
               type="text"
               value={props.petState.postalCode}
               onChange={props.handleChange}
-              containerClass="d-flex flex-row-reverse"
-              className="ml-0 mr-5"
-              labelClass="ml-0"
+              className="mt-2 mr-2"
               required
             />
+            <FontAwesomeIcon size="lg" color="red" icon={faExclamationCircle} />
+            </Form.Group>
           </Col>
           <Col>
-            <MDBInput
-              label="Contact Email"
-              icon="exclamation-circle deep-orange-text pr-3"
+            <Form.Group style={{display: "flex", alignItems: "center"}}>
+              <Form.Control 
+              type="email" 
               name="email"
-              type="email"
+              placeholder="Email Address"
               value={props.petState.email}
               onChange={props.handleChange}
-              containerClass="d-flex flex-row-reverse"
-              className="ml-0 mr-5"
-              labelClass="ml-0"
-              required
-            />
+              className="mt-2 mr-2"
+              required/>
+              <FontAwesomeIcon size="lg" color="red" icon={faExclamationCircle} />
+            </Form.Group>
           </Col>
         </Row>
         <Row>
           <Col>
-            <MDBInput
-              label="Breed"
-              icon="none pr-3"
+          <Form.Group style={{display: "flex", alignItems: "center"}}>
+              <Form.Control 
               name="breed"
               type="text"
+              placeholder="Breed"
               value={props.petState.breed}
-              onChange={props.handleChange}
-              containerClass="d-flex flex-row-reverse"
-              className="ml-0 mr-5"
-              labelClass="ml-0"
-            />
+              onChange={props.handleChange} 
+              className="mt-2 mr-2"
+              />
+              <FontAwesomeIcon size="lg" className="fa-blank" icon={faExclamationCircle} />
+          </Form.Group>  
+            
           </Col>
           <Col>
-            <MDBInput
-              label="Phone Number"
-              icon="none pr-3"
+          <Form.Group style={{display: "flex", alignItems: "center"}}>
+            <Form.Control
+              placeholder="Phone Number"
               name="phoneNumber"
-              type="number"
+              type="tel"
               value={props.petState.phoneNumber}
               onChange={props.handleChange}
-              containerClass="d-flex flex-row-reverse"
-              className="ml-0 mr-5"
-              labelClass="ml-0"
+              className="mt-2 mr-2"
             />
+            <FontAwesomeIcon size="lg" className="fa-blank" icon={faExclamationCircle} />
+            </Form.Group>
           </Col>
         </Row>
         <Row>
           <Col>
         <PlacesAutocomplete setPetState={props.setPetState} petState={props.petState} handleChange={props.handleChange} />
         </Col>
-
-
           <Col>
           <Radius setPetState={props.setPetState} petState={props.petState}/>
           </Col>
           <Col>
-{/* 
-          <select name="sex" required label="Pet's Sex">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Unknown">Unknown</option>
-          </select> */}
-
-        <select name="sex" onChange={props.handleChange} className="form-control form-control-sm">
+        <select name="sex" onChange={props.handleChange} className="mt-3 select form-select form-control-sm">
           <option selected>Pet's Sex</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Unknown">Unknown</option>
         </select>
-
-
           </Col>
           </Row>
           <Row>
@@ -130,13 +123,17 @@ export default function PostForm(props) {
             <Map lat={props.petState.lat} radius={props.petState.radius} lng={props.petState.lng} location={props.petState.location}/>
           </div>
           </Row>
-          <MDBInput
-            label="Describe pet's characteristics or personality"
+          <Form.Group>
+          <Form.Control
+            placeholder="Describe pet's characteristics or personality"
             name="description"
-            type="textarea"
+            as="textarea"
             value={props.petState.description}
             onChange={props.handleChange}
+            className="mt-2 mr-2"
+            row={3}
           />
+          </Form.Group>
         <div className="text-right">
           <Form.Text>
             <Form.Group className="text">
