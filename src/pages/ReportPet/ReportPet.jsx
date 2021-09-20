@@ -2,31 +2,32 @@ import React, { useState, setState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBar";
 import "./ReportPet.css"
-import PetImage from "../../components/PetImage/PetImage";
-import UploadImage from "../../components/UploadImage/UploadImage";
 import PostForm from "../../components/PostForm/PostForm";
 
 const axios = require('axios');
 
 export default function ReportPet(props) {
 
-  const speciesOptions = ["Cat", "Dog", "Reptile", "Bird", "Rabbit", "Guinea pig", "Turtle", "Horse", "Rat", "Others"]
+  const speciesOptions = ["Cat", "Dog", "Fish", "Reptile", "Bird", "Rabbit", "Guinea pig", "Turtle", "Horse", "Rat", "Others"]
+  const circumstanceOptions = ["In my possession", "Sighting (still roaming)", "Deceased"];
 
   const [petState, setPetState] = useState({
     name: "",
     species: "Others",
     postalCode: "",
-    email: "",
+    email: props.user.email,
     breed: "",
-    phoneNumber: "",
+    phoneNumber: props.user.phoneNumber,
     location: "",
     lat: "",
     lng: "",
     description: "",
     status: "",
+    date: new Date(),
     photo: "https://i.imgur.com/e05qeJD.jpg",
     radius: [500],
-    sex: "Unknown"
+    sex: "Unknown",
+    circumstance: "Sighting (still roaming)"
   });
 
   useEffect(() => {
@@ -61,13 +62,6 @@ export default function ReportPet(props) {
 
 const handleSubmit = async (evt) => {
   evt.preventDefault();
-
-  // if (!petState.postalCode) {
-  //   console.log("SSEEING THIS")
-  //   console.log("postalCode: props.user.postalCode", props.user.postalCode)
-  //   await setPetState({...petState, postalCode: props.user.postalCode})
-  //   console.log({...petState})
-  // }
   try {
     let jwt = localStorage.getItem('token')
     let fetchResponse = await fetch("/api/posts/data", {
@@ -83,15 +77,16 @@ const handleSubmit = async (evt) => {
       name: "",
       species: "Others",
       postalCode: "",
-      email:"",
+      email:props.user.email,
       breed: "",
-      phoneNumber: "",
+      phoneNumber: props.user.phoneNumber,
       location: "",
       description: "",
       status: props.match.params.status,
       photo: "https://i.imgur.com/e05qeJD.jpg",
       lat: "",
       lng: "",
+      date: new Date(),
       radius: [500],
       sex: "Unknown"
     }) 
@@ -103,15 +98,9 @@ const handleSubmit = async (evt) => {
   
   return (
     <>
-      <NavBar user={props.user} />
+      <NavBar user={props.user} setUser={props.setUser}/>
       <Container className="justify-content-center d-flex text-left flex-column mt-3">
-        <div className="d-flex flex-row">
-
-          <PetImage photo={petState.photo}/>
-          <UploadImage handleChange={handleChange}/>
-          <h3 style={{zIndex: 2}}>Status: {petState.status.toUpperCase()}</h3>
-        </div>
-        <PostForm user={props.user} speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
+        <PostForm circumstanceOptions={circumstanceOptions} user={props.user} speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
       </Container>
     </>
   );

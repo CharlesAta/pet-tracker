@@ -22,7 +22,14 @@ bb.extend(app, {
 });
 
 app.use('/api/users', require('./routes/api/users'));
+app.use(require('./config/auth'));
 app.use('/api/posts', require('./routes/api/posts'))
+
+//THIS IS THE ERROR FUNCTION MIDDLEWARE
+app.use(function (err, req, res, next) {
+  //This will catch all errors that are passed to next from our middleware
+  res.status(500).json(err);
+});
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

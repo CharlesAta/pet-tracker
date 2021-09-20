@@ -6,6 +6,7 @@ const SALT_ROUNDS = 6;
 module.exports = {
   create,
   login,
+  verify
 };
 
 async function create(req, res) {
@@ -43,4 +44,10 @@ async function login(req, res) {
   } catch {
     res.status(400).json("Bad Credentials");
   }
+}
+
+function verify(req, res) {
+  //if the middleware hits next then you know the token is valid
+  //Check the Auth in the config folder to see the data flow
+  res.json(req.user);
 }

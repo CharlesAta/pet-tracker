@@ -20,7 +20,7 @@ export default function PetPosting(props) {
 
     return (
         <>
-          <NavBar user={props.user} />
+          <NavBar user={props.user} setUser={props.setUser}/>
           <Container className="d-flex flex-column justify-content-center align-items-center">
             <h1 className="mt-3">Lost and Fount Pets in Toronto, Ontario </h1> 
         </Container>

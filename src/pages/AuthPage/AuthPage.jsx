@@ -10,7 +10,7 @@ export default function AuthPage(props) {
  
     return (
         <div>
-            <NavBar user={props.user} />
+            <NavBar user={props.user} setUser={props.setUser}/>
             <Tabs
                 activeKey={props.showLogin}
                 onSelect={(k) => props.setShowLogin(k)}

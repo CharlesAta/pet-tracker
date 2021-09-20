@@ -8,11 +8,12 @@ import {
     Combobox,
     ComboboxInput,
     ComboboxPopover,
-    ComboboxList
+    ComboboxList,
   } from "@reach/combobox"; 
   import "@reach/combobox/styles.css"
   import "./PlacesAutocomplete.css";
   import { MDBInput } from "mdbreact";
+  import { Form } from "react-bootstrap";
 
 export default function PlacesAutocomplete(props) {
     const {
@@ -71,8 +72,9 @@ export default function PlacesAutocomplete(props) {
 
   return (
     <>
-    <Combobox  style={{border: "none"}} className="form-control ml-0 mr-5" className="mb-3" onSelect={handleSelect} aria-labelledby="demo">
-       <ComboboxInput  style={{border: "none", borderBottom: "1px solid black"}} value={value} onChange={handleInput} disabled={!ready} placeholder="Last known location" />
+
+    <Combobox style={{border: "none"}} className="form-control ml-0 mr-5" className="mb-3" onSelect={handleSelect} aria-labelledby="demo">
+       <ComboboxInput  style={{border: "none", borderBottom: "1px solid black"}} value={value} onChange={handleInput} disabled={!ready} placeholder="Postal Code, City, Landmarks..." />
        <ComboboxPopover >
          <ComboboxList>
            {status === "OK" &&
@@ -80,6 +82,7 @@ export default function PlacesAutocomplete(props) {
         </ComboboxList>
       </ComboboxPopover>
     </Combobox>
+
     </>
   );
 };

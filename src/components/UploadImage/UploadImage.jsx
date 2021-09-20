@@ -1,6 +1,9 @@
 import React, {useRef, useState} from "react";
 import { Card, Form, Row } from "react-bootstrap";
 import "./UploadImage.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCamera } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function UploadImage(props) {
   
@@ -23,10 +26,13 @@ export default function UploadImage(props) {
         style={{ width: "8rem" }}
         className="d-flex justify-content-end border-0"
       >
-        <Card.Img
+        <div onClick={onButtonClick} className="image-upload" style={{backgroundColor: "teal", borderRadius:"50%", display: "flex", justifyContent: "center", alignItems: "center", boxShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.5)"}}>
+          <FontAwesomeIcon size="lg" style={{height:"50", width:"50"}} color="white" icon={faCamera}/>
+        </div>
+        {/* <Card.Img
           variant="top"
           src="https://storage.needpix.com/rsynced_images/instagram-3814061_1280.png"
-          onClick={onButtonClick}/>
+          onClick={onButtonClick}/> */}
         
       </Card>
       <Form.Group as={Row}>

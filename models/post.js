@@ -12,7 +12,7 @@ const postSchema = new Schema({
     species: {
       type: String, 
       required: true,
-      enum: ["Cat", "Dog", "Reptile", "Bird", "Rabbit", "Guinea pig", "Turtle", "Horse", "Rat", "Others"]
+      enum: ["Cat", "Dog", "Reptile", "Bird", "Rabbit", "Guinea pig", "Turtle", "Fish", "Horse", "Rat", "Others"]
     },
     breed:{type: String},
     user: {type: Schema.Types.ObjectId, ref:'User'},
@@ -28,7 +28,11 @@ const postSchema = new Schema({
     radius: {type: Array},
     comment:{type: Schema.Types.ObjectId, ref:'Comment'},
     phoneNumber:{type: Number},
-    email:{type: String, required: true}
+    email:{type: String, required: true},
+    circumstance: {
+      type: String,
+      enum: ["In my possession", "Sighting (still roaming)", "Deceased"]
+    }
   },{
     timestamps: true,
   }

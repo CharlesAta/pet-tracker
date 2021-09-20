@@ -17,7 +17,7 @@ export default function LandingPage(props) {
 
   return (
     <div>
-      <NavBar user={props.user} />
+      <NavBar user={props.user} setUser={props.setUser}/>
       <JumboTron />
       <Container>
         <Row>

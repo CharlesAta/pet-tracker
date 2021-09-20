@@ -40,7 +40,7 @@ export default function PetListItem(props) {
                 </Col>
                 <Col>
                 <Row style={{display: 'flex', justifyContent: "flex-end"}}>
-                <p><span class="badge bg-secondary"> {showDate()}</span></p>
+                <p><span className="badge bg-secondary"> {showDate()}</span></p>
                 </Row>
                 <Row>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
