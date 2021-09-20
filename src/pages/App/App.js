@@ -5,6 +5,8 @@ import PetPostings from "../PetPostings/PetPostings";
 import { Route, Switch, Redirect } from "react-router-dom";
 import LandingPage from "../LandingPage/LandingPage";
 import ReportPet from "../ReportPet/ReportPet";
+import { Navbar } from "react-bootstrap";
+import NavBar from "../../components/NavBar/NavBar";
 // import Switch from "react-bootstrap/esm/Switch";
 
 export default function App() {
@@ -16,15 +18,20 @@ export default function App() {
     status: ""
   })
 
-  const setUserInState = (incomingUserData) => {
-    setUser(incomingUserData);
-  };
+  const [showLogin, setShowLogin] = useState("SIGN UP")
+  
+  // const setUserInState = (incomingUserData) => {
+  //   setUser(incomingUserData);
+  // };
 
-  useEffect(() => {
-    let token = localStorage.getItem("token");
+  useEffect( async() => {
+    let token = await localStorage.getItem("token");
+    console.log("token", token)
     if (token) {
       let userDoc = JSON.parse(atob(token.split(".")[1])).user; // decode jwt token
-      setUser({ user: userDoc });
+      await setUser(userDoc);
+      console.log("App.js user",user)
+      console.log("App.js userDoc",userDoc)
     }
   }, []);
 
@@ -32,17 +39,17 @@ export default function App() {
     <>
     <Switch>
       <Route path='/postings' render={(props) => (
-            <PetPostings {...props} />
+            <PetPostings {...props} user={user} />
           )}/>
       <Route exact path='/' render={(props) => (
-            <LandingPage {...props} />
+            <LandingPage {...props} setShowLogin={setShowLogin} user={user}/>
           )}/>
 
       <Route path='/reportpet/:status(lost|found)' render={(props) => (
         <ReportPet {...props} user={user}/>
         )}/>
       <Route path='/account' render={(props) => (
-        <AuthPage {...props} user={user} setUserInState={setUserInState}/>
+        <AuthPage {...props} user={user} setUser={setUser} setShowLogin={setShowLogin} />
         )}/>
         <Route render={()=> <Redirect to="/" />} />
       </Switch>

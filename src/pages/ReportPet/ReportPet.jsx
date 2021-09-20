@@ -46,13 +46,6 @@ export default function ReportPet(props) {
     }
   };
 
-  const handleSelect = (evt) => {
-    if (evt.target.name === "sex") {
-      setPetState({ ...petState, [evt.target.name]: evt.target.value });
-    }
-  };
-
-
   const handleSubmitImage = async(file) => {
     try {
       let formData = new FormData();
@@ -66,15 +59,16 @@ export default function ReportPet(props) {
     }
   }
 
-
 const handleSubmit = async (evt) => {
   evt.preventDefault();
-
+  if (!petState.postalCode) {
+    setPetState({postalCode: props.user.postalCode})
+  }
   try {
     let jwt = localStorage.getItem('token')
     let fetchResponse = await fetch("/api/posts/data", {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
+      headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + jwt},
       body: JSON.stringify({petState}), 
       }) 
       
@@ -105,7 +99,7 @@ const handleSubmit = async (evt) => {
   
   return (
     <>
-      <NavBar />
+      <NavBar user={props.user} />
       <Container className="justify-content-center d-flex text-left flex-column mt-3">
         <div className="d-flex flex-row">
 

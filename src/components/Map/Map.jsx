@@ -30,9 +30,7 @@ function Map(props) {
   useEffect(() => {
     if (props.lat && props.lng) {
       setCenter({lat: props.lat, lng: props.lng})
-      console.log("zoom", zoom)
       setZoom(14.5)
-      console.log("atMap", props.lat, props.lng)
    }
   }, [props.location, props.lat, props.lng, props.radius])
   

@@ -45,7 +45,7 @@ export default function SignUpForm(props) {
                 localStorage.setItem("token", token);
     
                 const userDoc = JSON.parse(atob(token.split(".")[1])).user;
-                props.setUserInState(userDoc);
+                props.setUser(userDoc);
                 setSignUpState({
                     name: "",
                     email: "",

@@ -96,7 +96,7 @@ async function createPost(req, res){
                 let htmlToSend = template(replacements)
                 let mailOptions = {
                 from: process.env.EMAIL_ADDRESS,
-                to: 'charles.ata.94@gmail.com',
+                to: 'lynnyangnc@gmail.com',
                 subject: 'EMERGENCY - PET LOST',
                 html: htmlToSend,
                 attachments:[

@@ -17,6 +17,7 @@ export default function Search() {
                 type="text"
                 name="search"
                 placeholder="Search..."
+                // style={{width:350}}
                 required
               />
             </Form.Group>

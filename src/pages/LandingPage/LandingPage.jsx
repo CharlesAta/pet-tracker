@@ -10,22 +10,18 @@ import NavBar from "../../components/NavBar/NavBar";
 import JumboTron from "../../components/JumboTron/JumboTron";
 import "./LandingPage.css"
 
-export default function LandingPage() {
+export default function LandingPage(props) {
   const [showLogin, setShowLogin] = useState(true);
-  const [user, setUser] = useState(null);
-  const setUserInState = (incomingUserData) => {
-    setUser(incomingUserData);
-  };
 
   return (
     <div>
-      <NavBar />
+      <NavBar user={props.user} />
       <JumboTron />
       <Container>
         <Row>
           <Col sm={6}>SIGN IN TO GET ALERT</Col>
           <Col className="mt-3"sm={6}>
-          <LoginForm setUserInState={setUserInState} />
+          <LoginForm setShowLogin={props.setShowLogin}/>
             {/* <h3 onClick={() => setShowLogin(!showLogin)}>
               {showLogin ? "SIGN UP" : "LOG IN"}
             </h3>

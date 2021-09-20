@@ -6,21 +6,21 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import NavBar from "../../components/NavBar/NavBar";
 
 export default function AuthPage(props) {
-    const [showLogin, setShowLogin] = useState("LOG IN")
+    // const [showLogin, setShowLogin] = useState("LOG IN")
  
     return (
         <div>
-            <NavBar />
+            <NavBar user={props.user} />
             <Tabs
-                activeKey={showLogin}
-                onSelect={(k) => setShowLogin(k)}
+                activeKey={props.showLogin}
+                onSelect={(k) => props.setShowLogin(k)}
                 className="mb-3"
             >
                 <Tab eventKey="LOG IN" title="Log in">
-                    <LoginForm setUserInState={props.setUserInState} setShowLogin={setShowLogin}/>
+                    <LoginForm  setShowLogin={props.setShowLogin} setUser={props.setUser}/>
                 </Tab>
                 <Tab eventKey="SIGN UP" title="Sign Up">
-                    <SignUpForm setUserInState={props.setUserInState}/>
+                    <SignUpForm setShowLogin={props.setShowLogin} setUser={props.setUser}/>
                 </Tab>
             </Tabs>
         </div>

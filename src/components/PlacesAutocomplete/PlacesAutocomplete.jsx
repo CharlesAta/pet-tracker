@@ -1,6 +1,7 @@
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
+    getZipCode
   } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import {
@@ -33,18 +34,18 @@ export default function PlacesAutocomplete(props) {
       ({description}) => 
       () => {
         setValue(description, false);
-
         clearSuggestions();
-
         getGeocode({ address: description })
-        .then((results) => getLatLng(results[0]))
-        .then(({ lat, lng }) => {
-            console.log("📍 Coordinates: ", { lat, lng });            
-            props.setPetState({...props.petState, lat, lng, location: description})
+        .then(async (results) => {
+          try {
+            let zipCode = await getZipCode(results[0])
+            let {lat, lng} = await getLatLng(results[0])           
+            await props.setPetState({...props.petState, lat, lng, location: description, postalCode: zipCode})
+            console.log("ZIP Code: ", zipCode);
+         } catch(error) {
+              console.log("😱 Error: ", error);
+          };
         })
-        .catch((error) => {
-            console.log("😱 Error: ", error);
-        });
       };
 
     const handleInput = (e) => {

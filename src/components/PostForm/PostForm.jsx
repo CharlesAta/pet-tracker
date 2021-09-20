@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 
 export default function PostForm(props) {
-  console.log(props.speciesOptions)
   return (
     <>
       <Form onSubmit={props.handleSubmit}>
@@ -47,15 +46,13 @@ export default function PostForm(props) {
         <Row>
           <Col>
           <Form.Group style={{display: "flex", alignItems: "center"}}>
-            <Form.Control
-              placeholder="Postal Code/City"
-              name="postalCode"
-              type="text"
-              value={props.petState.postalCode}
-              onChange={props.handleChange}
-              className="mt-2 mr-2"
-              required
-            />
+
+              <select name="sex" onChange={props.handleChange} className="mt-2 mr-2 select form-select">
+              <option selected>Pet's Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Unknown">Unknown</option>
+            </select>
             <FontAwesomeIcon size="lg" color="red" icon={faExclamationCircle} />
             </Form.Group>
           </Col>
@@ -109,14 +106,7 @@ export default function PostForm(props) {
           <Col>
           <Radius setPetState={props.setPetState} petState={props.petState}/>
           </Col>
-          <Col>
-        <select name="sex" onChange={props.handleChange} className="mt-3 select form-select form-control-sm">
-          <option selected>Pet's Sex</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Unknown">Unknown</option>
-        </select>
-          </Col>
+
           </Row>
           <Row>
           <div className="d-flex justify-content-center">

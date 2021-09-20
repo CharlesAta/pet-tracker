@@ -4,7 +4,7 @@ import Search from "../../components/Search/Search";
 import {Container, Row, Col} from "react-bootstrap";
 import PetList from '../../components/PetList/PetList';
 
-export default function PetPosting() {
+export default function PetPosting(props) {
     const [postState, setPostState] = useState([])
 
    useEffect(async() => {
@@ -17,21 +17,12 @@ export default function PetPosting() {
        }
       }, [setPostState])
 
-    // useEffect(() => {
-    //     async function fetchMyAPI() {
-    //       let fetchItemsResponse = await fetch('/api/posts') 
-    //       let posts = await fetchItemsResponse.json(); 
-    //       setPostState (posts)
-    //     }
-    //     fetchMyAPI()
-    // }, [setPostState])
-
 
     return (
         <>
-          <NavBar />
+          <NavBar user={props.user} />
           <Container className="d-flex flex-column justify-content-center align-items-center">
-            <h1>Lost and Fount Pets in Toronto, Ontario </h1> 
+            <h1 className="mt-3">Lost and Fount Pets in Toronto, Ontario </h1> 
         </Container>
         <Container>
             <Row >

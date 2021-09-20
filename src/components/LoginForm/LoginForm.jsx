@@ -33,7 +33,7 @@ export default function LoginForm(props) {
       localStorage.setItem("token", token);
 
       const userDoc = JSON.parse(atob(token.split(".")[1])).user;
-      props.setUserInState(userDoc);
+      props.setUser(userDoc);
 
       setLoginState({
         email: "",
