@@ -1,4 +1,5 @@
 const PostModel = require("../models/post")
+const UserModel = require("../models/user")
 const fs = require("fs")
 const axios = require('axios');
 const nodemailer = require('nodemailer')
@@ -76,8 +77,18 @@ async function createImage(req, res){
 async function createPost(req, res){
     console.log("req.body", req.body)
      try {
-         let created = await PostModel.create(req.body.petState)
-         console.log("created", created)
+         let user = await UserModel.findOne({email: req.body.formData.userInfo.email})
+         
+         let created = await PostModel.create(req.body.formData.petState)
+         console.log("created post", created)
+         user.post.push(created._id)
+         await user.save()
+         await user.update({
+            name: req.body.formData.userInfo.name,
+            phoneNumber: req.body.formData.userInfo.phoneNumber,
+            postalCode: req.body.formData.userInfo.postalCode,
+        })
+         console.log("user", user)
          res.status(200).json('ok')
          let type = created.photo.match(/\.[0-9a-z]+$/i)[0]
             readHTMLFile(__dirname + '/../views/main.html', function(err, html) {
@@ -86,7 +97,7 @@ async function createPost(req, res){
                     name: created.name,
                     species: created.species,
                     email:created.email,
-                    breed: created.breed,
+                    // breed: created.breed,
                     phoneNumber: created.phoneNumber,
                     location: created.location,
                     description: created.description,

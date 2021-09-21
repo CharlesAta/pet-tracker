@@ -59,6 +59,7 @@ render () {
               </div>
 
         <Form.Group>
+          <Form.Label><span style={{color: "red"}}>*</span>Select Circumstance</Form.Label>
         <select name="circumstance" 
             onChange={this.props.handleChange} 
             className="select form-select mt-2 mr-2">
@@ -70,7 +71,7 @@ render () {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Pet Name</Form.Label>
+          <Form.Label><span style={{color: "red"}}>*</span>Pet Name</Form.Label>
           <Form.Control
             placeholder="Enter Pet Name"
             name="name"
@@ -83,7 +84,7 @@ render () {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Species</Form.Label>
+          <Form.Label><span style={{color: "red"}}>*</span>Species</Form.Label>
           <select name="species" 
           onChange={this.props.handleChange} 
           className="select form-select mt-2 mr-2">
@@ -95,7 +96,7 @@ render () {
         </Form.Group>
 
         <Form.Group style={{position:"relative"}}>
-          <Form.Label>Nearest Location Last Seen</Form.Label>
+          <Form.Label><span style={{color: "red"}}>*</span>Nearest Location Last Seen</Form.Label>
           <PlacesAutocomplete user={this.props.user} setPetState={this.props.setPetState} petState={this.props.petState} handleChange={this.props.handleChange} />
         </Form.Group>
 
@@ -109,7 +110,7 @@ render () {
         </div>
 
         <Form.Group className="mt-4">
-          <Form.Label>Date Last Seen</Form.Label>
+          <Form.Label><span style={{color: "red"}}>*</span>Date Last Seen</Form.Label>
           <Form.Control
             placeholder="Date last seen"
             name="date"
@@ -139,43 +140,60 @@ render () {
           <div id="test-l-2" class="content">
 
         <Form.Group>
-          <Form.Label>Contact Name</Form.Label>
+          <Form.Label><span style={{color: "red"}}>*</span>Contact Name</Form.Label>
             <Form.Control 
             name="contact"
             type="text"
-            placeholder="Contact Name"
-            value={this.props.user.name}
-            onChange={this.props.handleChange} 
+            placeholder="Ms. xx"
+            value={this.props.userInfo.name}
+            onChange={this.props.handleUserChange} 
             className="mt-2 mr-2"
-            disabled
+            required
             />
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Phone Number</Form.Label>
+          <Form.Label><span style={{color: "red"}}>*</span>Phone Number</Form.Label>
             <Form.Control 
             name="phoneNumber"
             type="text"
-            placeholder="Contact Name"
-            value={this.props.user.phoneNumber}
-            onChange={this.props.handleChange} 
+            placeholder="(XXX) XXX-XXXX"
+            value={this.props.userInfo.phoneNumber}
+            onChange={this.props.handleUserChange} 
             className="mt-2 mr-2"
-            disabled
+            required
             />
         </Form.Group>  
 
         <Form.Group>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label><span style={{color: "red"}}>*</span>Email Address</Form.Label>
             <Form.Control 
-            name="email"
-            type="email"
-            placeholder="Email Address"
-            value={this.props.user.email}
-            onChange={this.props.handleChange} 
+            // name="email"
+            // type="email"
+            placeholder="findmypet@gmail.com"
+            value={this.props.userInfo.email}
+            // onChange={this.props.handleUserChange} 
             className="mt-2 mr-2"
             disabled
             />
         </Form.Group>
+
+        <Form.Group>
+          <Form.Label><span style={{color: "red"}}>*</span>Postal Code</Form.Label>
+            <Form.Control 
+            name="postalCode"
+            type="string"
+            placeholder="XXX XXX"
+            value={this.props.userInfo.postalCode}
+            onChange={this.props.handleUserChange} 
+            className="mt-2 mr-2"
+            minlength="6"
+            maxlength="6"
+            required
+            />
+        </Form.Group>
+
+
             <div style={{display: "flex", justifyContent: "center"}}>
           <button class="btn btn-primary" type="button" onClick={() => this.stepper.next()}>Save & Continue</button>
             </div>
@@ -185,11 +203,13 @@ render () {
             <h3 className="mt-3">Contact Summary</h3>
             <hr />
               
+
+              
         <Form.Group>
           <Form.Label>Contact Name</Form.Label>
           <Form.Control 
           placeholder="Contact Name"
-          value={this.props.user.name}
+          value={this.props.userInfo.name}
           className="mt-2 mr-2"
           disabled
           />
@@ -197,8 +217,8 @@ render () {
         <Form.Group>
           <Form.Label>Phone Number</Form.Label>
           <Form.Control 
-          placeholder="Contact Name"
-          value={this.props.user.phoneNumber}
+          placeholder="Phone Number"
+          value={this.props.userInfo.phoneNumber}
           className="mt-2 mr-2"
           disabled
           />
@@ -207,7 +227,16 @@ render () {
           <Form.Label>Email Address</Form.Label>
           <Form.Control 
           placeholder="Email Address"
-          value={this.props.user.email}
+          value={this.props.userInfo.email}
+          className="mt-2 mr-2"
+          disabled
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Postal Code</Form.Label>
+          <Form.Control 
+          placeholder="Postal Code"
+          value={this.props.userInfo.postalCode}
           className="mt-2 mr-2"
           disabled
           />
@@ -288,7 +317,7 @@ render () {
           />
         </Form.Group>
         <div style={{display: "flex", justifyContent: "center"}}>
-          <Button className="mt-3" variant="primary" type="submit">
+          <Button onClick={this.props.setSubmit(true)} className="mt-3" variant="primary" type="submit">
               Submit Post
           </Button>
         </div>

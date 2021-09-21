@@ -15,9 +15,9 @@ export default function ReportPet(props) {
     name: "",
     species: "Others",
     postalCode: "",
-    email: props.user.email,
-    breed: "",
-    phoneNumber: props.user.phoneNumber,
+    email: "",
+    // breed: "",
+    phoneNumber: "",
     location: "",
     lat: "",
     lng: "",
@@ -26,15 +26,28 @@ export default function ReportPet(props) {
     date: new Date().toLocaleDateString,
     photo: "https://i.imgur.com/e05qeJD.jpg",
     radius: [500],
-    sex: "Unknown",
+    // sex: "Unknown",
     circumstance: "Sighting (still roaming)"
   });
+
+  const [userInfo, setUserInfo] = useState({
+    name: props.user.name || "",
+    phoneNumber: props.user.phoneNumber || "",
+    email: props.user.email,
+    postalCode: props.user.postalCode || ""
+  })
+
+  const [submit, setSubmit] = useState(false)
 
   useEffect(() => {
     if (props.match.params.status === "lost" || props.match.params.status === "found") {
       setPetState({...petState, status: props.match.params.status})
     }
-  }, [props.match.params.status]);
+
+    if (submit) {
+      setPetState({...petState, phoneNumber: userInfo.phoneNumber, email: userInfo.email})
+    }
+  }, [props.match.params.status, submit]);
 
   const handleChange = async (evt) => {
     if (evt.target.name === "imageUpload") {
@@ -45,6 +58,10 @@ export default function ReportPet(props) {
      else {
       setPetState({ ...petState, [evt.target.name]: evt.target.value });
     }
+  };
+
+  const handleUserChange = (evt) => {
+      setUserInfo({ ...userInfo, [evt.target.name]: evt.target.value });
   };
 
   const handleSubmitImage = async(file) => {
@@ -63,11 +80,17 @@ export default function ReportPet(props) {
 const handleSubmit = async (evt) => {
   evt.preventDefault();
   try {
+    
+    const formData = {
+      petState,
+      userInfo
+    }
+    
     let jwt = localStorage.getItem('token')
     let fetchResponse = await fetch("/api/posts/data", {
       method: "POST",
       headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + jwt},
-      body: JSON.stringify({petState}), 
+      body: JSON.stringify({formData}), 
       }) 
       
     let serverResponse = await fetchResponse.json()
@@ -75,21 +98,29 @@ const handleSubmit = async (evt) => {
 
     setPetState({
       name: "",
-      species: "Others",
-      postalCode: "",
-      email:props.user.email,
-      breed: "",
-      phoneNumber: props.user.phoneNumber,
-      location: "",
-      description: "",
-      status: props.match.params.status,
-      photo: "https://i.imgur.com/e05qeJD.jpg",
-      lat: "",
-      lng: "",
-      date: new Date(),
-      radius: [500],
-      sex: "Unknown"
+    species: "Others",
+    postalCode: "",
+    // email: props.user.email,
+    // breed: "",
+    // phoneNumber: props.user.phoneNumber,
+    location: "",
+    lat: "",
+    lng: "",
+    description: "",
+    status: "",
+    date: new Date().toLocaleDateString,
+    photo: "https://i.imgur.com/e05qeJD.jpg",
+    radius: [500],
+    // sex: "Unknown",
+    circumstance: "Sighting (still roaming)"
     }) 
+
+    setUserInfo({
+      name: props.user.name || "",
+      phoneNumber: props.user.phoneNumber || "",
+      email: props.user.email,
+      postalCode: props.user.postalCode || ""
+    })
   } catch (err) {
     console.error("Error:", err) 
   }
@@ -102,7 +133,7 @@ const handleSubmit = async (evt) => {
     <NavBar user={props.user} setUser={props.setUser}/>
       <div className="glassContainer">
       <Container style={{zIndex: "10"}} className="justify-content-center d-flex text-left flex-column mt-3">
-        <PostForm circumstanceOptions={circumstanceOptions} user={props.user} speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
+        <PostForm submit={submit} setSubmit={setSubmit} handleUserChange={handleUserChange} userInfo={userInfo} circumstanceOptions={circumstanceOptions} user={props.user} speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
       </Container>
       </div>
     </div>
