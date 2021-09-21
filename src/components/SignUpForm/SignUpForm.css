@@ -47,10 +47,24 @@
 .md-form input[type="phone"]:not(.browser-default),
 .md-form input[type="search-md"],
 .md-form textarea.md-textarea {
-  background-color: white !important;
+  background-color: rgb(255, 255, 255, 0.8) !important;
 }
 
 .md-form label {
   top: -4px !important;
   left: 4px !important;
+}
+
+.form-check-label {
+  padding-left: 5px;
+}
+
+.form-check-input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.form-check-input[type=radio]:after {
+  width: 0.75rem;
+  height: 0.75rem
 }

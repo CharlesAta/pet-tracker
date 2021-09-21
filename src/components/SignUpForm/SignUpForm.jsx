@@ -111,10 +111,16 @@ export default function SignUpForm(props) {
               required
             />
             <p style={{ fontSize: "10px" }}>
-              Creating an account means you are okay with out Teams of service,
-              Privacy Policy and our default Notification Settings
+              <Form.Group>
+                <Form.Check
+                  type="radio"
+                  className="terms-of-service"
+                  label=" Creating an account means you are okay with out Teams of service,
+              Privacy Policy and our default Notification Settings"
+                />
+              </Form.Group>
             </p>
-            <Button type="submit" className="SignUpButton me-2 mt-3">
+            <Button type="submit" className="SignUpButton me-2 mt-2">
               Sign Up
             </Button>
           </Form>
