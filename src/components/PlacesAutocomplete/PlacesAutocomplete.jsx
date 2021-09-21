@@ -73,7 +73,7 @@ export default function PlacesAutocomplete(props) {
   return (
     <>
 
-    <Combobox style={{border: "none"}} className="form-control ml-0 mr-5" className="mb-3" onSelect={handleSelect} aria-labelledby="demo">
+    <Combobox hideCaret hideEmptyPopup style={{border: "none"}} className="form-control ml-0 mr-5" className="mb-3" onSelect={handleSelect} aria-labelledby="demo" >
        <ComboboxInput  style={{border: "none", borderBottom: "1px solid black"}} value={value} onChange={handleInput} disabled={!ready} placeholder="Postal Code, City, Landmarks..." />
        <ComboboxPopover >
          <ComboboxList>

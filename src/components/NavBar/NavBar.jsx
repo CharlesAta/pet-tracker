@@ -3,19 +3,21 @@ import { NavLink} from 'react-router-dom';
 import { Navbar, Container, Nav} from "react-bootstrap";
 import "./NavBar.css"
 import LogOut from '../LogOut/LogOut';
+import Search from '../Search/Search';
 
 export default function NavBar(props) {
 
     return (
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Navbar collapseOnSelect expand="lg" className="pt-3" variant="light">
         <Container>
-          {props.user ? 
-          <Navbar.Brand as={NavLink} to="/postings">PAWAY</Navbar.Brand>
-          :
-          <Navbar.Brand as={NavLink} to="/">PAWAY</Navbar.Brand>
-          }
+        <Search />
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
+          {props.user ? 
+            <Navbar.Brand className="navbar-center" as={NavLink} to="/postings"><b>PAWAY</b></Navbar.Brand>
+            :
+            <Navbar.Brand className="navbar-center" as={NavLink} to="/"><b>PAWAY</b></Navbar.Brand>
+            }
           <Nav className="ml-auto bar">
             <Nav.Link as={NavLink} to="/reportpet/lost">I Lost My Pet</Nav.Link>
             <Nav.Link as={NavLink} to="/reportpet/found">I Found A Pet</Nav.Link>
@@ -27,7 +29,6 @@ export default function NavBar(props) {
             </>
             :
             <>
-            <Nav.Link as={NavLink} to="/account">Report</Nav.Link>
             <Nav.Link as={NavLink} to="/account">Sign Up/Log In</Nav.Link>
             </>
           }

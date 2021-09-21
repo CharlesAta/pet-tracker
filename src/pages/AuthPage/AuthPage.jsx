@@ -9,17 +9,17 @@ export default function AuthPage(props) {
     // const [showLogin, setShowLogin] = useState("LOG IN")
  
     return (
-        <div>
+        <div className="auth-page">
             <NavBar user={props.user} setUser={props.setUser}/>
-            <Tabs
+            <Tabs 
                 activeKey={props.showLogin}
                 onSelect={(k) => props.setShowLogin(k)}
-                className="mb-3"
+                className="mb-3 mt-5"
             >
-                <Tab eventKey="LOG IN" title="Log in">
-                    <LoginForm  setShowLogin={props.setShowLogin} setUser={props.setUser}/>
-                </Tab>
-                <Tab eventKey="SIGN UP" title="Sign Up">
+                <Tab style={{minHeight: '83vh'}} eventKey="LOG IN" title="Log in">
+                    <LoginForm  showLogin={props.showLogin} setShowLogin={props.setShowLogin} setUser={props.setUser}/>
+                </Tab >
+                <Tab style={{minHeight: '83vh'}}  eventKey="SIGN UP" title="Sign Up">
                     <SignUpForm setShowLogin={props.setShowLogin} setUser={props.setUser}/>
                 </Tab>
             </Tabs>

@@ -14,6 +14,13 @@ export default function SignUpForm(props) {
         passwordConfirm: ""
     });
 
+    // useEffect(() => {
+        
+    //     return () => {
+            
+    //     }
+    // }, [input])
+
     const handleChange = (evt) => {
         setSignUpState({ ...signUpState, [evt.target.name]: evt.target.value, error: "" });
     };

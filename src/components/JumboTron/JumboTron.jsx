@@ -5,14 +5,19 @@ import "./JumboTron.css";
 
 export default function JumboTron() {
   return (
-    <Jumbotron>
-      <Container>
-        <Search />
-        <Row className="d-flex justify-content-center text-center">
-          <Col sm={6}>I lost my pet</Col>
-          <Col sm={6}>I found a pet</Col>
-        </Row>
-      </Container>
+    <>
+    <div style={{display:"flex", justifyContent:"space-around"}}>
+    <Jumbotron className="margin-top">
+      <Row className="d-flex justify-content-center text-center">
+        I Lost My Pet
+      </Row>
     </Jumbotron>
+    <Jumbotron className="margin-top">
+      <Row className="d-flex justify-content-center text-center">
+        I found A Pet
+        </Row>
+    </Jumbotron>
+    </div>
+    </>
   );
 }

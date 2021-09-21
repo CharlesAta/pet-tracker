@@ -1,32 +1,33 @@
 import React from "react";
 import { Container, Form, Button, Col } from "react-bootstrap";
 import "./Search.css";
+import { MDBCol } from "mdbreact";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default function Search() {
   function handleSubmit(e) {
+    console.log("search")
     e.preventDefault();
   }
 
   return (
-    <div>
-      <Container>
+      <div>
         <Form onSubmit={handleSubmit}>
-          <Form.Row className="align-items-center">
-            <Form.Group className="search" as={Col}>
+            <Form.Group className="search">
               <Form.Control
                 type="text"
                 name="search"
-                placeholder="Search..."
-                // style={{width:350}}
+                placeholder= "Search..."
+                id="search"
                 required
               />
             </Form.Group>
-            <Form.Group as={Col}>
-              <Button type="submit">Search!</Button>
-            </Form.Group>
-          </Form.Row>
         </Form>
-      </Container>
-    </div>
+      </div> 
   );
 }
+
+
+
+

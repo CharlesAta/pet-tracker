@@ -19,7 +19,7 @@ export default function App() {
     status: ""
   })
 
-  const [showLogin, setShowLogin] = useState("SIGN UP")
+  const [showLogin, setShowLogin] = useState("LOG IN")
 
   useEffect( () => {
     let token = localStorage.getItem("token");
@@ -53,13 +53,13 @@ export default function App() {
         :
     <Switch>
       <Route exact path='/' render={(props) => (
-        <LandingPage {...props} setShowLogin={setShowLogin} user={user} setUser={setUser}/>
+        <LandingPage {...props} showLogin={showLogin} setShowLogin={setShowLogin} user={user} setUser={setUser}/>
       )}/>
       <Route path='/postings' render={(props) => (
         <PetPostings {...props} user={user} setUser={setUser} />
       )}/>
       <Route path='/account' render={(props) => (
-        <AuthPage {...props} user={user} setUser={setUser} setShowLogin={setShowLogin} />
+        <AuthPage {...props} user={user} setUser={setUser} setShowLogin={setShowLogin} showLogin={showLogin} />
       )}/>     
         <Route render={()=> <Redirect to="/account" />} />
     </Switch>

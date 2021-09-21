@@ -5,9 +5,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
 }
 
+html {
+  height: 100%;
+  margin: 0;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.landing {
+  background-image: url("https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3800&q=80");
+  background-attachment: fixed; 
+  background-size: cover;
+  z-index: -2;
+  min-height: '100vh' !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.report, .posting, .auth-page {
+  background: linear-gradient(to right, #67b26f, #4ca2cd) fixed;
+  background-attachment: fixed; 
+  background-size: cover;
+
+  z-index: -2;
 }

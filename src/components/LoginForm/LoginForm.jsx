@@ -48,7 +48,9 @@ export default function LoginForm(props) {
   };
 
   return (
-    <div>
+
+    <div className="glass-login-container">
+      <span className="sign-up pt-3">Log In</span>
       <Container className="justify-content-center d-flex text-left">
         <Form onSubmit={handleSubmit}>
           <MDBInput

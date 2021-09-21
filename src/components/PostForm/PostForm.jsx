@@ -24,7 +24,7 @@ render () {
 
   return (
     <>
-    <h1>I {this.props.petState.status} {this.props.petState.status === "lost" ? "my" : "a"}  pet</h1>
+    <h1 style={{textAlign: "center", marginTop: "5%"}}>I {this.props.petState.status} {this.props.petState.status === "lost" ? "my" : "a"}  pet</h1>
         <div id="stepper1" class="bs-stepper">
           <div class="bs-stepper-header">
             <div class="step" data-target="#test-l-1">
@@ -94,17 +94,17 @@ render () {
           </select>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={{position:"relative"}}>
           <Form.Label>Nearest Location Last Seen</Form.Label>
           <PlacesAutocomplete user={this.props.user} setPetState={this.props.setPetState} petState={this.props.petState} handleChange={this.props.handleChange} />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group style={{zIndex:"1 !important"}}>
           <Form.Label className="mb-4">Search Radius</Form.Label>
           <Radius setPetState={this.props.setPetState} petState={this.props.petState}/>
         </Form.Group>
 
-        <div className="d-flex justify-content-center mt-4">
+        <div className="d-flex justify-content-center mt-4" style={{zIndex:"1 !important"}} >
           <Map lat={this.props.petState.lat} radius={this.props.petState.radius} lng={this.props.petState.lng} location={this.props.petState.location}/>
         </div>
 
@@ -132,8 +132,9 @@ render () {
             row={3}
           />
         </Form.Group>
-
-        <button class="btn btn-primary" onClick={() => this.stepper.next()}>Next</button>
+        <div style={{display: "flex", justifyContent: "center"}}>
+        <button class="btn btn-primary" type="button" onClick={() => this.stepper.next()}>Save & Continue</button>
+          </div>
           </div>
           <div id="test-l-2" class="content">
 
@@ -175,8 +176,9 @@ render () {
             disabled
             />
         </Form.Group>
-
-          <button class="btn btn-primary" onClick={() => this.stepper.next()}>Next</button>
+            <div style={{display: "flex", justifyContent: "center"}}>
+          <button class="btn btn-primary" type="button" onClick={() => this.stepper.next()}>Save & Continue</button>
+            </div>
             </div>
             <div id="test-l-3" class="content">
                 
@@ -285,10 +287,11 @@ render () {
             disabled
           />
         </Form.Group>
+        <div style={{display: "flex", justifyContent: "center"}}>
           <Button className="mt-3" variant="primary" type="submit">
               Submit Post
           </Button>
-
+        </div>
         </div>
       </Form>
     </div>

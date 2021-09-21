@@ -12,7 +12,7 @@ export default function LogOut(props) {
 
     return (
         <>
-            <Nav.Link as={NavLink} to="/logout" className="btn-sm" onClick={logout}>
+            <Nav.Link as={NavLink} to="/logout" onClick={logout}>
             Logout
             </Nav.Link>
         </>

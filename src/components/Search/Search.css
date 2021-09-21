@@ -1,0 +1,11 @@
+.form-group{
+    margin-bottom: 0 !important;
+}
+
+input {
+    font-family: FontAwesome
+}
+
+#search{
+    border-radius: 15px !important;
+}

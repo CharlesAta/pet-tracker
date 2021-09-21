@@ -23,7 +23,7 @@ export default function ReportPet(props) {
     lng: "",
     description: "",
     status: "",
-    date: new Date(),
+    date: new Date().toLocaleDateString,
     photo: "https://i.imgur.com/e05qeJD.jpg",
     radius: [500],
     sex: "Unknown",
@@ -98,10 +98,14 @@ const handleSubmit = async (evt) => {
   
   return (
     <>
-      <NavBar user={props.user} setUser={props.setUser}/>
-      <Container className="justify-content-center d-flex text-left flex-column mt-3">
+    <div className="report">
+    <NavBar user={props.user} setUser={props.setUser}/>
+      <div className="glassContainer">
+      <Container style={{zIndex: "10"}} className="justify-content-center d-flex text-left flex-column mt-3">
         <PostForm circumstanceOptions={circumstanceOptions} user={props.user} speciesOptions={speciesOptions} petState={petState} setPetState={setPetState} handleSubmit={handleSubmit} handleChange={handleChange} />
       </Container>
+      </div>
+    </div>
     </>
   );
 }

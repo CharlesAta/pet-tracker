@@ -19,21 +19,23 @@ export default function PetPosting(props) {
 
 
     return (
-        <>
-          <NavBar user={props.user} setUser={props.setUser}/>
-          <Container className="d-flex flex-column justify-content-center align-items-center">
-            <h1 className="mt-3">Lost and Fount Pets in Toronto, Ontario </h1> 
+      <>
+        <div className="posting">
+        <NavBar user={props.user} setUser={props.setUser}/>
+        <Container className="d-flex flex-column justify-content-center align-items-center">
+          <h1 className="mt-3 ">Lost and Fount Pets in Toronto, Ontario </h1> 
         </Container>
         <Container>
-            <Row >
-                <Col className="d-flex justify-content-center">
-            <Search />
-          </Col>
-          </Row>
-          </Container>
-          <Container className="d-flex flex-row justify-content-center">
-          <PetList posts={postState}/>
-          </Container>
-        </>
+          <Row >
+              <Col className="d-flex justify-content-center">
+          <Search />
+        </Col>
+        </Row>
+        </Container>
+        <Container className="d-flex flex-row justify-content-center">
+        <PetList posts={postState}/>
+        </Container>
+        </div> 
+      </>
     )
 }

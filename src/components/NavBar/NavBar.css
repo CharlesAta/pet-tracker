@@ -5,3 +5,24 @@
 .navbar {
   box-shadow: none;
 }
+
+.bg-light{
+  background-color:black !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color:white !important;
+  font-weight:bold !important;
+}
+
+.navbar-brand {
+  color:white !important;
+  font-size:35px !important;
+  font-weight: bolder;
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+} 
