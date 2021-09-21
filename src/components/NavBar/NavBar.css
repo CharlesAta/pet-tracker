@@ -6,18 +6,18 @@
   box-shadow: none;
 }
 
-.bg-light{
-  background-color:black !important;
+.bg-light {
+  background-color: black !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color:white !important;
-  font-weight:bold !important;
+  color: white !important;
+  font-weight: bold !important;
 }
 
 .navbar-brand {
-  color:white !important;
-  font-size:35px !important;
+  color: white !important;
+  font-size: 35px !important;
   font-weight: bolder;
 }
 
@@ -25,4 +25,18 @@
   position: absolute;
   left: 50%;
   transform: translatex(-50%);
-} 
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: white !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+  font-weight: 300;
+}

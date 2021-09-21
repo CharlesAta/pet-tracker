@@ -6,3 +6,51 @@
   color: red;
   text-align: center;
 }
+.glass-signup-container {
+  width: 20rem;
+  height: 28rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  position: relative;
+  z-index: 1;
+  background: rgb(255, 255, 255, 0.3);
+  overflow: hidden;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.glass-signup-container:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+  filter: blur(10px);
+  margin: -20px;
+}
+.md-form input:not([type]),
+.md-form input[type="text"]:not(.browser-default),
+.md-form input[type="password"]:not(.browser-default),
+.md-form input[type="email"]:not(.browser-default),
+.md-form input[type="url"]:not(.browser-default),
+.md-form input[type="time"]:not(.browser-default),
+.md-form input[type="date"]:not(.browser-default),
+.md-form input[type="datetime"]:not(.browser-default),
+.md-form input[type="datetime-local"]:not(.browser-default),
+.md-form input[type="tel"]:not(.browser-default),
+.md-form input[type="number"]:not(.browser-default),
+.md-form input[type="search"]:not(.browser-default),
+.md-form input[type="phone"]:not(.browser-default),
+.md-form input[type="search-md"],
+.md-form textarea.md-textarea {
+  background-color: white !important;
+}
+
+.md-form label {
+  top: -4px !important;
+  left: 4px !important;
+}

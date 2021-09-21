@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./LoginForm.css";
 import { MDBInput } from "mdbreact";
 
@@ -12,7 +12,11 @@ export default function LoginForm(props) {
   });
 
   const handleChange = (evt) => {
-    setLoginState({ ...loginState, [evt.target.name]: evt.target.value, error: "" });
+    setLoginState({
+      ...loginState,
+      [evt.target.name]: evt.target.value,
+      error: "",
+    });
   };
 
   const handleSubmit = async (evt) => {
@@ -20,7 +24,7 @@ export default function LoginForm(props) {
     try {
       const fetchResponse = await fetch("/api/users/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json",  },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: loginState.email,
           password: loginState.password,
@@ -39,8 +43,7 @@ export default function LoginForm(props) {
         email: "",
         password: "",
         error: "",
-      })
-      
+      });
     } catch (err) {
       console.log("LoginForm error", err);
       setLoginState({ error: "Login Failed - Try Again" });
@@ -48,14 +51,12 @@ export default function LoginForm(props) {
   };
 
   return (
-
     <div className="glass-login-container">
-      <span className="sign-up pt-3">Log In</span>
-      <Container className="justify-content-center d-flex text-left">
+      <span className="sign-up pt-4">Log In</span>
+      <Container className="justify-content-center d-flex">
         <Form onSubmit={handleSubmit}>
           <MDBInput
             label="Email"
-            icon="envelope"
             name="email"
             type="text"
             value={loginState.email}
@@ -64,7 +65,6 @@ export default function LoginForm(props) {
           />
           <MDBInput
             label="Password"
-            icon="key"
             type="password"
             name="password"
             value={loginState.password}
@@ -81,7 +81,12 @@ export default function LoginForm(props) {
           </Button>
           <Container className="justify-content-start d-flex flex-column text">
             <Form.Text>Forgot password?</Form.Text>
-            <Form.Text>Don't have account yet? <Link to="/account" onClick={() => props.setShowLogin("SIGN UP")}>Sign Up</Link></Form.Text>
+            <Form.Text>
+              Don't have account yet?
+              <span class="link" onClick={() => props.setShowLogin("SIGN UP")}>
+                &nbsp;Sign Up
+              </span>
+            </Form.Text>
           </Container>
         </Form>
       </Container>

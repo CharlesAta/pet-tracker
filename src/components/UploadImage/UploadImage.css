@@ -3,25 +3,27 @@
   width: 100px !important;
 }
 
-.active .bs-stepper-circle{
-  background-color: #55A7AE !important;
+.active .bs-stepper-circle {
+  background-color: #118c99 !important;
   color: white;
 }
 
 .active .step-trigger {
-  color: #55A7AE !important
+  color: #118c99 !important;
 }
 
 .card {
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.bs-stepper .step-trigger{
+.bs-stepper .step-trigger {
   color: white !important;
 }
 
 .bs-stepper-circle {
   background-color: white !important;
-  color:rgb(151, 151, 151);
+  color: rgb(151, 151, 151);
 }
-
+.active .bs-stepper-label {
+  color: #118c99 !important;
+}

@@ -7,63 +7,110 @@ import LandingPage from "../LandingPage/LandingPage";
 import ReportPet from "../ReportPet/ReportPet";
 import { Navbar } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBar";
-import Profile from "../Profile/Profile"
-import LogOut from "../../components/LogOut/LogOut"
+import Profile from "../Profile/Profile";
+import LogOut from "../../components/LogOut/LogOut";
 
 export default function App() {
   const [user, setUser] = useState(null);
 
   const [searchState, setSearchState] = useState({
-    species:"",
-    name:"",
-    status: ""
-  })
+    species: "",
+    name: "",
+    status: "",
+  });
 
-  const [showLogin, setShowLogin] = useState("LOG IN")
+  const [showLogin, setShowLogin] = useState("LOG IN");
 
-  useEffect( () => {
+  useEffect(() => {
     let token = localStorage.getItem("token");
-    console.log("token", token)
+    console.log("token", token);
     if (token) {
       let userDoc = JSON.parse(atob(token.split(".")[1])).user; // decode jwt token
       setUser(userDoc);
-      console.log("App.js user",user)
-      console.log("App.js userDoc",userDoc)
+      console.log("App.js user", user);
+      console.log("App.js userDoc", userDoc);
     }
   }, []);
 
   return (
     <>
-    { user ?
-    <Switch>
-      <Route path='/postings' render={(props) => (
-        <PetPostings {...props} user={user} setUser={setUser} />
-        )}/>
-      <Route path='/reportpet/:status(lost|found)' render={(props) => (
-        <ReportPet {...props} user={user} setUser={setUser} />
-        )}/>
-      <Route path='/profile' render={(props) => (
-        <Profile {...props} user={user} setUser={setUser}/>
-        )}/>
-      <Route path='/logout' render={(props) => (
-        <LogOut {...props} user={user} setUser={setUser}/>
-        )}/>
-      <Route render={()=> <Redirect to="/postings" />} />
-    </Switch>
-        :
-    <Switch>
-      <Route exact path='/' render={(props) => (
-        <LandingPage {...props} showLogin={showLogin} setShowLogin={setShowLogin} user={user} setUser={setUser}/>
-      )}/>
-      <Route path='/postings' render={(props) => (
-        <PetPostings {...props} user={user} setUser={setUser} />
-      )}/>
-      <Route path='/account' render={(props) => (
+      {user ? (
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <LandingPage
+                {...props}
+                showLogin={showLogin}
+                setShowLogin={setShowLogin}
+                user={user}
+                setUser={setUser}
+              />
+            )}
+          />
+          <Route
+            path="/postings"
+            render={(props) => (
+              <PetPostings {...props} user={user} setUser={setUser} />
+            )}
+          />
+          <Route
+            path="/reportpet/:status(lost|found)"
+            render={(props) => (
+              <ReportPet {...props} user={user} setUser={setUser} />
+            )}
+          />
+          <Route
+            path="/profile"
+            render={(props) => (
+              <Profile {...props} user={user} setUser={setUser} />
+            )}
+          />
+          <Route
+            path="/logout"
+            render={(props) => (
+              <LogOut {...props} user={user} setUser={setUser} />
+            )}
+          />
+          <Route render={() => <Redirect to="/" />} />
+        </Switch>
+      ) : (
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <>
+                <LandingPage
+                  {...props}
+                  showLogin={showLogin}
+                  setShowLogin={setShowLogin}
+                  user={user}
+                  setUser={setUser}
+                />
+                <AuthPage
+                  {...props}
+                  user={user}
+                  setUser={setUser}
+                  setShowLogin={setShowLogin}
+                  showLogin={showLogin}
+                />
+              </>
+            )}
+          />
+          <Route
+            path="/postings"
+            render={(props) => (
+              <PetPostings {...props} user={user} setUser={setUser} />
+            )}
+          />
+          {/* <Route path='/account' render={(props) => (
         <AuthPage {...props} user={user} setUser={setUser} setShowLogin={setShowLogin} showLogin={showLogin} />
-      )}/>     
-        <Route render={()=> <Redirect to="/account" />} />
-    </Switch>
-      }
+      )}/>      */}
+          <Route render={() => <Redirect to="/account" />} />
+        </Switch>
+      )}
     </>
   );
 }

@@ -1,0 +1,15 @@
+.margin-container {
+  margin-top: 10vh !important;
+  margin-bottom: 10vh !important;
+  padding-bottom: 10vh !important;
+  display: flex;
+}
+
+@media screen and (max-width: 1000px) {
+  .margin-container {
+    flex-direction: column-reverse;
+  }
+  .auth-pic {
+    margin-top: 5vh;
+  }
+}

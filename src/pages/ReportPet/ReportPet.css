@@ -7,32 +7,36 @@
     justify-content: center;
     z-index: -2;
   } */
-  
-  .glassContainer {
-    margin-top: 8%;
-    max-width: 50vw;
-    min-width: 890px;
-    height: 100%;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .1); 
-    border-radius: 20px;
-    position: relative;
-    z-index: 0;
-    
-    overflow: visible;
-    background-color: rgba(255, 255, 255, .1)
-  }
-  
-  .glassContainer:before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 0 10px 0 rgba(255, 255, 255, .05);
-    filter: blur(80px);
-    margin: -20px;
-  }
 
+.glassContainer {
+  display: flex;
+  margin-top: 2%;
+  max-width: 50vw;
+  min-width: 890px;
+  height: 100%;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.glassContainer:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 10px 0 rgba(255, 255, 255, 0.05);
+  filter: blur(80px);
+  margin: -20px;
+}
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
