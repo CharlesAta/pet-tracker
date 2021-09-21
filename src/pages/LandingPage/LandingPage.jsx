@@ -15,6 +15,9 @@ import "./LandingPage.css";
 export default function LandingPage(props) {
   // const [showLogin, setShowLogin] = useState(true);
   console.log("showLogin - landing page", props.showLogin);
+
+  
+
   return (
     <div
       className="landing"
@@ -26,18 +29,33 @@ export default function LandingPage(props) {
       }
     >
       <NavBar user={props.user} setUser={props.setUser} />
+      {props.user ? 
       <div className="d-flex margin-top">
-        <Link to="/reportpet/lost">
-          <div className="glass-container d-flex justify-content-center align-items-center container-text">
+        <Link to="/reportpet" onClick={()=> props.setPetStatus("lost")} >
+      <div className="glass-container d-flex justify-content-center align-items-center container-text">
+        I Lost My Pet
+      </div>
+      </Link>
+      <Link to="/reportpet" onClick={()=> props.setPetStatus("found")}>
+      <div className="glass-container d-flex justify-content-center align-items-center container-text" >
+        I Found A Pet
+      </div>
+      </Link>
+  </div>
+        :
+      <div className="d-flex margin-top">
+          <div className="glass-container d-flex justify-content-center align-items-center container-text" onClick={() => {
+                    window.location.replace("/#auth");
+                  }}>
             I Lost My Pet
           </div>
-        </Link>
-        <Link to="/reportpet/found">
-          <div className="glass-container d-flex justify-content-center align-items-center container-text">
+          <div className="glass-container d-flex justify-content-center align-items-center container-text" onClick={() => {
+                    window.location.replace("/#auth");
+                  }}>
             I Found A Pet
           </div>
-        </Link>
       </div>
+      }
       <Row className="landing-footer">
         <div className="glass-container align-bottom-left d-flex">
           Latest Information

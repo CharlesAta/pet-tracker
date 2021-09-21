@@ -27,17 +27,14 @@ export default function NavBar(props) {
           </Nav.Link>
           {/* )} */}
           <Nav className="ml-auto bar">
-            <Nav.Link as={NavLink} to="/reportpet/lost">
-              I Lost My Pet
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/reportpet/found">
-              I Found A Pet
-            </Nav.Link>
             <Nav.Link as={NavLink} to="/postings">
               Search
             </Nav.Link>
             {props.user ? (
               <>
+              <Nav.Link as={NavLink} to="/reportpet">
+              Report
+            </Nav.Link>
                 <Nav.Link as={NavLink} to="/profile">
                   Profile
                 </Nav.Link>
@@ -45,6 +42,11 @@ export default function NavBar(props) {
               </>
             ) : (
               <>
+              <Nav.Link onClick={() => {
+                    window.location.replace("/#auth");
+                  }}>
+              Report
+            </Nav.Link>
                 <Nav.Link
                   onClick={() => {
                     window.location.replace("/#auth");

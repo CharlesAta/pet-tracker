@@ -1,8 +1,9 @@
 import React, { useState, setState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Tabs, Tab, Nav, Button, Row, Col, Form, Container } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBar";
 import "./ReportPet.css";
-import PostForm from "../../components/PostForm/PostForm";
+import FoundPostForm from "../../components/FoundPostForm/FoundPostForm";
+import LostPostForm from "../../components/LostPostForm/LostPostForm";
 
 const axios = require("axios");
 
@@ -37,13 +38,15 @@ export default function ReportPet(props) {
     lat: "",
     lng: "",
     description: "",
-    status: "",
+    status: props.petStatus,
     date: new Date().toLocaleDateString,
     photo: "https://i.imgur.com/e05qeJD.jpg",
     radius: [500],
     // sex: "Unknown",
     circumstance: "Sighting (still roaming)",
   });
+
+
 
   const [userInfo, setUserInfo] = useState({
     name: props.user.name || "",
@@ -55,13 +58,6 @@ export default function ReportPet(props) {
   const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
-    if (
-      props.match.params.status === "lost" ||
-      props.match.params.status === "found"
-    ) {
-      setPetState({ ...petState, status: props.match.params.status });
-    }
-
     if (submit) {
       setPetState({
         ...petState,
@@ -69,7 +65,16 @@ export default function ReportPet(props) {
         email: userInfo.email,
       });
     }
-  }, [props.match.params.status, submit]);
+    
+    setPetState({...petState, status: props.petStatus})
+    
+  }, [submit, props.petStatus]);
+
+  const changeStatus = (k) => {
+    console.log(k)
+    props.setPetStatus(k)
+  }
+  
 
   const handleChange = async (evt) => {
     if (evt.target.name === "imageUpload") {
@@ -149,17 +154,23 @@ export default function ReportPet(props) {
     }
   };
 
+  console.log(props.petStatus)
   return (
     <>
-      <div className="report" style={{ minHeight: "100vh" }}>
+      <div className="report"  style={{ minHeight: "100vh" }}>
         <NavBar user={props.user} setUser={props.setUser} />
         <div className="post">
+        <Tabs activeKey={props.petStatus}
+              onSelect={changeStatus}
+              className="mb-3 mt-5"> 
+          
+            <Tab style={{color: "black"}} eventKey="found" title="I Found A Pet">
           <div className="glassContainer">
             <Container
               style={{ zIndex: "10", paddingLeft: "15%", paddingRight: "15%" }}
               className="justify-content-center d-flex text-left flex-column mt-3"
             >
-              <PostForm
+              <FoundPostForm
                 submit={submit}
                 setSubmit={setSubmit}
                 handleUserChange={handleUserChange}
@@ -174,8 +185,53 @@ export default function ReportPet(props) {
               />
             </Container>
           </div>
+          </Tab>
+            <Tab style={{color: "black"}} eventKey="lost"  title="I Lost My Pet">
+          <div className="glassContainer">
+            <Container
+            style={{ zIndex: "10", paddingLeft: "15%", paddingRight: "15%" }}
+            className="justify-content-center d-flex text-left flex-column mt-3"
+          >
+              <LostPostForm
+                submit={submit}
+                setSubmit={setSubmit}
+                handleUserChange={handleUserChange}
+                userInfo={userInfo}
+                circumstanceOptions={circumstanceOptions}
+                user={props.user}
+                speciesOptions={speciesOptions}
+                petState={petState}
+                setPetState={setPetState}
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+              />
+            </Container>
+          </div>
+
+          </Tab>
+          </Tabs>
         </div>
       </div>
     </>
   );
 }
+
+      {/* <Tabs
+  activeKey={props.showLogin}
+  onSelect={(k) => props.setShowLogin(k)}
+  className="mb-3 mt-5"
+>
+  <Tab style={{ minHeight: "100vh" }} eventKey="LOG IN" title="Log in">
+    <LoginForm
+      showLogin={props.showLogin}
+      setShowLogin={props.setShowLogin}
+      setUser={props.setUser}
+    />
+  </Tab>
+  <Tab style={{ minHeight: "100vh" }} eventKey="SIGN UP" title="Sign Up">
+    <SignUpForm
+      setShowLogin={props.setShowLogin}
+      setUser={props.setUser}
+    />
+  </Tab>
+</Tabs> */}

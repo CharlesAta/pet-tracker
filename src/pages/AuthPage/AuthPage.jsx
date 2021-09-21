@@ -62,25 +62,7 @@ export default function AuthPage(props) {
         </Row>
       </Container>
 
-      {/* <Tabs
-        activeKey={props.showLogin}
-        onSelect={(k) => props.setShowLogin(k)}
-        className="mb-3 mt-5"
-      >
-        <Tab style={{ minHeight: "100vh" }} eventKey="LOG IN" title="Log in">
-          <LoginForm
-            showLogin={props.showLogin}
-            setShowLogin={props.setShowLogin}
-            setUser={props.setUser}
-          />
-        </Tab>
-        <Tab style={{ minHeight: "100vh" }} eventKey="SIGN UP" title="Sign Up">
-          <SignUpForm
-            setShowLogin={props.setShowLogin}
-            setUser={props.setUser}
-          />
-        </Tab>
-      </Tabs> */}
+
     </div>
   );
 }

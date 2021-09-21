@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./PostForm.css";
+import "./FoundPostForm.css";
 import { Button, Row, Col, Form } from "react-bootstrap";
 import { MDBInput } from "mdbreact";
 import Map from "../Map/Map";
@@ -12,7 +12,7 @@ import Stepper from "bs-stepper";
 import PetImage from "../PetImage/PetImage";
 import UploadImage from "../UploadImage/UploadImage";
 
-export default class PostForm extends Component {
+export default class FoundPostForm extends Component {
   componentDidMount() {
     this.stepper = new Stepper(document.querySelector("#stepper1"), {
       linear: false,

@@ -19,6 +19,8 @@ export default function App() {
     status: "",
   });
 
+  const [petStatus, setPetStatus] = useState("lost")
+
   const [showLogin, setShowLogin] = useState("LOG IN");
 
   useEffect(() => {
@@ -46,6 +48,8 @@ export default function App() {
                 setShowLogin={setShowLogin}
                 user={user}
                 setUser={setUser}
+                petStatus={petStatus} 
+                setPetStatus={setPetStatus}
               />
             )}
           />
@@ -56,9 +60,9 @@ export default function App() {
             )}
           />
           <Route
-            path="/reportpet/:status(lost|found)"
+            path="/reportpet"
             render={(props) => (
-              <ReportPet {...props} user={user} setUser={setUser} />
+              <ReportPet petStatus={petStatus} setPetStatus={setPetStatus} {...props} user={user} setUser={setUser} />
             )}
           />
           <Route
@@ -108,7 +112,7 @@ export default function App() {
           {/* <Route path='/account' render={(props) => (
         <AuthPage {...props} user={user} setUser={setUser} setShowLogin={setShowLogin} showLogin={showLogin} />
       )}/>      */}
-          <Route render={() => <Redirect to="/account" />} />
+          <Route render={() => <Redirect to="/" />} />
         </Switch>
       )}
     </>
