@@ -65,7 +65,6 @@ export default function ReportPet(props) {
         email: userInfo.email,
       });
     }
-    
     setPetState({...petState, status: props.petStatus})
     
   }, [submit, props.petStatus]);
@@ -154,7 +153,6 @@ export default function ReportPet(props) {
     }
   };
 
-  console.log(props.petStatus)
   return (
     <>
       <div className="report"  style={{ minHeight: "100vh" }}>
@@ -212,6 +210,9 @@ export default function ReportPet(props) {
           </Tabs>
         </div>
       </div>
+      <footer>
+        {" "}
+      </footer>
     </>
   );
 }

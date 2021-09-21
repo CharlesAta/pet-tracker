@@ -36,7 +36,7 @@ export default function NavBar(props) {
               Report
             </Nav.Link>
                 <Nav.Link as={NavLink} to="/profile">
-                  Profile
+                  {props.user ? `Hi, ${props.user.name.split(" ")[0]}!` : "Hi, User!"}
                 </Nav.Link>
                 <LogOut user={props.user} setUser={props.setUser} />
               </>

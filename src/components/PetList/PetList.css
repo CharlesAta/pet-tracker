@@ -1,0 +1,13 @@
+.posting-page {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.MuiPaginationItem-root {
+  color: white !important;
+}
+
+.MuiPaginationItem-page.Mui-selected {
+  background-color: #1a4448 !important;
+}

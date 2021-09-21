@@ -11,12 +11,12 @@
   color: rgba(0, 0, 0, 1);
 }
 
-.active .bs-stepper-circle {
+.active > .step-trigger > .bs-stepper-circle {
   background-color: #118c99 !important;
   color: white;
 }
 
-.active .step-trigger {
+.active > .step-trigger {
   color: #118c99 !important;
 }
 
@@ -28,6 +28,6 @@
   background-color: white !important;
   color: rgb(151, 151, 151);
 }
-.active .bs-stepper-label {
+.active > .bs-stepper-label {
   color: #118c99 !important;
 }

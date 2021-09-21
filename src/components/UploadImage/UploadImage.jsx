@@ -24,7 +24,7 @@ export default function UploadImage(props) {
     <>
       <Card
         style={{ width: "8rem" }}
-        className="d-flex justify-content-end border-0"
+        className="d-flex justify-content-end border-0 card-image"
       >
         <div onClick={onButtonClick} className="image-upload" style={{backgroundColor: "#55A7AE", borderRadius:"50%", display: "flex", justifyContent: "center", alignItems: "center", boxShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.5)"}}>
           <FontAwesomeIcon size="lg" style={{height:"50", width:"50"}} color="white" icon={faCamera}/>
