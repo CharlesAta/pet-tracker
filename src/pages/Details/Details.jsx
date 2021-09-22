@@ -24,14 +24,14 @@ export default function Details(props) {
           <NavBar user={props.user} setUser={props.setUser}/>
           <div class="detail-center mt-5">
           <div class="detail-container">
-            {/* <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}> */}
+            <div style={{paddingLeft: "15%", paddingRight: "15%"}}>
             <Container>
           <Row>
             <Col>
             <div className={petState.status === "lost"? "detail-badge-lost mt-5 detail-page":"detail-badge-found mt-5 detail-page"}><p>{petState.status === "lost" ? "lost" : petState.circumstance}</p></div>
             </Col>
             <Col>
-            <div className="mt-5">
+            <div className="mt-5 post-id">
             <b>Post ID: {petState._id}</b>
             </div>
             </Col>
@@ -103,9 +103,7 @@ export default function Details(props) {
           </Row>
           </Container>
           </div>
-          
-{/*            
-          </div> */}
+          </div>
           </div>
         </div>
         </>

@@ -245,7 +245,7 @@ export default class FoundPostForm extends Component {
 
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <button
-                    class="btn btn-primary btn-block mt-3 mb-3"
+                    class="btn btn-primary btn-block mt-3 mb-5"
                     type="button"
                     onClick={() => this.stepper.next()}
                   >

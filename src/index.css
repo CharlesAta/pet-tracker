@@ -18,7 +18,7 @@ code {
     monospace;
 }
 
-.landing {
+.landing{
   background-image: url("./assets/Cat.jpg");
   background-attachment: fixed;
   background-size: cover;
@@ -30,8 +30,9 @@ code {
 
 .report,
 .posting,
-.auth-page, 
-.details {
+.auth-page,
+.details
+ {
   background: linear-gradient(to right, #67b26f, #4ca2cd) fixed;
   background-attachment: fixed;
   background-size: cover;

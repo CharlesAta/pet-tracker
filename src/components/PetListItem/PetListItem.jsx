@@ -3,6 +3,7 @@ import "./PetListItem.css";
 import {Container, Button, Row, Col, Badge} from 'react-bootstrap'
 import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer, MDBCardImage} from "mdbreact";
 import { Link } from "react-router-dom";
+import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function PetListItem(props) {
@@ -30,7 +31,7 @@ export default function PetListItem(props) {
     return (
         <>
         <MDBContainer>
-            <MDBCard className="card-body w-100 mb-5 list-item-body">
+            <MDBCard className="card-body w-75 mb-5 mx-auto list-item-body">
             <Row>
                 <Col sm={4}>
                     <div className="posting-image">
