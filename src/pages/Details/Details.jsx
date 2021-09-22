@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import "./Details.css";
 import DetailsMap from '../../components/DetailsMap/DetailsMap.jsx';
-import { Badge, Row, Col, Container, Button } from "react-bootstrap";
+import { Badge, Row, Col, Container, Button, Modal } from "react-bootstrap";
 export default function Details(props) {
   
     const [petState, setPetState] = useState([])
+
+
 
     useEffect(async() => {
         try {

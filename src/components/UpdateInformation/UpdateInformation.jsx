@@ -47,6 +47,7 @@ export default function UpdateInformation(props) {
                 error: ""
             });
 
+            props.setUpdatedAccount(true)
             
             } catch (err) {
             console.log("UpdateFormError", err.message);

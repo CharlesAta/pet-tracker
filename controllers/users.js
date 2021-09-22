@@ -14,7 +14,7 @@ module.exports = {
 async function show(req, res) {
   try {
       let user = await UserModel.findById(req.params.userid).populate("post").exec()
-      res.status(200).json(user.post)
+      res.status(200).json(user)
   }catch(err){
       res.status(400).json(error)
   }
@@ -22,15 +22,15 @@ async function show(req, res) {
 
 
 async function update(req, res) {
+  console.log(req.params)
   try {
       let user = await UserModel.findById(req.params.userid).exec()
-      user.update({
+      await user.update({
         name: req.body.name,
         email: req.body.email,
         phoneNumber: req.body.phoneNumber,
         postalCode: req.body.postalCode
       })
-      await user.save()
       console.log(user)
       res.status(200).json("Success!")
   }catch(err){

@@ -1,33 +1,3 @@
-/* .fa-blank {
-  visibility: hidden !important;
+.form-pb-5 {
+  margin-bottom: 10vh
 }
-
-.btn-primary {
-  background-color: #118c99 !important;
-  border-color: #118c99 !important;
-}
-
-.form-label {
-  color: rgba(0, 0, 0, 1);
-}
-
-.active .bs-stepper-circle {
-  background-color: #118c99 !important;
-  color: white;
-}
-
-.active .step-trigger {
-  color: #118c99 !important;
-}
-
-.bs-stepper .step-trigger {
-  color: white !important;
-}
-
-.bs-stepper-circle {
-  background-color: white !important;
-  color: rgb(151, 151, 151);
-}
-.active .bs-stepper-label {
-  color: #118c99 !important;
-} */

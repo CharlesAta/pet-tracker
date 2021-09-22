@@ -25,6 +25,8 @@ export default function App() {
   const [petStatus, setPetStatus] = useState("lost")
 
   const [showLogin, setShowLogin] = useState("LOG IN");
+  
+  const [updatedAccount, setUpdatedAccount] = useState(false)
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -35,7 +37,9 @@ export default function App() {
       // console.log("App.js user", user);
       // console.log("App.js userDoc", userDoc);
     }
+    
   }, []);
+
 
   return (
     <>
@@ -71,7 +75,7 @@ export default function App() {
           <Route
             path="/profile"
             render={(props) => (
-              <Profile {...props} user={user} setUser={setUser} profile={profile} setProfile={setProfile}/>
+              <Profile {...props} updatedAccount={updatedAccount} setUpdatedAccount={setUpdatedAccount} user={user} setUser={setUser} profile={profile} setProfile={setProfile}/>
             )}
           />
           <Route

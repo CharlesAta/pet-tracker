@@ -239,9 +239,9 @@ export default class LostPostForm extends Component {
                   />
                 </Form.Group>
 
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center" }} className="form-pb-5">
                   <button
-                    class="btn btn-primary btn-block mt-3 mb-3"
+                    class="btn btn-primary btn-block mt-5 mb-3"
                     type="button"
                     onClick={() => this.stepper.next()}
                   >
