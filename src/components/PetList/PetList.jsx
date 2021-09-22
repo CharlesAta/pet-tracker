@@ -4,7 +4,11 @@ import PetListItem from "../PetListItem/PetListItem";
 import Pagination from '@material-ui/lab/Pagination';
 
 export default function PetList(props) {
-  
+    console.log(props.totalPages)
+    console.log(props.page)
+
+    
+
     return (
       <>
       <div className="posting-page">
@@ -13,7 +17,7 @@ export default function PetList(props) {
           <PetListItem post={post}/>)}
       </div>
         <div style={{ textAlign: "center", display: 'flex', justifyContent: "center"}}>
-            <Pagination count={10} />
+            <Pagination onChange={props.handlePageChange} count={props.totalPages} />
         </div>
         </div>
       </>

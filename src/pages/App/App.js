@@ -73,12 +73,6 @@ export default function App() {
             )}
           />
           <Route
-            path="/details/:id"
-            render={(props) => (
-              <Details {...props} user={user} setUser={setUser}/>
-            )}
-          />
-          <Route
             path="/logout"
             render={(props) => (
               <LogOut {...props} user={user} setUser={setUser} />
@@ -119,6 +113,12 @@ export default function App() {
           {/* <Route path='/account' render={(props) => (
         <AuthPage {...props} user={user} setUser={setUser} setShowLogin={setShowLogin} showLogin={showLogin} />
       )}/>      */}
+          <Route
+            path="/details/:id"
+            render={(props) => (
+              <Details {...props} user={user} setUser={setUser}/>
+            )}
+          />
           <Route render={() => <Redirect to="/" />} />
         </Switch>
       )}

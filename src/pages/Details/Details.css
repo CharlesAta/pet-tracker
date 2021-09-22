@@ -1,41 +1,105 @@
 .detail-container {
-    width: 70rem;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
-    border-radius: 15px;
-    position: relative;
-    z-index: 1;
-    background: inherit;
-    overflow: hidden;
-  }
-  
-  .detail-container:before {
-    content: "";
-    position: absolute;
-    background: inherit;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    filter: blur(10px);
-    margin: -20px;
-  }
-
-.detail-center{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  min-width: 75rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  overflow: hidden;
+  color: #274168;
 }
 
-.detail-badge-found{
-    background-color:#274168 !important;
-    text-transform: uppercase;
-    width: 25rem;
+.detail-container:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+  filter: blur(10px);
+  margin: -20px;
+  color: #274168;
 }
 
-.detail-badge-lost{
-    background-color:#D23622 !important;
-    text-transform: uppercase;
-    width: 25rem
+.detail-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-badge-found {
+  background-color: #274168 !important;
+  width: 25rem;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.detail-badge-lost {
+  background-color: #d23622 !important;
+  text-transform: capitalize;
+  width: 25rem;
+}
+
+.detail-page {
+  color: white;
+  display: flex !important;
+  justify-content: center;
+  align-items: center !important;
+  border-radius: 7px;
+  height: 2.5rem;
+  font-size: 1.2rem;
+}
+
+.detail-page > p {
+  margin-bottom: 0 !important;
+}
+
+.details-image {
+  max-width: 25rem;
+  /* max-height: 100px; */
+  border-radius: 15px;
+}
+
+.detailInputs {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+
+.detailInputs > p {
+  margin-bottom: 0;
+}
+
+.detailLabels {
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+.detailInfoCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailDescription {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+
+.detailButtons {
+  display: flex;
+  flex-direction: row;
 }

@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import "./Details.css";
-import { Badge } from "react-bootstrap";
+
+import { Badge, Row, Col, Container, Button } from "react-bootstrap";
 export default function Details(props) {
+  
     const [petState, setPetState] = useState([])
 
     useEffect(async() => {
@@ -22,14 +24,88 @@ export default function Details(props) {
           <NavBar user={props.user} setUser={props.setUser}/>
           <div class="detail-center mt-5">
           <div class="detail-container">
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
-          <h1>
-            <Badge className={petState.status === "lost"? "detail-badge-lost mt-5":"detail-badge-found mt-5"}>{petState.status} </Badge>
-          </h1>
-          <span className="mt-5"><b>Post ID: {petState._id}</b></span>
+            {/* <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}> */}
+            <Container>
+          <Row>
+            <Col>
+            <div className={petState.status === "lost"? "detail-badge-lost mt-5 detail-page":"detail-badge-found mt-5 detail-page"}><p>{petState.status === "lost" ? "lost" : petState.circumstance}</p></div>
+            </Col>
+            <Col>
+            <div className="mt-5">
+            <b>Post ID: {petState._id}</b>
+            </div>
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col><img src={petState.photo} className="details-image"/></Col>
+            <Col></Col>
+          </Row>
+          <Row>
+            <Col xs={6} class="">
+            <Row>
+              <Col> 
+              <div className="detailLabels">
+              Name
+              </div>
+              <div className="detailInputs">
+                <p>{petState.name}</p>
+              </div>
+              </Col>
+              <Col>
+              <div className="detailLabels">
+              Species
+              </div>
+              <div className="detailInputs">
+                <p>{petState.species}</p>
+              </div>
+              </Col>
+            </Row>
+            <Row >
+              <Col>
+              <div className="detailLabels">
+              Date Last Seen
+              </div>
+              <div className="detailInputs">
+                <p>{new Date(petState.date).toLocaleDateString()}</p>
+              </div>
+              </Col>
+              <Col>
+              <div className="detailLabels">
+              Location Last Seen
+              </div>
+              <div className="detailInputs">
+                <p>{petState.postalCode}</p>
+              </div>
+              </Col>
+            </Row>
+            <Row className="mt-5">
+              <img style={{borderRadius:"25px"}}src={`https://maps.googleapis.com/maps/api/staticmap?center=${petState.lat},${petState.lng}zoom=15&size=600x300&maptype=roadmap&markers=color:red%7.label:.%7C${petState.lat},${petState.lng}&key=AIzaSyDPYgvsAsMFTg4IXuxDt_DYbNxyPalyl3Y`} />
+            </Row>
+            </Col>
+            <Col xs={6} className="mt-5">
+              <div className="detailDescription">
+              {petState.description? `${petState.description}` : "No Description Provided"} 
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="detailButtons">
+            <Col>
+              <Button className="btn-block mt-5 mb-5" variant="primary">Share</Button>
+            </Col>
+            <Col>
+              <Button className="btn-block mt-5 mb-5" variant="primary">View Phone</Button>
+            </Col>
+            </Col>
+            <Col>
+            <Button className="btn-block mt-5 mb-5" variant="primary">Contact Finder</Button>
+            </Col>
+          </Row>
+          </Container>
           </div>
-           
-          </div>
+          
+{/*            
+          </div> */}
           </div>
         </div>
         </>

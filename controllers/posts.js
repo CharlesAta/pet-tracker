@@ -15,8 +15,12 @@ module.exports = {
 
 async function postsIndex(req, res) {
     try {
-      let posts = await PostModel.find().sort([['createdAt', -1]]).exec()
-      res.status(200).json(posts)        
+    const startIndex = (req.query.page - 1) * 10
+    let posts = await PostModel.find().sort([['createdAt', -1]]).skip(startIndex).limit(10).exec()
+    let count = await PostModel.countDocuments().exec() 
+    let totalPages = Math.ceil(count/10)
+
+      res.status(200).json({posts, totalPages})        
     } catch(err) {
       res.status(400).json(err);
     }
