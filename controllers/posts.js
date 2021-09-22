@@ -9,7 +9,8 @@ const handlebars = require('handlebars')
 module.exports = {
     createPost,
     createImage,
-    postsIndex
+    postsIndex,
+    postShow
 }
 
 async function postsIndex(req, res) {
@@ -20,6 +21,16 @@ async function postsIndex(req, res) {
       res.status(400).json(err);
     }
   }
+
+async function postShow(req, res) {
+    try {
+        let post = await PostModel.findById(req.params.id).exec()
+        res.status(200).json(post)
+    }catch(err){
+        res.status(400).json(error)
+    }
+}
+
 
 function base64_encode(image){
     let bitmap = fs.readFileSync(image);

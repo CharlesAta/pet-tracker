@@ -9,6 +9,7 @@ import { Navbar } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import LogOut from "../../components/LogOut/LogOut";
+import Details from "../Details/Details";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -29,8 +30,8 @@ export default function App() {
     if (token) {
       let userDoc = JSON.parse(atob(token.split(".")[1])).user; // decode jwt token
       setUser(userDoc);
-      console.log("App.js user", user);
-      console.log("App.js userDoc", userDoc);
+      // console.log("App.js user", user);
+      // console.log("App.js userDoc", userDoc);
     }
   }, []);
 
@@ -69,6 +70,12 @@ export default function App() {
             path="/profile"
             render={(props) => (
               <Profile {...props} user={user} setUser={setUser} />
+            )}
+          />
+          <Route
+            path="/details/:id"
+            render={(props) => (
+              <Details {...props} user={user} setUser={setUser}/>
             )}
           />
           <Route

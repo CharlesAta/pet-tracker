@@ -70,7 +70,6 @@ export default function ReportPet(props) {
   }, [submit, props.petStatus]);
 
   const changeStatus = (k) => {
-    console.log(k)
     props.setPetStatus(k)
   }
   

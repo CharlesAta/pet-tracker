@@ -54,7 +54,7 @@ export default function PetListItem(props) {
 
                 <div className="d-flex flex-row alignBottom" style={{justifyContent: "space-between", alignItems: "flex-end"}}>
                     <span className="search-date">{showDate()}</span>
-                    <Link className="detail-link" to="/profile">Details</Link>
+                    <Link className="detail-link" to={{pathname: '/details/' + props.post._id}}>Details</Link>
                     </div>
                 </Row>
                 </Col>
