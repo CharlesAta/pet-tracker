@@ -21,9 +21,11 @@ export default function UpdateInformation(props) {
         evt.preventDefault()
         console.log("userInfo", userInfo)
             try {
+            let jwt = localStorage.getItem("token");
             const fetchResponse = await fetch(`/api/users/${props.user._id}/update`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json", 
+                Authorization: "Bearer " + jwt },
                 body: JSON.stringify({
                 name: userInfo.name,
                 email: userInfo.email,

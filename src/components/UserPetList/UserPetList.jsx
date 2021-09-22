@@ -1,8 +1,8 @@
 import React from 'react'
-import "./PetList.css";
+import "./UserPetList.css";
 import PetListItem from "../PetListItem/PetListItem";
 import Pagination from '@material-ui/lab/Pagination';
-
+import UserPetListItem from "../UserPetListItem/UserPetListItem"
 export default function PetList(props) {
 
 
@@ -10,15 +10,19 @@ export default function PetList(props) {
       <>
       <div className="posting-page">
       <div >
-        {props.posts.map(post =>
-          <PetListItem setUpdateDelete={props.setUpdateDelete} updateDelete={props.updateDelete} user={props.user} post={post}/>)}
+          {props.posts.length ? 
+          <>
+          {props.posts.map(post =>
+            <UserPetListItem setUpdateDelete={props.setUpdateDelete} updateDelete={props.updateDelete} user={props.user} post={post}/>)}
+          </>
+          :
+          <div className="center-user-posting mt-3">
+              <div className="user-posting-container">
+            <h1>No Posts Yet</h1>
+            </div>
+          </div>
+        }
       </div>
-
-
-      {/* <Modal show={showModal} onHide={closeModal}>
-        <DeletePost user={props.user} closeModal={closeModal} showModal={showModal} setShowModal={setShowModal}  />
-      </Modal> */}
-
 
       {props.profile ?
       <>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
-import PetList from '../../components/PetList/PetList';
+import UserPetList from '../../components/UserPetList/UserPetList';
 import NavBar from '../../components/NavBar/NavBar';
 import { Tabs, Tab, Nav, Button, Row, Col, Container } from "react-bootstrap";
 import UserInfo from "../../components/UserInfo/UserInfo";
@@ -11,6 +11,8 @@ export default function Profile(props) {
       name:"name", 
       email:"hello"
     })
+
+    const [updateDelete, setUpdateDelete] = useState(false)
     
    useEffect(async() => {
        try {
@@ -26,7 +28,8 @@ export default function Profile(props) {
        }
        props.setProfile(true)
        props.setUpdatedAccount(false)
-      }, [setUserInformation, props.updatedAccount])
+       setUpdateDelete(false)
+      }, [setUserInformation, props.updatedAccount, updateDelete])
 
 
     return (
@@ -38,7 +41,7 @@ export default function Profile(props) {
         </Container>
         <Container>
             <h2 style={{color: "white"}} className="ml-5 mb-1">Posts</h2>
-            <PetList profile={props.profile} posts={postState}/>
+            <UserPetList updateDelete={updateDelete} setUpdateDelete={setUpdateDelete} user={props.user} profile={props.profile} posts={postState}/>
         </Container>
         </div>
         </>

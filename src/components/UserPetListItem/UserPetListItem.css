@@ -1,0 +1,73 @@
+.alignBottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.list-item-body {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-radius: 30px !important;
+  color: #013f7c;
+}
+
+.list-item-image {
+  border-radius: 20px;
+}
+
+.detail-link {
+  font-size: 23px;
+  color: #118c99;
+}
+
+.search-date {
+  font-size: 20px;
+  color: gray;
+}
+
+.card-location {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.card-description {
+  min-height: 100px;
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.posting-image {
+  position: relative;
+}
+
+.posting-status {
+  display: inline-block;
+  z-index: 5;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.posting-status-font {
+  font-size: 2rem !important;
+}
+
+.badge-danger {
+  background-color: #f10000 !important;
+  border-radius: 10px !important;
+}
+
+.badge-primary {
+  background-color: #013f7c !important;
+  border-radius: 10px !important;
+}
+@media screen and (max-width: 800px) {
+  .posting-status-font {
+    font-size: 1.25rem !important;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .posting-status-font {
+    font-size: 2rem !important;
+  }
+}

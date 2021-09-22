@@ -26,7 +26,7 @@ export default function LandingPage(props) {
      } catch (err) {
        console.error('ERROR:', err) 
      }
-    //  backgroundImage = 
+
     }, [setLatestPost])
   
   

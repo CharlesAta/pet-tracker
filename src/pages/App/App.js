@@ -10,6 +10,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Profile from "../Profile/Profile";
 import LogOut from "../../components/LogOut/LogOut";
 import Details from "../Details/Details";
+import ThankYouPage from "../ThankYouPage/ThankYouPage";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ export default function App() {
   
   const [updatedAccount, setUpdatedAccount] = useState(false)
 
+  
   useEffect(() => {
     let token = localStorage.getItem("token");
     console.log("token", token);
@@ -90,6 +92,14 @@ export default function App() {
               <Details {...props} user={user} setUser={setUser}/>
             )}
           />
+
+          <Route
+            path="/thankyouforsubmission"
+            render={(props) => (
+              <ThankYouPage {...props} user={user} setUser={setUser}/>
+            )}
+          />
+
           <Route render={() => <Redirect to="/" />} />
         </Switch>
       ) : (

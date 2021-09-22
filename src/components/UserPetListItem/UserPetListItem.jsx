@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
-import "./PetListItem.css";
+import "./UserPetListItem.css";
 import {Container, Button, Row, Col, Badge, Modal} from 'react-bootstrap'
 import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer, MDBCardImage} from "mdbreact";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 import DeletePost from '../DeletePost/DeletePost';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function PetListItem(props) {
 
@@ -59,6 +61,7 @@ export default function PetListItem(props) {
                     <span className="search-date">{showDate()}</span>
 
 
+                    <Button className="" onClick={() => setShowModal(true)}><FontAwesomeIcon icon={faTrash} /></Button>
                     
                     <Link className="detail-link" to={{pathname: '/details/' + props.post._id}}>Details</Link>
                     </div>
@@ -67,6 +70,9 @@ export default function PetListItem(props) {
             </Row>
             </MDBCard>
         </MDBContainer>
+        <Modal show={showModal} onHide={closeModal}>
+            <DeletePost user={props.user} post={props.post} closeModal={closeModal} showModal={showModal} setShowModal={setShowModal} updateDelete={props.updateDelete} setUpdateDelete={props.setUpdateDelete} />
+        </Modal>
 
 
         </>
