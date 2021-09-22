@@ -64,17 +64,20 @@ export default function PlacesAutocomplete(props) {
       } = suggestion;
 
       return (
+        <>
         <li key={place_id} onClick={handleSelect(suggestion)}>
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
+          <br />
+        </>
       );
     });
 
   return (
     <>
 
-    <Combobox hideCaret hideEmptyPopup style={{border: "none"}} className="form-control ml-0 mr-5" className="mb-3" onSelect={handleSelect} aria-labelledby="demo" >
-       <ComboboxInput  style={{border: "none", borderBottom: "1px solid black"}} value={value} onChange={handleInput} disabled={!ready} placeholder="Postal Code, City, Landmarks..." />
+    <Combobox hideCaret hideEmptyPopup style={{border: "none", width: "100%", borderRadius: 10}} className="form-control ml-0 mr-5" className="mt-2 mb-3 location-input-box" onSelect={handleSelect} aria-labelledby="demo" >
+       <ComboboxInput  style={{border: "none", width: "100%", borderRadius: 10}} className="pl-2 pt-2 pb-2" value={value} onChange={handleInput} disabled={!ready} placeholder="Postal Code, City, Landmarks..." />
        <ComboboxPopover >
          <ComboboxList>
            {status === "OK" &&

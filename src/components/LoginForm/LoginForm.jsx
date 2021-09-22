@@ -83,7 +83,7 @@ export default function LoginForm(props) {
             <Form.Text>Forgot password?</Form.Text>
             <Form.Text>
               Don't have account yet?
-              <span class="link" onClick={() => props.setShowLogin("SIGN UP")}>
+              <span className="link" onClick={() => props.setShowLogin("SIGN UP")}>
                 &nbsp;Sign Up
               </span>
             </Form.Text>

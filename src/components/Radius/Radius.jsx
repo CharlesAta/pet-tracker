@@ -18,7 +18,7 @@ export default class Radius extends React.Component {
               ...props.style,
               height: '6px',
               width: '100%',
-              backgroundColor: '#ccc'
+              backgroundColor: '#fff'
             }}
           >
             {children}
@@ -31,10 +31,11 @@ export default class Radius extends React.Component {
               ...props.style,
               height: '42px',
               width: '42px',
-              backgroundImage: 'url("https://imgix.bustle.com/inverse/b5/9e/ca/00/d00b/4ed1/93b6/7356790015e5/shutterstock1078303643jpg.jpeg?w=1200&h=630&fit=crop&crop=faces&fm=jpg")',
+              backgroundImage: 'url("https://storage.googleapis.com/twg-content/images/MarketingResources_Thumbnail_Search.width-1200.jpg")',
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              backgroundPosition: "center"
+              backgroundPosition: "center",
+              borderRadius: "50%"
             }}
           />
         )}

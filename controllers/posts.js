@@ -10,7 +10,8 @@ module.exports = {
     createPost,
     createImage,
     postsIndex,
-    postShow
+    postShow,
+    postLatest
 }
 
 async function postsIndex(req, res) {
@@ -25,6 +26,17 @@ async function postsIndex(req, res) {
       res.status(400).json(err);
     }
   }
+
+  async function postLatest(req, res) {
+    try {
+    const latestPost = await PostModel.find().sort([['createdAt', -1]]).limit(1).exec()
+
+      res.status(200).json(latestPost)        
+    } catch(err) {
+      res.status(400).json(err);
+    }
+  }
+
 
 async function postShow(req, res) {
     try {

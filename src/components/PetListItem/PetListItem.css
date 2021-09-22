@@ -29,7 +29,10 @@
 }
 
 .card-description {
-  min-height: 50px;
+  min-height: 100px;
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .posting-image {
@@ -49,12 +52,12 @@
 }
 
 .badge-danger {
-  background-color: #F10000 !important;
+  background-color: #f10000 !important;
   border-radius: 10px !important;
 }
 
 .badge-primary {
-  background-color: #013F7C !important;
+  background-color: #013f7c !important;
   border-radius: 10px !important;
 }
 @media screen and (max-width: 800px) {

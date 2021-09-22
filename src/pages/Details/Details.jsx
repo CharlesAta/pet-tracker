@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import "./Details.css";
-
+import DetailsMap from '../../components/DetailsMap/DetailsMap.jsx';
 import { Badge, Row, Col, Container, Button } from "react-bootstrap";
 export default function Details(props) {
   
@@ -79,13 +79,26 @@ export default function Details(props) {
               </Col>
             </Row>
             <Row className="mt-5">
-              <img style={{borderRadius:"25px"}}src={`https://maps.googleapis.com/maps/api/staticmap?center=${petState.lat},${petState.lng}zoom=15&size=600x300&maptype=roadmap&markers=color:red%7.label:.%7C${petState.lat},${petState.lng}&key=AIzaSyDPYgvsAsMFTg4IXuxDt_DYbNxyPalyl3Y`} />
+              <DetailsMap location={petState.location} lat={petState.lat} lng={petState.lng} radius={petState.radius}/>
+              {/* <img style={{borderRadius:"25px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${petState.lat},${petState.lng}zoom=15&size=600x300&maptype=roadmap&markers=color:red%7.label:.%7C${petState.lat},${petState.lng}&key=AIzaSyDPYgvsAsMFTg4IXuxDt_DYbNxyPalyl3Y`} /> */}
             </Row>
             </Col>
             <Col xs={6} className="mt-5">
-              <div className="detailDescription">
-              {petState.description? `${petState.description}` : "No Description Provided"} 
-              </div>
+              
+              {petState.description ? 
+              <>
+              <div className="detailDescription-content">
+                {petState.description}
+                </div>
+                </>
+                 :
+                 <>
+                 <div className="detailDescription-no-content">
+                   No Description Provided
+                   </div>
+                   </>
+                   } 
+              
             </Col>
           </Row>
           <Row>

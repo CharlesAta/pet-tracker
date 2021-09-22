@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import AuthPage from "../AuthPage/AuthPage";
 // import MainContent from "../MainContent/MainContent";
 // import { Route, Switch, Link, Redirect } from "react-router-dom";
@@ -16,6 +16,18 @@ export default function LandingPage(props) {
   // const [showLogin, setShowLogin] = useState(true);
   console.log("showLogin - landing page", props.showLogin);
 
+  const [latestPost, setLatestPost] = useState({})
+
+ useEffect(async() => {
+     try {
+       let fetchItemsResponse = await fetch(`/api/posts/latest`) 
+       let latestPost = await fetchItemsResponse.json(); 
+       setLatestPost(latestPost)
+       
+     } catch (err) {
+       console.error('ERROR:', err) 
+     }
+    }, [])
   
 
   return (
@@ -59,12 +71,13 @@ export default function LandingPage(props) {
       <Row className="landing-footer">
         <div className="glass-container align-bottom-left d-flex">
           Latest Information
+          {latestPost.name}
         </div>
         <div className="glass-container align-bottom-right d-flex">
           Share to
-          <i class="fab fa-facebook-f"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-twitter"></i>
+          <i className="fab fa-facebook-f"></i>
+          <i className="fab fa-instagram"></i>
+          <i className="fab fa-twitter"></i>
         </div>
       </Row>
     </div>
