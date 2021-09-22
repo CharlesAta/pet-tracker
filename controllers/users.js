@@ -6,8 +6,39 @@ const SALT_ROUNDS = 6;
 module.exports = {
   create,
   login,
-  verify
+  verify,
+  show,
+  update
 };
+
+async function show(req, res) {
+  try {
+      let user = await UserModel.findById(req.params.userid).populate("post").exec()
+      res.status(200).json(user.post)
+  }catch(err){
+      res.status(400).json(error)
+  }
+}
+
+
+async function update(req, res) {
+  try {
+      let user = await UserModel.findById(req.params.userid).exec()
+      user.update({
+        name: req.body.name,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        postalCode: req.body.postalCode
+      })
+      await user.save()
+      console.log(user)
+      res.status(200).json("Success!")
+  }catch(err){
+      res.status(400).json(error)
+  }
+}
+
+
 
 async function create(req, res) {
   console.log(req.body)

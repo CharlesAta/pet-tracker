@@ -111,7 +111,7 @@ export default function Details(props) {
             </Col>
             </Col>
             <Col>
-            <Button className="btn-block mt-5 mb-5" variant="primary">Contact Finder</Button>
+            <Button className="btn-block mt-5 mb-5" variant="primary">{petState.status === "lost"? "Contact Owner": "Contact Finder"}</Button>
             </Col>
           </Row>
           </Container>

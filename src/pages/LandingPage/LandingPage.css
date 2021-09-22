@@ -1,3 +1,4 @@
+
 .Testimonials {
   background-color: rgb(131, 131, 131);
 }
@@ -33,6 +34,7 @@ a:hover {
   z-index: 1;
   background: inherit;
   overflow: hidden;
+  margin-right: 15px !important;
 }
 
 .glass-container:before {
@@ -46,25 +48,26 @@ a:hover {
   bottom: 0;
   box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
   filter: blur(10px);
-  margin: -20px;
+  /* margin: -20px; */
 }
 
 .align-bottom-left {
-  bottom: 50px;
-  left: 20px;
-  position: absolute;
+  /* bottom: 50px;
+  left: 20px; */
+  /* position: absolute; */
   color: white;
   align-items: center;
   padding-left: 10px;
   background: none;
   box-shadow: none;
-  margin-left: 20px;
+  margin-left: 40px;
+  margin-top:20px;
 }
 
 .align-bottom-right {
-  bottom: 50px;
-  right: 20px;
-  position: absolute;
+  /* bottom: 50px;
+  right: 20px; */
+  /* position: absolute; */
   color: white;
   align-items: center;
   padding-left: 10px;
@@ -72,7 +75,8 @@ a:hover {
   height: 3rem;
   box-shadow: none;
   justify-content: space-around;
-  margin-right: 20px;
+  margin-right: 40px;
+  margin-top: 20px
 }
 
 .landing-footer {
@@ -80,7 +84,9 @@ a:hover {
   justify-content: space-between;
   bottom: 20px;
   align-items: flex-end;
-  /* width: "90%"; */
+  
+  width: "90vw";
+  margin-right: 15px !important;
 }
 
 @media screen and (max-width: 1000px) {
@@ -93,19 +99,23 @@ a:hover {
 
   .glass-container {
     margin-bottom: 5vh;
+    /* margin-right: 0 !important; */
   }
   .landing-footer {
     flex-direction: column;
     align-items: center !important;
+    margin-right: 0 !important;
   }
 
   .align-bottom-left {
-    bottom: 15vh;
-    position: absolute;
-  }
 
+    margin-left: 5px;
+    margin-top:20px;
+  }
+  
   .align-bottom-right {
-    position: absolute;
+    margin-right: 5px;
+    margin-top: 20px
   }
 }
 /* 
@@ -113,3 +123,10 @@ a:hover {
   background-image:url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E')' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E)
 
 } */
+
+.latest-post{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}

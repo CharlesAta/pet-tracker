@@ -16,9 +16,14 @@ export default function PetList(props) {
         {props.posts.map(post =>
           <PetListItem post={post}/>)}
       </div>
+      {props.profile ?
+      <>
+      </>
+      :
         <div style={{ textAlign: "center", display: 'flex', justifyContent: "center"}}>
             <Pagination onChange={props.handlePageChange} count={props.totalPages} />
         </div>
+    }
         </div>
       </>
     )

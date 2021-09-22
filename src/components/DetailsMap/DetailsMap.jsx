@@ -18,16 +18,13 @@ function DetailsMap(props) {
     googleMapsApiKey: "AIzaSyDPYgvsAsMFTg4IXuxDt_DYbNxyPalyl3Y"
   })
 
-//   const [map, setMap] = React.useState(null)
   const [center, setCenter] = useState({
     lat: parseFloat(props.lat),
     lng: parseFloat(props.lng)
   })
   const [zoom, setZoom] = useState(13.5);
   const [radius, setRadius] = useState(500);
-//   console.log(props.radius)
 
-  console.log(props)
   useEffect(() => {
     setCenter({
         lat: parseFloat(props.lat),

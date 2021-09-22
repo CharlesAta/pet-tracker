@@ -21,6 +21,7 @@ export default function PetPosting(props) {
        } catch (err) {
          console.error('ERROR:', err) 
        }
+       props.setProfile(false)
       }, [setPostState, page])
 
       const handlePageChange = (e) => {
@@ -39,7 +40,7 @@ export default function PetPosting(props) {
         </Row>
         </Container>
         <Container className="d-flex flex-row justify-content-center">
-        <PetList handlePageChange={handlePageChange} totalPages={totalPages} posts={postState} page={page} setPage={setPage}/>
+        <PetList profile={props.profile} handlePageChange={handlePageChange} totalPages={totalPages} posts={postState} page={page} setPage={setPage}/>
         </Container>
         </div> 
       </>

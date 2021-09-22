@@ -14,6 +14,8 @@ import Details from "../Details/Details";
 export default function App() {
   const [user, setUser] = useState(null);
 
+  const [profile, setProfile] = useState(true)
+
   const [searchState, setSearchState] = useState({
     species: "",
     name: "",
@@ -57,7 +59,7 @@ export default function App() {
           <Route
             path="/postings"
             render={(props) => (
-              <PetPostings {...props} user={user} setUser={setUser} />
+              <PetPostings {...props} setProfile={setProfile} user={user} setUser={setUser} profile={profile} />
             )}
           />
           <Route
@@ -69,7 +71,7 @@ export default function App() {
           <Route
             path="/profile"
             render={(props) => (
-              <Profile {...props} user={user} setUser={setUser} />
+              <Profile {...props} user={user} setUser={setUser} profile={profile} setProfile={setProfile}/>
             )}
           />
           <Route
@@ -113,7 +115,7 @@ export default function App() {
           <Route
             path="/postings"
             render={(props) => (
-              <PetPostings {...props} user={user} setUser={setUser} />
+              <PetPostings {...props} user={user} setUser={setUser} profile={profile} setProfile={setProfile}/>
             )}
           />
           {/* <Route path='/account' render={(props) => (

@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import AuthPage from "../AuthPage/AuthPage";
-// import MainContent from "../MainContent/MainContent";
-// import { Route, Switch, Link, Redirect } from "react-router-dom";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import { Container, Row, Col } from "react-bootstrap";
 import LoginForm from "../../components/LoginForm/LoginForm";
@@ -11,23 +8,27 @@ import { Link } from "react-router-dom";
 import JumboTron from "../../components/JumboTron/JumboTron";
 import "./LandingPage.css";
 
-
 export default function LandingPage(props) {
-  // const [showLogin, setShowLogin] = useState(true);
-  console.log("showLogin - landing page", props.showLogin);
 
-  const [latestPost, setLatestPost] = useState({})
+  const [latestPost, setLatestPost] = useState({
+    status: "",
+    species: "",
+    date: "",
+    location: ""
+  })
 
- useEffect(async() => {
+  useEffect(async() => {
+
      try {
        let fetchItemsResponse = await fetch(`/api/posts/latest`) 
        let latestPost = await fetchItemsResponse.json(); 
-       setLatestPost(latestPost)
-       
+       setLatestPost(latestPost[0])
      } catch (err) {
        console.error('ERROR:', err) 
      }
-    }, [])
+    //  backgroundImage = 
+    }, [setLatestPost])
+  
   
 
   return (
@@ -36,8 +37,8 @@ export default function LandingPage(props) {
       id="home"
       style={
         props.user
-          ? { minHeight: "100vh", maxWidth: "100%" }
-          : { minHeight: "96vh", maxWidth: "100%" }
+          ? { minHeight: "100vh", maxWidth: "100%"}
+          : { minHeight: "96vh", maxWidth: "100%"}
       }
     >
       <NavBar user={props.user} setUser={props.setUser} />
@@ -69,9 +70,16 @@ export default function LandingPage(props) {
       </div>
       }
       <Row className="landing-footer">
-        <div className="glass-container align-bottom-left d-flex">
-          Latest Information
-          {latestPost.name}
+        <div className="glass-container align-bottom-left latest-post pl-3" style={latestPost.status === "lost" ? {backgroundColor: "rgba(121, 0, 0, 0.3)"} : {backgroundColor: "rgba(0, 32, 121, 0.3)"} }>
+          {latestPost ?
+          <>
+          <div><strong>{latestPost.status.toUpperCase()} {latestPost.species.toUpperCase()}</strong> </div> 
+          <div>{new Date(latestPost.date).toLocaleDateString()}</div>
+          <div>{latestPost.location}</div>
+          </>
+          :
+          <p>No New Posts</p>
+          }
         </div>
         <div className="glass-container align-bottom-right d-flex">
           Share to
@@ -84,27 +92,3 @@ export default function LandingPage(props) {
   );
 }
 
-{
-  /* <Row>
-<Col sm={6}>SIGN IN TO GET ALERT</Col>
-<Col className="mt-3"sm={6}>
-<LoginForm setShowLogin={props.setShowLogin} setUser={props.setUser}/>
-   <h3 onClick={() => setShowLogin(!showLogin)}>
-    {showLogin ? "SIGN UP" : "LOG IN"}
-  </h3>
-  {showLogin ? (
-    <LoginForm setUserInState={setUserInState} />
-  ) : (
-    <SignUpForm setUserInState={setUserInState} />
-  )} 
-</Col>
-</Row> 
-{user ? <ReportPet /> : <AuthPage setUserInState={setUserInState} />} 
-
-
-      <Container className="Testimonials">
-        <Testimonial />
-        <Testimonial />
-        <Testimonial />
-      </Container> */
-}

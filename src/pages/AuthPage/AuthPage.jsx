@@ -10,7 +10,7 @@ export default function AuthPage(props) {
   //   const [showLogin, setShowLogin] = useState("LOG IN")
 
   return (
-    <div className="auth-page" id="auth" stye={{ minHeight: "100vh" }}>
+    <div className="auth-page" id="auth" >
       {/* <NavBar user={props.user} setUser={props.setUser}/> */}
       <h6 style={{ textAlign: "center", color: "white" }} className="pt-2">
         What is PAWAY?

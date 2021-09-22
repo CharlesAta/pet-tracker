@@ -216,11 +216,8 @@ export default class FoundPostForm extends Component {
                     <span style={{ color: "red" }}>*</span>Email Address
                   </Form.Label>
                   <Form.Control
-                    // name="email"
-                    // type="email"
                     placeholder="findmypet@gmail.com"
                     value={this.props.userInfo.email}
-                    // onChange={this.props.handleUserChange}
                     className="mt-2 mr-2"
                     disabled
                   />
@@ -337,13 +334,6 @@ export default class FoundPostForm extends Component {
                   />
                 </Form.Group>
 
-                {/* <div className="d-flex justify-content-center mt-4">
-        <Form.Control
-          disabled
-          value={`${this.props.petState.radius} meters`} 
-          />
-        </div> */}
-
                 <div className="d-flex justify-content-center mt-4">
                   <Map
                     lat={this.props.petState.lat}
@@ -386,32 +376,6 @@ export default class FoundPostForm extends Component {
             </Form>
           </div>
         </div>
-
-        {/* <Row>
-          <Col>
-          <Form.Group style={{display: "flex", alignItems: "center"}}>
-              <select name="sex" onChange={this.props.handleChange} className="mt-2 mr-2 select form-select">
-              <option selected>Pet's Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Unknown">Unknown</option>
-            </select>
-            </Form.Group>
-          </Col>
-          <Col>
-          <Form.Group style={{display: "flex", alignItems: "center"}}>
-              <Form.Control 
-              name="breed"
-              type="text"
-              placeholder="Breed"
-              value={this.props.petState.breed}
-              onChange={this.props.handleChange} 
-              className="mt-2 mr-2"
-              />
-              <FontAwesomeIcon size="lg" className="fa-blank" icon={faExclamationCircle} />
-          </Form.Group>              
-          </Col>
-        </Row>  */}
       </>
     );
   }

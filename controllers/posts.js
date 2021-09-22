@@ -30,7 +30,6 @@ async function postsIndex(req, res) {
   async function postLatest(req, res) {
     try {
     const latestPost = await PostModel.find().sort([['createdAt', -1]]).limit(1).exec()
-
       res.status(200).json(latestPost)        
     } catch(err) {
       res.status(400).json(err);
