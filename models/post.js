@@ -24,7 +24,7 @@ const postSchema = new Schema({
         type: String,
         enum: ["lost", "found"],
         },
-    date: {type: Date}, 
+    date: {type: Date, require: true}, 
     radius: {type: Array},
     comment:{type: Schema.Types.ObjectId, ref:'Comment'},
     phoneNumber:{type: Number},

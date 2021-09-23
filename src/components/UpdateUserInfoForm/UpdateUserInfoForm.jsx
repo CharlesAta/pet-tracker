@@ -44,8 +44,8 @@ export default function UpdateUserInfoForm(props) {
                     value={props.userInfo.postalCode}
                     className="mt-2 mr-2"
                     onChange={props.handleChange}
-                    minlength="6"
-                    maxlength="6"
+                    minLength="6"
+                    maxLength="6"
                 />
                 </Form.Group>
 

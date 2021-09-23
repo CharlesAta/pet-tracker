@@ -37,7 +37,7 @@ export default function PetListItem(props) {
             <Row>
                 <Col sm={4}>
                     <div className="posting-image">
-                    <h5 className="posting-status-font"><span class={props.post.status === "lost" ? "badge badge-danger posting-status" : "badge badge-primary posting-status"}>{props.post.status.toUpperCase()}</span></h5>
+                    <h5 className="posting-status-font"><span className={props.post.status === "lost" ? "badge badge-danger posting-status" : "badge badge-primary posting-status"}>{props.post.status.toUpperCase()}</span></h5>
                     <img className="img-fluid list-item-image" src={props.post.photo} />
                     </div>
                 </Col>

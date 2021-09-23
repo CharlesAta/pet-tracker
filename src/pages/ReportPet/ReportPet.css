@@ -29,3 +29,11 @@
 .nav-tabs .nav-item.show .nav-link {
   color: #118c99 !important;
 }
+
+.nav-tabs .nav-link {
+  font-size:25px
+}
+
+.search-reset {
+  margin: 0 0 0 10px !important;
+}

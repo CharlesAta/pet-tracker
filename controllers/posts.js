@@ -15,12 +15,22 @@ module.exports = {
     postShow,
     postLatest,
     deletePost,
-    searchPost
+    searchPost,
+    allPosts
 }
 
 // function escapeRegex(text) {
 //     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/gi, "");
 // };
+
+async function allPosts(req, res) {
+    try {
+    const allPosts = await PostModel.find().sort([['createdAt', -1]]).exec()
+      res.status(200).json(allPosts)        
+    } catch(err) {
+      res.status(400).json(err);
+    }
+  }
 
 async function searchPost(req, res) {
 

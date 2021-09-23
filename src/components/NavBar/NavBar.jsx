@@ -21,8 +21,9 @@ export default function NavBar(props) {
     // history.push("/#auth")
   }
 
-  function goHome() {
+  function goAuth() {
     history.push('/')
+    scroller.scrollTo('auth')
   }
 
   return (
@@ -56,28 +57,12 @@ export default function NavBar(props) {
               </>
             ) : (
               <>
-          <Nav.Link
-          onClick={() => scroller.scrollTo('auth', {
-              smooth: true,
-              offset: -70,
-              duration: 500,
-          })}
-          as={Link} 
-          >
-          Report
-            
+          <Nav.Link onClick={goAuth}>
+            Report
           </Nav.Link>
-                
-
-              {/* <Nav.Link onClick={goHome}> */}
-    
-                <Nav.Link
-                  onClick={() => {
-                    window.location.replace("/#auth");
-                  }}
-                >
-                  Sign Up/Log In
-                </Nav.Link>
+          <Nav.Link onClick={goAuth}>
+            Sign Up/Log In
+          </Nav.Link>
               </>
             )}
           </Nav>

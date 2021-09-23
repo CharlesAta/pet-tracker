@@ -89,7 +89,7 @@ export default function ThankYouPage(props) {
             </div>
             <div className="thankyou-content">
                 <div className="sub-container-text">Search Paway's Databse</div>
-                <div class="search-reports-button">
+                <div className="search-reports-button">
                 <Link to="/postings" >
                 <Button>Search Reports</Button>
                 </Link>

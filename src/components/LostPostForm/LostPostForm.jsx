@@ -25,40 +25,40 @@ export default class LostPostForm extends Component {
         <h1 style={{ textAlign: "center", marginTop: "5%", color: "white" }}>
           I Lost My Pet
         </h1>
-        <div id="stepper4" class="bs-stepper">
-          <div class="bs-stepper-header">
-            <div class="step" data-target="#test-l-4">
-              <button class="step-trigger">
-                <span class="bs-stepper-circle">1</span>
-                <span class="bs-stepper-label">Basic Info</span>
+        <div id="stepper4" className="bs-stepper">
+          <div className="bs-stepper-header">
+            <div className="step" data-target="#test-l-4">
+              <button className="step-trigger">
+                <span className="bs-stepper-circle">1</span>
+                <span className="bs-stepper-label">Basic Info</span>
               </button>
             </div>
-            <div class="line"></div>
-            <div class="step" data-target="#test-l-5">
-              <button class="step-trigger">
-                <span class="bs-stepper-circle">2</span>
-                <span class="bs-stepper-label">Contact</span>
+            <div className="line"></div>
+            <div className="step" data-target="#test-l-5">
+              <button className="step-trigger">
+                <span className="bs-stepper-circle">2</span>
+                <span className="bs-stepper-label">Contact</span>
               </button>
             </div>
-            <div class="line"></div>
-            <div class="step" data-target="#test-l-6">
-              <button class="step-trigger">
-                <span class="bs-stepper-circle">3</span>
-                <span class="bs-stepper-label">Overview</span>
+            <div className="line"></div>
+            <div className="step" data-target="#test-l-6">
+              <button className="step-trigger">
+                <span className="bs-stepper-circle">3</span>
+                <span className="bs-stepper-label">Overview</span>
               </button>
             </div>
           </div>
-          <div class="bs-stepper-content">
+          <div className="bs-stepper-content">
             <Form onSubmit={this.props.handleSubmit}>
-              <div id="test-l-4" class="content">
-                <div class="form-group">
+              <div id="test-l-4" className="content">
+                <div className="form-group">
                   <div className="d-flex flex-row">
                     <PetImage photo={this.props.petState.photo} />
                     <UploadImage handleChange={this.props.handleChange} />
                   </div>
                 </div>
 
-                <Row>
+                <Row className="mt-5">
                   <Col>
                     <Form.Group>
                       <Form.Label>
@@ -85,9 +85,9 @@ export default class LostPostForm extends Component {
                         onChange={this.props.handleChange}
                         className="select form-select mt-2 mr-2"
                       >
-                        <option selected>Select Species</option>
+                        <option key={"selectspecies"} selected>Select Species</option>
                         {this.props.speciesOptions.map((s) => (
-                          <option value={s}>{s}</option>
+                          <option key={s} value={s}>{s}</option>
                         ))}
                       </select>
                     </Form.Group>
@@ -154,7 +154,7 @@ export default class LostPostForm extends Component {
                 </Form.Group>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <button
-                    class="btn btn-primary btn-block mt-3 mb-3"
+                    className="btn btn-primary btn-block mt-3 mb-3"
                     type="button"
                     onClick={() => this.stepper.next()}
                   >
@@ -162,7 +162,7 @@ export default class LostPostForm extends Component {
                   </button>
                 </div>
               </div>
-              <div id="test-l-5" class="content">
+              <div id="test-l-5" className="content">
                 <Form.Group>
                   <Form.Label>
                     <span style={{ color: "red" }}>*</span>Contact Name
@@ -215,15 +215,15 @@ export default class LostPostForm extends Component {
                     value={this.props.userInfo.postalCode}
                     onChange={this.props.handleUserChange}
                     className="mt-2 mr-2"
-                    minlength="6"
-                    maxlength="6"
+                    minLength="6"
+                    maxLength="6"
                     required
                   />
                 </Form.Group>
 
                 <div style={{ display: "flex", justifyContent: "center" }} className="form-pb-5">
                   <button
-                    class="btn btn-primary btn-block mt-5 mb-3"
+                    className="btn btn-primary btn-block mt-5 mb-3"
                     type="button"
                     onClick={() => this.stepper.next()}
                   >
@@ -231,7 +231,7 @@ export default class LostPostForm extends Component {
                   </button>
                 </div>
               </div>
-              <div id="test-l-6" class="content">
+              <div id="test-l-6" className="content">
                 <h3 className="mt-3">Contact Summary</h3>
                 <hr />
 
@@ -281,7 +281,7 @@ export default class LostPostForm extends Component {
                     name="circumstance"
                     className="select form-select mt-2 mr-2"
                   >
-                    <option selected>{this.props.petState.circumstance}</option>
+                    <option key={"circumstancesomething"} selected>{this.props.petState.circumstance}</option>
                   </select>
                 </Form.Group>
 
@@ -298,7 +298,7 @@ export default class LostPostForm extends Component {
                 <Form.Group>
                   <Form.Label>Species</Form.Label>
                   <select disabled className="select form-select mt-2 mr-2">
-                    <option selected>{this.props.petState.species}</option>
+                    <option key={"idontknow"} selected>{this.props.petState.species}</option>
                   </select>
                 </Form.Group>
 

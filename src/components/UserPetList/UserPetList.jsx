@@ -13,7 +13,7 @@ export default function PetList(props) {
           {props.posts.length ? 
           <>
           {props.posts.map(post =>
-            <UserPetListItem setUpdateDelete={props.setUpdateDelete} updateDelete={props.updateDelete} user={props.user} post={post}/>)}
+            <UserPetListItem key={post._id + 1} setUpdateDelete={props.setUpdateDelete} updateDelete={props.updateDelete} user={props.user} post={post}/>)}
           </>
           :
           <div className="center-user-posting mt-3">

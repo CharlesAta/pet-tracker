@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import "./ReportPet.css";
 import FoundPostForm from "../../components/FoundPostForm/FoundPostForm";
 import LostPostForm from "../../components/LostPostForm/LostPostForm";
+import ReactLoading from 'react-loading';
 
 const axios = require("axios");
 
@@ -54,6 +55,8 @@ export default function ReportPet(props) {
 
   const [submit, setSubmit] = useState(false);
 
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     if (submit) {
       setPetState({
@@ -82,6 +85,7 @@ export default function ReportPet(props) {
 
   const handleUserChange = (evt) => {
     setUserInfo({ ...userInfo, [evt.target.name]: evt.target.value });
+    setPetState({ ...petState, [evt.target.name]: evt.target.value });
   };
 
   const handleSubmitImage = async (file) => {
@@ -103,7 +107,7 @@ export default function ReportPet(props) {
         petState,
         userInfo,
       };
-
+      setLoading(true)
       let jwt = localStorage.getItem("token");
       let fetchResponse = await fetch("/api/posts/data", {
         method: "POST",
@@ -115,6 +119,7 @@ export default function ReportPet(props) {
       });
 
       let serverResponse = await fetchResponse.json();
+      setLoading(false)
 
       props.setThankYouPost({id: serverResponse._id, status:serverResponse.status})
       props.history.push('/thankyouforsubmission') 
@@ -165,6 +170,12 @@ export default function ReportPet(props) {
               style={{ zIndex: "10", paddingLeft: "15%", paddingRight: "15%" }}
               className="justify-content-center d-flex text-left flex-column mt-3"
             >
+              { loading ? 
+
+              <div style={{display: "flex", justifyContent:"center", alignItems: "center", height: "30vh"}}>
+              <ReactLoading type={"spinningBubbles"}  color={"#ffffff"} height={'20%'} width={'20%'} />
+              </div>
+              :
               <FoundPostForm
                 submit={submit}
                 setSubmit={setSubmit}
@@ -177,8 +188,8 @@ export default function ReportPet(props) {
                 setPetState={setPetState}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
-
               />
+            }
             </Container>
           </div>
           </Tab>
@@ -188,19 +199,26 @@ export default function ReportPet(props) {
             style={{ zIndex: "10", paddingLeft: "15%", paddingRight: "15%" }}
             className="justify-content-center d-flex text-left flex-column mt-3"
           >
+            { loading ? 
+            
+            <div style={{display: "flex", justifyContent:"center", alignItems: "center", height: "30vh"}}>
+            <ReactLoading type={"spinningBubbles"}  color={"#ffffff"} height={'20%'} width={'20%'} />
+            </div>
+            :
               <LostPostForm
-                submit={submit}
-                setSubmit={setSubmit}
-                handleUserChange={handleUserChange}
-                userInfo={userInfo}
-                circumstanceOptions={circumstanceOptions}
-                user={props.user}
-                speciesOptions={speciesOptions}
-                petState={petState}
-                setPetState={setPetState}
-                handleSubmit={handleSubmit}
-                handleChange={handleChange}
+              submit={submit}
+              setSubmit={setSubmit}
+              handleUserChange={handleUserChange}
+              userInfo={userInfo}
+              circumstanceOptions={circumstanceOptions}
+              user={props.user}
+              speciesOptions={speciesOptions}
+              petState={petState}
+              setPetState={setPetState}
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
               />
+            }
             </Container>
           </div>
 

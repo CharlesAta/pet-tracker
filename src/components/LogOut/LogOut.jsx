@@ -1,6 +1,5 @@
 import React from 'react'
 import "./LogOut.css";
-import NavBar from "../../components/NavBar/NavBar";
 import { NavLink } from 'react-router-dom';
 import { Nav} from "react-bootstrap";
 

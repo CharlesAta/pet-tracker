@@ -17,7 +17,7 @@ export default function DeletePost(props) {
           });
           props.setUpdateDelete(true)
           props.closeModal()
-          let serverResponse = await fetchResponse.json();
+          await fetchResponse.json();
 
         } catch (err) {
             console.log(err.message)

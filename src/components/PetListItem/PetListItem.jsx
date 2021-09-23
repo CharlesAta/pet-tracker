@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import "./PetListItem.css";
-import {Container, Button, Row, Col, Badge, Modal} from 'react-bootstrap'
-import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer, MDBCardImage} from "mdbreact";
+import {Row, Col} from 'react-bootstrap'
+import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer} from "mdbreact";
 import { Link } from "react-router-dom";
-import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
-import DeletePost from '../DeletePost/DeletePost';
 
 export default function PetListItem(props) {
 
@@ -35,7 +33,7 @@ export default function PetListItem(props) {
             <Row>
                 <Col sm={4}>
                     <div className="posting-image">
-                    <h5 className="posting-status-font"><span class={props.post.status === "lost" ? "badge badge-danger posting-status" : "badge badge-primary posting-status"}>{props.post.status.toUpperCase()}</span></h5>
+                    <h5 className="posting-status-font"><span className={props.post.status === "lost" ? "badge badge-danger posting-status" : "badge badge-primary posting-status"}>{props.post.status.toUpperCase()}</span></h5>
                     <img className="img-fluid list-item-image" src={props.post.photo} />
                     </div>
                 </Col>

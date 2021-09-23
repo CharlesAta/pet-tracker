@@ -5,7 +5,6 @@ import Pagination from '@material-ui/lab/Pagination';
 
 export default function PetList(props) {
 
-
     return (
       <>
       <div className="posting-page mt-5">
@@ -14,7 +13,7 @@ export default function PetList(props) {
       {props.posts.length ? 
           <>
         {props.posts.map(post =>
-          <PetListItem setUpdateDelete={props.setUpdateDelete} updateDelete={props.updateDelete} user={props.user} post={post}/>)}
+          <PetListItem key={post._id} setUpdateDelete={props.setUpdateDelete} updateDelete={props.updateDelete} user={props.user} post={post}/>)}
           </>
           :
           <div className="center-user-posting mt-3">
@@ -26,7 +25,7 @@ export default function PetList(props) {
       </div>
 
 
-      {props.profile ?
+      {(props.profile || props.filterOn) ?
       <>
       </>
       :

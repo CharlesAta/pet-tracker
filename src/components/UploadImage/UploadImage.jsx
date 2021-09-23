@@ -3,7 +3,7 @@ import { Card, Form, Row } from "react-bootstrap";
 import "./UploadImage.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
-
+import {ReactComponent as UploadSvg} from "../../assets/Upload.svg"
 
 export default function UploadImage(props) {
   
@@ -18,8 +18,8 @@ export default function UploadImage(props) {
         style={{ width: "8rem" }}
         className="d-flex justify-content-end border-0 card-image"
       >
-        <div onClick={onButtonClick} className="image-upload" style={{backgroundColor: "#55A7AE", borderRadius:"50%", display: "flex", justifyContent: "center", alignItems: "center", boxShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.5)"}}>
-          <FontAwesomeIcon size="lg" style={{height:"50", width:"50"}} color="white" icon={faCamera}/>
+        <div onClick={onButtonClick} className="image-upload" style={{backgroundColor: "white", borderRadius:"15px", display: "flex", justifyContent: "center", alignItems: "center",}}>
+          <UploadSvg style={{height:"100%", width:"100%"}}/>
         </div>
 
       </Card>

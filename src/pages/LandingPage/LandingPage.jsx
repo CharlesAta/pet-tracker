@@ -7,7 +7,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
 import JumboTron from "../../components/JumboTron/JumboTron";
 import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
-
+import ReactLoading from 'react-loading';
 
 import "./LandingPage.css";
 
@@ -21,13 +21,15 @@ export default function LandingPage(props) {
     location: ""
   })
 
-  // const [searchMade, setSearchMade] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   useEffect(async() => {
 
      try {
+      setLoading(true)
        let fetchItemsResponse = await fetch(`/api/posts/latest`) 
        let latestPost = await fetchItemsResponse.json(); 
+       setLoading(false)
        setLatestPost(latestPost[0])
      } catch (err) {
        console.error('ERROR:', err) 
@@ -78,6 +80,13 @@ export default function LandingPage(props) {
       </div>
       }
       <Row className="landing-footer">
+        {loading ?
+            <div className="glass-container align-bottom-left latest-post pl-3">
+            <ReactLoading type={"spinningBubbles"}  color={"#ffffff"} height={'20%'} width={'20%'} />
+            </div>
+          
+          :
+          <>
           {latestPost ?
           <>
         <div className="glass-container align-bottom-left latest-post pl-3" style={latestPost.status === "lost" ? {backgroundColor: "rgba(121, 0, 0, 0.3)"} : {backgroundColor: "rgba(0, 32, 121, 0.3)"} }>
@@ -93,9 +102,10 @@ export default function LandingPage(props) {
           </div>
           </>
           }
+          </>
+          }
         <div className="glass-container align-bottom-right d-flex">
           Share to
-
           <FacebookShareButton 
                 url={window.location.href}
                 quote={"Paway - Reuniting pets with owners"}
@@ -107,7 +117,7 @@ export default function LandingPage(props) {
                 url={window.location.href}
                 quote={"Paway - Reuniting pets with owners"}
                 hashtag="#Paway">
-                <i class="fab fa-whatsapp"></i>
+                <i className="fab fa-whatsapp"></i>
           </WhatsappShareButton>
          
 

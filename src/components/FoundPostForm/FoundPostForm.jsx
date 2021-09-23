@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import "./FoundPostForm.css";
 import { Button, Row, Col, Form } from "react-bootstrap";
-import { MDBInput } from "mdbreact";
 import Map from "../Map/Map";
 import PlacesAutocomplete from "../PlacesAutocomplete/PlacesAutocomplete";
 import Radius from "../Radius/Radius";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import "bs-stepper/dist/css/bs-stepper.min.css";
 import Stepper from "bs-stepper";
 import PetImage from "../PetImage/PetImage";
 import UploadImage from "../UploadImage/UploadImage";
-import { Link } from "react-router-dom";
 
 export default class FoundPostForm extends Component {
   componentDidMount() {
@@ -64,7 +60,7 @@ export default class FoundPostForm extends Component {
                   </div>
                 </div>
 
-                <Form.Group>
+                <Form.Group className="mt-5">
                   <Form.Label>
                     <span style={{ color: "red" }}>*</span>Select Circumstance
                   </Form.Label>
@@ -75,7 +71,7 @@ export default class FoundPostForm extends Component {
                   >
                     <option selected>Select Circumstance</option>
                     {this.props.circumstanceOptions.map((s) => (
-                      <option value={s}>{s}</option>
+                      <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
                 </Form.Group>
@@ -106,9 +102,9 @@ export default class FoundPostForm extends Component {
                         onChange={this.props.handleChange}
                         className="select form-select mt-2 mr-2"
                       >
-                        <option selected>Select Species</option>
+                        <option key={"selectspecies"} selected>Select Species</option>
                         {this.props.speciesOptions.map((s) => (
-                          <option value={s}>{s}</option>
+                          <option key={s + 1} value={s}>{s}</option>
                         ))}
                       </select>
                     </Form.Group>
@@ -175,7 +171,7 @@ export default class FoundPostForm extends Component {
                 </Form.Group>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <button
-                    class="btn btn-primary btn-block mt-3 mb-3"
+                    className="btn btn-primary btn-block mt-3 mb-3"
                     type="button"
                     onClick={() => this.stepper.next()}
                   >
@@ -183,7 +179,7 @@ export default class FoundPostForm extends Component {
                   </button>
                 </div>
               </div>
-              <div id="test-l-2" class="content">
+              <div id="test-l-2" className="content">
                 <Form.Group>
                   <Form.Label>
                     <span style={{ color: "red" }}>*</span>Contact Name
@@ -236,15 +232,15 @@ export default class FoundPostForm extends Component {
                     value={this.props.userInfo.postalCode}
                     onChange={this.props.handleUserChange}
                     className="mt-2 mr-2"
-                    minlength="6"
-                    maxlength="6"
+                    minLength="6"
+                    maxLength="6"
                     required
                   />
                 </Form.Group>
 
                 <div style={{ display: "flex", justifyContent: "center" }} className="form-pb-5">
                   <button
-                    class="btn btn-primary btn-block mt-5 mb-5"
+                    className="btn btn-primary btn-block mt-5 mb-5"
                     type="button"
                     onClick={() => this.stepper.next()}
                   >
@@ -252,7 +248,7 @@ export default class FoundPostForm extends Component {
                   </button>
                 </div>
               </div>
-              <div id="test-l-3" class="content">
+              <div id="test-l-3" className="content">
                 <h3 className="mt-3">Contact Summary</h3>
                 <hr />
 
@@ -302,7 +298,7 @@ export default class FoundPostForm extends Component {
                     name="circumstance"
                     className="select form-select mt-2 mr-2"
                   >
-                    <option selected>{this.props.petState.circumstance}</option>
+                    <option key={"circumstancial"} selected>{this.props.petState.circumstance}</option>
                   </select>
                 </Form.Group>
 
@@ -319,7 +315,7 @@ export default class FoundPostForm extends Component {
                 <Form.Group>
                   <Form.Label>Species</Form.Label>
                   <select disabled className="select form-select mt-2 mr-2">
-                    <option selected>{this.props.petState.species}</option>
+                    <option key={"species"} selected>{this.props.petState.species}</option>
                   </select>
                 </Form.Group>
 

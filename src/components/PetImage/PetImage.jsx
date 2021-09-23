@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Form, Row } from "react-bootstrap";
+import { Card} from "react-bootstrap";
 import "./PetImage.css";
 
 export default function PetImage(props) {
