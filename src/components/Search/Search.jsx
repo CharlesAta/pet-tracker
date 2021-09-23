@@ -6,48 +6,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export default function Search(props) {
-  const [searchQuery, setSearchQuery] = useState()
+  const [localSearchQuery, setLocalSearchQuery] = useState("")
   
 
-  function handleChange(e) {
-    console.log(e.target.value)
-    setSearchQuery(e.target.value)
+  function handleChange(e) {   
+    setLocalSearchQuery(e.target.value)
   }
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+    props.setSearchQuery(localSearchQuery)
     try {
-      let jwt = localStorage.getItem("token");
-      let fetchResponse = await fetch(`/api/posts/search?s=${searchQuery}`, {
+      let fetchResponse = await fetch(`/api/posts/search?s=${localSearchQuery}`, {
         method: "GET",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + jwt,
+          "Content-Type": "application/json"
         },
       });
 
       let serverResponse = await fetchResponse.json();
       props.setSearchResults(serverResponse)
       props.searchExecute()
-      // props.history.push('/searchresults') 
     } catch (err) {
       console.log(err)
     }
   }
-  // const { search } = window.location;
-  // const query = new URLSearchParams(search).get('search');
-
-  // console.log("query is: ": query)
-
-  // const filterPosts = (posts, query) => {
-  //   if (!query) {
-  //       return posts;
-  //   }
-
-  //   return posts.filter((post) => {
-  //       const postName = post.name.toLowerCase();
-  //       return postName.includes(query);
-  //   });
 
 
   return (
@@ -59,7 +42,7 @@ export default function Search(props) {
                 name="search"
                 placeholder= "Search..."
                 id="search"
-                value={searchQuery}
+                value={localSearchQuery}
                 onChange={handleChange}
                 required
               />

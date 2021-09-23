@@ -58,9 +58,7 @@ export default function PetListItem(props) {
                 <div className="d-flex flex-row alignBottom" style={{justifyContent: "space-between", alignItems: "flex-end"}}>
                     <span className="search-date">{showDate()}</span>
 
-
-                    <Button className="" onClick={() => setShowModal(true)}><FontAwesomeIcon icon={faTrash} /></Button>
-                    
+                    <h6 className="delete-link" onClick={() => setShowModal(true)}>Delete</h6>
                     <Link className="detail-link" to={{pathname: '/details/' + props.post._id}}>Details</Link>
                     </div>
                 </Row>

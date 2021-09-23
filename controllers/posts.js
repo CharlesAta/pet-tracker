@@ -23,30 +23,26 @@ module.exports = {
 // };
 
 async function searchPost(req, res) {
-    console.log(req.query.s)
+
+    results = ".*" + req.query.s + ".*";
+    let searchResults = []
+    console.log("backend req.query.s",req.query.s)
     try {
-        results = ".*" + req.query.s + ".*";
         if(mongoose.Types.ObjectId.isValid(results)){
-            searchResults = await PostModel.findOne({_id: results}).exec();
-        }
-        else {
-            
+            searchResults = await PostModel.find({_id: results}).exec();
+        } else {
             searchResults = await PostModel.find(
                 {$or: [
                 { "name":  new RegExp(results, 'i')  },
                 { "species":  new RegExp(results, 'i')  },
                 { "postalCode":  new RegExp(results, 'i')  }
-            ]}).sort([['createdAt', -1]]).exec(); 
+            ]}).exec();
         }
-
+        console.log("backend  searchResults", searchResults)
     res.status(200).json(searchResults)  
     } catch (err) {
         res.status(400).json(err);
     }
-    
-
-
-    console.log(searchResults)
 }
 
 async function deletePost(req, res) {

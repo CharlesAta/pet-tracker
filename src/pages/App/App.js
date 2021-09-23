@@ -31,6 +31,8 @@ export default function App() {
 
   const [searchResults, setSearchResults] = useState([])
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -58,50 +60,108 @@ export default function App() {
                 setPetStatus={setPetStatus}
                 searchResults={searchResults} 
                 setSearchResults={setSearchResults}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
               />
             )}
           />
           <Route
             path="/postings"
             render={(props) => (
-              <PetPostings searchResults={searchResults} setSearchResults={setSearchResults} {...props} setProfile={setProfile} user={user} setUser={setUser} profile={profile} />
+              <PetPostings 
+              searchQuery={searchQuery} 
+              setSearchQuery={setSearchQuery} 
+              searchResults={searchResults} 
+              setSearchResults={setSearchResults} 
+              {...props} 
+              setProfile={setProfile} 
+              user={user} 
+              setUser={setUser} 
+              profile={profile} />
             )}
           />
           <Route
             path="/reportpet"
             render={(props) => (
-              <ReportPet searchResults={searchResults} setSearchResults={setSearchResults} thankYouPost={thankYouPost} setThankYouPost={setThankYouPost} petStatus={petStatus} setPetStatus={setPetStatus} {...props} user={user} setUser={setUser} />
+              <ReportPet 
+              searchQuery={searchQuery} 
+              setSearchQuery={setSearchQuery} 
+              searchResults={searchResults} 
+              setSearchResults={setSearchResults} 
+              thankYouPost={thankYouPost} 
+              setThankYouPost={setThankYouPost} 
+              petStatus={petStatus} 
+              setPetStatus={setPetStatus} 
+              {...props} 
+              user={user} 
+              setUser={setUser} />
             )}
           />
           <Route
             path="/profile"
             render={(props) => (
-              <Profile searchResults={searchResults} setSearchResults={setSearchResults} {...props} updatedAccount={updatedAccount} setUpdatedAccount={setUpdatedAccount} user={user} setUser={setUser} profile={profile} setProfile={setProfile}/>
+              <Profile 
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              searchResults={searchResults}
+              setSearchResults={setSearchResults} 
+              {...props} 
+              updatedAccount={updatedAccount} 
+              setUpdatedAccount={setUpdatedAccount} 
+              user={user} 
+              setUser={setUser} 
+              profile={profile} 
+              setProfile={setProfile}/>
             )}
           />
           <Route
             path="/logout"
             render={(props) => (
-              <LogOut  {...props} user={user} setUser={setUser} />
+              <LogOut  
+              {...props} 
+              user={user}
+              setUser={setUser} />
             )}
           />
           <Route
             path="/details/:id"
             render={(props) => (
-              <Details searchResults={searchResults} setSearchResults={setSearchResults} {...props} user={user} setUser={setUser}/>
+              <Details 
+              searchQuery={searchQuery} 
+              setSearchQuery={setSearchQuery} 
+              searchResults={searchResults} 
+              setSearchResults={setSearchResults}
+              {...props}
+              user={user} 
+              setUser={setUser}/>
             )}
           />
 
           <Route
             path="/thankyouforsubmission"
             render={(props) => (
-              <ThankYouPage searchResults={searchResults} setSearchResults={setSearchResults} {...props} thankYouPost={thankYouPost} user={user} setUser={setUser}/>
+              <ThankYouPage 
+              searchQuery={searchQuery} 
+              setSearchQuery={setSearchQuery} 
+              searchResults={searchResults} 
+              setSearchResults={setSearchResults} 
+              {...props} 
+              thankYouPost={thankYouPost} 
+              user={user} 
+              setUser={setUser}/>
             )}
           />
            <Route
             path="/searchresults"
             render={(props) => (
-              <SearchResults {...props} searchResults={searchResults} setSearchResults={setSearchResults} user={user} setUser={setUser}/>
+              <SearchResults 
+              {...props} 
+              searchQuery={searchQuery} 
+              setSearchQuery={setSearchQuery} 
+              searchResults={searchResults} 
+              setSearchResults={setSearchResults} 
+              user={user} 
+              setUser={setUser}/>
             )}
           />
           <Route render={() => <Redirect to="/" />} />
@@ -120,7 +180,9 @@ export default function App() {
                   user={user}
                   setUser={setUser}
                   searchResults={searchResults} 
-                setSearchResults={setSearchResults}
+                  setSearchResults={setSearchResults}
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
                 />
                 <AuthPage
                   {...props}
@@ -130,6 +192,8 @@ export default function App() {
                   showLogin={showLogin}
                   searchResults={searchResults} 
                   setSearchResults={setSearchResults}
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
                 />
               </>
             )}
@@ -137,13 +201,29 @@ export default function App() {
           <Route
             path="/postings"
             render={(props) => (
-              <PetPostings searchResults={searchResults} setSearchResults={setSearchResults} {...props} user={user} setUser={setUser} profile={profile} setProfile={setProfile}/>
+              <PetPostings 
+              searchQuery={searchQuery} 
+              setSearchQuery={setSearchQuery}
+              searchResults={searchResults} 
+              setSearchResults={setSearchResults} 
+              {...props} 
+              user={user} 
+              setUser={setUser} 
+              profile={profile} 
+              setProfile={setProfile}/>
             )}
           />
           <Route
             path="/searchresults"
             render={(props) => (
-              <SearchResults {...props} searchResults={searchResults} setSearchResults={setSearchResults} user={user} setUser={setUser}/>
+              <SearchResults 
+              {...props} 
+              searchQuery={searchQuery} 
+              setSearchQuery={setSearchQuery}
+              searchResults={searchResults} 
+              setSearchResults={setSearchResults} 
+              user={user} 
+              setUser={setUser}/>
             )}
           />
           <Route render={() => <Redirect to="/" />} />

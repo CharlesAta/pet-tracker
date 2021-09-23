@@ -23,6 +23,20 @@
   color: gray;
 }
 
+.delete-link {
+  font-size: 20px;
+  color: gray;
+  font-weight: 300;
+  margin-bottom: 5px;
+  margin-left: 30%;
+}
+
+.delete-link:hover {
+  color: red;
+  font-weight: 300;
+  cursor: pointer;
+}
+
 .card-location {
   font-size: 1.2rem;
   font-weight: 400;

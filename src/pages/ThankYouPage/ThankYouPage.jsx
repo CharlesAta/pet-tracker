@@ -9,6 +9,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { ReactComponent as BellWithClouds } from "../../assets/BellwithCloud.svg";
 import { ReactComponent as PaperairplanewithCloud } from "../../assets/PaperairplanewithCloud.svg";
 import { ReactComponent as SearchwithCloud } from "../../assets/SearchwithCloud.svg";
+import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
 
 
 export default function ThankYouPage(props) {
@@ -21,7 +22,7 @@ export default function ThankYouPage(props) {
     return (
         <>
         <div className="thankyou-page" style={{ minHeight: "100vh"}}>
-        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
+        <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
         <div className="center-thankyou mt-5">
         <div className="thankyou-container">
             <Row>
@@ -104,9 +105,26 @@ export default function ThankYouPage(props) {
                 <div className="sub-container-text">Share Your Post</div>
                 <div className="share-container">
                 <span style={{fontSize: "1.2rem"}}>Share to</span>
-                <i className="fab fa-facebook-f"></i>
-                <i className="fab fa-instagram"></i>
-                <i className="fab fa-twitter"></i>
+                <FacebookShareButton 
+                    url={window.location.href}
+                    quote={"Paway - Reuniting pets with owners"}
+                    hashtag="#Paway">
+                    <i className="fab fa-facebook-f"></i>
+                </FacebookShareButton>
+
+                <WhatsappShareButton 
+                    url={window.location.href}
+                    quote={"Paway - Reuniting pets with owners"}
+                    hashtag="#Paway">
+                    <i class="fab fa-whatsapp"></i>
+                </WhatsappShareButton>
+         
+                <TwitterShareButton 
+                    url={window.location.href}
+                    quote={"Paway - Reuniting pets with owners"}
+                    hashtag="#Paway">
+                    <i className="fab fa-twitter"></i>
+                </TwitterShareButton>
 
                 </div>
             </figure>

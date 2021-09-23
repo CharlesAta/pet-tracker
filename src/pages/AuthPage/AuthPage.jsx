@@ -21,7 +21,7 @@ export default function AuthPage(props) {
           What is PAWAY?
           </span>
       </h6>
-      <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} />
+      <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} />
       <Container stye={{ minHeight: "100vh" }}>
         <Row className="margin-container">
           <Col className="auth-pic">

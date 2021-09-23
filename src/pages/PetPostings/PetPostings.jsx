@@ -36,7 +36,7 @@ export default function PetPosting(props) {
     return (
       <>
         <div className="posting" style={{ minHeight: "100vh" }}>
-        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
+        <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
         <Container>
           <Row >
               <Col className="d-flex justify-content-center">

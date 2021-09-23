@@ -153,7 +153,7 @@ export default function ReportPet(props) {
   return (
     <>
       <div className="report"  style={{ minHeight: "100vh" }}>
-        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser} />
+        <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser} />
         <div className="post">
         <Tabs activeKey={props.petStatus}
               onSelect={changeStatus}

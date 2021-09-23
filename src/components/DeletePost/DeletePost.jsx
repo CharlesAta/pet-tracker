@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap';
+import "./DeletePost.css";
 
 export default function DeletePost(props) {
 
@@ -30,7 +31,7 @@ export default function DeletePost(props) {
                 Are you sure you want to delete this post?
             </Modal.Body>
             <Modal.Footer>
-            <Button type="submit" variant="secondary" onClick={(e) => handleSubmit(e)} >
+            <Button type="submit" variant="secondary"className="delete-button" onClick={(e) => handleSubmit(e)} >
                 Delete Post
             </Button>
             </Modal.Footer>

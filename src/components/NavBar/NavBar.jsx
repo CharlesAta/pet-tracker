@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "./NavBar.css";
 import LogOut from "../LogOut/LogOut";
 import Search from "../Search/Search";
+import {scroller} from 'react-scroll';
+import Scroll from "react-scroll";
+import { Link } from 'react-scroll'
+const ScrollLink = Scroll.Link;
 
 export default function NavBar(props) {
+
+  let history = useHistory();
+
+  function goHome() {
+    // const aboutPageNode = document.getElementById('auth')
+    // aboutPageNode.scrollIntoView({behavior: "smooth"});
+    history.push('/')
+    // console.log("history", history)
+    // history.push("/#auth")
+  }
+
+  function goHome() {
+    history.push('/')
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg" className="pt-3" variant="dark">
       <Container>
-        <Search searchExecute={props.searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  />
+        <Search searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={props.searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav.Link
             className="navbar-center"
             onClick={() => {
-              window.location.replace("/#home");
+              goHome()
             }}
           >
             <b>PAWAY</b>
@@ -37,11 +56,21 @@ export default function NavBar(props) {
               </>
             ) : (
               <>
-              <Nav.Link onClick={() => {
-                    window.location.replace("/#auth");
-                  }}>
-              Report
-            </Nav.Link>
+          <Nav.Link
+          onClick={() => scroller.scrollTo('auth', {
+              smooth: true,
+              offset: -70,
+              duration: 500,
+          })}
+          as={Link} 
+          >
+          Report
+            
+          </Nav.Link>
+                
+
+              {/* <Nav.Link onClick={goHome}> */}
+    
                 <Nav.Link
                   onClick={() => {
                     window.location.replace("/#auth");

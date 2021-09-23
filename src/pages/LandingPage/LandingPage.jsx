@@ -6,9 +6,13 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
 import JumboTron from "../../components/JumboTron/JumboTron";
+import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
+
+
 import "./LandingPage.css";
 
 export default function LandingPage(props) {
+
 
   const [latestPost, setLatestPost] = useState({
     status: "",
@@ -45,7 +49,7 @@ export default function LandingPage(props) {
           : { minHeight: "96vh", maxWidth: "100%"}
       }
     >
-      <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser} />
+      <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser} />
       {props.user ? 
       <div className="d-flex margin-top">
         <Link to="/reportpet" onClick={()=> props.setPetStatus("lost")} >
@@ -74,22 +78,46 @@ export default function LandingPage(props) {
       </div>
       }
       <Row className="landing-footer">
-        <div className="glass-container align-bottom-left latest-post pl-3" style={latestPost.status === "lost" ? {backgroundColor: "rgba(121, 0, 0, 0.3)"} : {backgroundColor: "rgba(0, 32, 121, 0.3)"} }>
           {latestPost ?
           <>
+        <div className="glass-container align-bottom-left latest-post pl-3" style={latestPost.status === "lost" ? {backgroundColor: "rgba(121, 0, 0, 0.3)"} : {backgroundColor: "rgba(0, 32, 121, 0.3)"} }>
           <div><strong>{latestPost.status.toUpperCase()} {latestPost.species.toUpperCase()}</strong> </div> 
           <div>{new Date(latestPost.date).toLocaleDateString()}</div>
           <div>{latestPost.location}</div>
+        </div>
           </>
           :
+          <>
+          <div className="glass-container align-bottom-left latest-post pl-3">
           <p>No New Posts</p>
+          </div>
+          </>
           }
-        </div>
         <div className="glass-container align-bottom-right d-flex">
           Share to
-          <i className="fab fa-facebook-f"></i>
-          <i className="fab fa-instagram"></i>
-          <i className="fab fa-twitter"></i>
+
+          <FacebookShareButton 
+                url={window.location.href}
+                quote={"Paway - Reuniting pets with owners"}
+                hashtag="#Paway">
+                <i className="fab fa-facebook-f"></i>
+          </FacebookShareButton>
+
+          <WhatsappShareButton 
+                url={window.location.href}
+                quote={"Paway - Reuniting pets with owners"}
+                hashtag="#Paway">
+                <i class="fab fa-whatsapp"></i>
+          </WhatsappShareButton>
+         
+
+          <TwitterShareButton 
+                url={window.location.href}
+                quote={"Paway - Reuniting pets with owners"}
+                hashtag="#Paway">
+                <i className="fab fa-twitter"></i>
+          </TwitterShareButton>
+                    
         </div>
       </Row>
     </div>

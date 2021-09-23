@@ -3,57 +3,58 @@ import NavBar from "../../components/NavBar/NavBar";
 import Search from "../../components/Search/Search";
 import {Container, Row, Col} from "react-bootstrap";
 import PetList from '../../components/PetList/PetList';
+import "./SearchResults.css";
 
 // searchResults={props.searchResults} setSearchResults={props.setSearchResults} 
 
 export default function SearchResults(props) {
+
     const [postState, setPostState] = useState(props.searchResults)
 
     const [page, setPage] = useState(1)
-    const [totalPages, setTotalPages] = useState(0)
+    const [posts, setPosts] = useState([])
+    const [count, setCount] = useState(postState.length) 
+    const [totalPages, setTotalPages] = useState(Math.ceil(count/5))
 
-   useEffect(() => {
-    //    try {
-    //      let fetchItemsResponse = await fetch(`/api/posts?page=${page}`) 
-    //      let {posts, totalPages} = await fetchItemsResponse.json(); 
-    //      setPostState (posts)
-    //      setTotalPages(totalPages)
-    //      props.history.push(`/postings/${parseInt(page)}`)
+    const [newSearch, setNewSearch] = useState(false)
 
-    //    } catch (err) {
-    //      console.error('ERROR:', err) 
-    //    }
-    //    props.setProfile(false)
-        let startIndex = (page - 1) * 10
-        let endIndex = page * 10
-        let posts = postState.slice(startIndex, endIndex)
-        setPostState (posts)
-        let count = props.searchResults.length 
-        let totalPages = Math.ceil(count/10)
-        setTotalPages(totalPages)
-      }, [postState, page])
+    useEffect(() => {
+
+        if(newSearch) {
+            setPostState(props.searchResults)
+            setPosts(postState)
+            setNewSearch(false)
+        } else {
+
+            const startIndex = (page - 1) * 5
+            const endIndex = page * 5
+            setPosts(postState.slice(startIndex, endIndex))
+        }
+
+      }, [setPostState, page, newSearch])
 
       const handlePageChange = (e) => {
         setPage(e.target.textContent)
       }
 
-      function searchExecute() {
-        props.history.push('/searchresults') 
-      }
-
+    function searchExecute() {
+        setNewSearch(true)
+    }
+  
+   
     return (
       <>
         <div className="posting" style={{ minHeight: "100vh" }}>
-        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser}/>
+        <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser}/>
         <Container>
           <Row >
               <Col className="d-flex justify-content-center">
-          <h1>Search Results</h1>
+          <h1 className="search-results mt-5">Search Results</h1>
             </Col>
         </Row>
         </Container>
         <Container className="d-flex flex-row justify-content-center">
-        <PetList profile={props.profile} handlePageChange={handlePageChange} totalPages={totalPages} posts={postState} page={page} setPage={setPage}/>
+        <PetList profile={props.profile} handlePageChange={handlePageChange} totalPages={totalPages} posts={posts} page={page} setPage={setPage}/>
         </Container>
         </div> 
       </>
