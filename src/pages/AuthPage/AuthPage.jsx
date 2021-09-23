@@ -7,13 +7,15 @@ import NavBar from "../../components/NavBar/NavBar";
 import { ReactComponent as AuthSvg } from "../../assets/Auth.svg";
 
 export default function AuthPage(props) {
-  //   const [showLogin, setShowLogin] = useState("LOG IN")
 
   return (
     <div className="auth-page" id="auth" >
-      {/* <NavBar user={props.user} setUser={props.setUser}/> */}
       <h6 style={{ textAlign: "center", color: "white" }} className="pt-2">
-        What is PAWAY?
+        <span  onClick={() => {
+                    window.location.replace("/#auth");
+                  }}>
+          What is PAWAY?
+          </span>
       </h6>
       <NavBar />
       <Container stye={{ minHeight: "100vh" }}>
@@ -65,16 +67,4 @@ export default function AuthPage(props) {
 
     </div>
   );
-}
-
-{
-  /* <LoginForm setShowLogin={props.setShowLogin} setUser={props.setUser}/>
-   <h3 onClick={() => setShowLogin(!showLogin)}>
-    {showLogin ? "SIGN UP" : "LOG IN"}
-  </h3>
-  {showLogin ? (
-    <LoginForm setUserInState={setUserInState} />
-  ) : (
-    <SignUpForm setUserInState={setUserInState} />
-  )}  */
 }

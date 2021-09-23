@@ -37,14 +37,10 @@ export default function App() {
   
   useEffect(() => {
     let token = localStorage.getItem("token");
-    console.log("token", token);
     if (token) {
       let userDoc = JSON.parse(atob(token.split(".")[1])).user; // decode jwt token
       setUser(userDoc);
-      // console.log("App.js user", user);
-      // console.log("App.js userDoc", userDoc);
     }
-    console.log("APP", thankYouPost)
   }, [thankYouPost]);
 
 
@@ -137,9 +133,6 @@ export default function App() {
               <PetPostings {...props} user={user} setUser={setUser} profile={profile} setProfile={setProfile}/>
             )}
           />
-          {/* <Route path='/account' render={(props) => (
-        <AuthPage {...props} user={user} setUser={setUser} setShowLogin={setShowLogin} showLogin={showLogin} />
-      )}/>      */}
           <Route render={() => <Redirect to="/" />} />
         </Switch>
       )}

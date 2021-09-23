@@ -14,13 +14,6 @@ export default function SignUpForm(props) {
     passwordConfirm: "",
   });
 
-  // useEffect(() => {
-
-  //     return () => {
-
-  //     }
-  // }, [input])
-
   const handleChange = (evt) => {
     setSignUpState({
       ...signUpState,
@@ -32,12 +25,9 @@ export default function SignUpForm(props) {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     if (signUpState.password !== signUpState.passwordConfirm) {
-      console.log("signupState.password", signUpState.password);
-      console.log("passwordState", signUpState.passwordConfirm);
       alert("Passwords don't match");
     } else {
       try {
-        console.log(signUpState);
         const fetchResponse = await fetch("/api/users/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -81,7 +71,7 @@ export default function SignUpForm(props) {
           <Form onSubmit={handleSubmit}>
             <Form.Text style={{ textAlign: "center" }}>
               Already a member?
-              <span class="link" onClick={() => props.setShowLogin("LOG IN")}>
+              <span class="link" style={{color: "red"}} onClick={() => props.setShowLogin("LOG IN")}>
                 &nbsp;Log In
               </span>
             </Form.Text>
@@ -115,8 +105,7 @@ export default function SignUpForm(props) {
                 <Form.Check
                   type="radio"
                   className="terms-of-service"
-                  label=" Creating an account means you are okay with out Teams of service,
-              Privacy Policy and our default Notification Settings"
+                  label={<>Creating an account means you are okay with our <span style={{color: "red"}}>Terms of Service</span>, <span style={{color: "red"}}>Privacy Policy</span> and our default <span style={{color: "red"}}>Notification Settings</span></>}
                 />
               </Form.Group>
             </p>

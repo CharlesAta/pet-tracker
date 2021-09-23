@@ -28,6 +28,6 @@
   background-color: white !important;
   color: rgb(151, 151, 151);
 }
-.active > .bs-stepper-label {
+.active > .step-trigger > .bs-stepper-label {
   color: #118c99 !important;
 }

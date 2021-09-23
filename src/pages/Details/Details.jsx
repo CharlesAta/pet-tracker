@@ -12,7 +12,7 @@ export default function Details(props) {
           let fetchItemsResponse = await fetch(`/api/posts/${props.match.params.id}`) 
           let details = await fetchItemsResponse.json(); 
           setPetState(details)
-          console.log(petState)
+          console.log("pet:", petState)
         } catch (err) {
           console.error('ERROR:', err) 
         }
@@ -80,7 +80,6 @@ export default function Details(props) {
             </Row>
             <Row className="mt-5">
               <DetailsMap location={petState.location} lat={petState.lat} lng={petState.lng} radius={petState.radius}/>
-              {/* <img style={{borderRadius:"25px"}} src={`https://maps.googleapis.com/maps/api/staticmap?center=${petState.lat},${petState.lng}zoom=15&size=600x300&maptype=roadmap&markers=color:red%7.label:.%7C${petState.lat},${petState.lng}&key=AIzaSyDPYgvsAsMFTg4IXuxDt_DYbNxyPalyl3Y`} /> */}
             </Row>
             </Col>
             <Col xs={6} className="mt-5">

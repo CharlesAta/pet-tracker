@@ -6,13 +6,40 @@ const nodemailer = require('nodemailer')
 const hbs = require('nodemailer-express-handlebars')
 const handlebars = require('handlebars')
 
+const mongoose = require('mongoose');
+
 module.exports = {
     createPost,
     createImage,
     postsIndex,
     postShow,
     postLatest,
-    deletePost
+    deletePost,
+    searchPost
+}
+
+// function escapeRegex(text) {
+//     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "");
+// };
+
+async function searchPost(req, res) {
+    console.log(req.query.s)
+    results = req.query.s;
+    if(mongoose.Types.ObjectId.isValid(results)){
+        searchResults = await PostModel.find({_id: results}).exec();
+    }
+    else {
+        
+        searchResults = await PostModel.find({$or: [
+            { "decription": { "$regex": `${results}`, "$options": "i" } },
+            { "name": { "$regex": `${results}`, "$options": "i" } },
+            { "species": { "$regex": `${results}`, "$options": "i" } }, 
+        ]}).exec(); 
+    }
+    
+
+
+    console.log(searchResults)
 }
 
 async function deletePost(req, res) {
@@ -60,7 +87,8 @@ async function postsIndex(req, res) {
 
 async function postShow(req, res) {
     try {
-        let post = await PostModel.findById(req.params.id).exec()
+        let post = await PostModel.findById(req.params.id).populate("user").exec()
+        console.log(post)
         res.status(200).json(post)
     }catch(err){
         res.status(400).json(error)

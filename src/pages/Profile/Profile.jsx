@@ -18,8 +18,7 @@ export default function Profile(props) {
        try {
          let fetchItemsResponse = await fetch(`/api/users/${props.user._id}`) 
          let userResult = await fetchItemsResponse.json();
-        //  console.log("backend", userResult)
-        //  console.log("post", userResult.post)
+
          setUserInformation(userResult)
          setPostState(userResult.post)
          
@@ -40,7 +39,6 @@ export default function Profile(props) {
             <UserInfo updatedAccount={props.updatedAccount} setUpdatedAccount={props.setUpdatedAccount} userInformation={userInformation} setUserInformation={setUserInformation}/>
         </Container>
         <Container>
-            <h2 style={{color: "white"}} className="ml-5 mb-1">Posts</h2>
             <UserPetList updateDelete={updateDelete} setUpdateDelete={setUpdateDelete} user={props.user} profile={props.profile} posts={postState}/>
         </Container>
         </div>

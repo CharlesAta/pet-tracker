@@ -32,7 +32,6 @@ export default function ReportPet(props) {
     species: "Others",
     postalCode: "",
     email: props.user.email,
-    // breed: "",
     phoneNumber: props.user.phoneNumber,
     location: "",
     lat: "",
@@ -42,7 +41,6 @@ export default function ReportPet(props) {
     date: new Date().toLocaleDateString,
     photo: "https://i.imgur.com/e05qeJD.jpg",
     radius: [500],
-    // sex: "Unknown",
     circumstance: "Sighting (still roaming)",
   });
 
@@ -71,11 +69,6 @@ export default function ReportPet(props) {
   const changeStatus = (k) => {
     props.setPetStatus(k)
   }
-  
-  // const handleSubmitClick=() =>{
-  //  setSubmit(true)
-    
-
 
   const handleChange = async (evt) => {
     if (evt.target.name === "imageUpload") {
@@ -97,7 +90,6 @@ export default function ReportPet(props) {
       formData.append("file", file);
       await axios.post("/api/posts/image", formData).then((res) => {
         setPetState({ ...petState, photo: res.data.link });
-        console.log(petState);
       });
     } catch (err) {
       console.log(err.message);
@@ -123,7 +115,6 @@ export default function ReportPet(props) {
       });
 
       let serverResponse = await fetchResponse.json();
-      console.log("Success:", serverResponse);
 
       props.setThankYouPost({id: serverResponse._id, status:serverResponse.status})
       props.history.push('/thankyouforsubmission') 
@@ -132,7 +123,6 @@ export default function ReportPet(props) {
         species: "Others",
         postalCode: "",
         email: props.user.email,
-        // breed: "",
         phoneNumber: props.user.phoneNumber,
         location: "",
         lat: "",
@@ -142,7 +132,6 @@ export default function ReportPet(props) {
         date: new Date().toLocaleDateString,
         photo: "https://i.imgur.com/e05qeJD.jpg",
         radius: [500],
-        // sex: "Unknown",
         circumstance: "Sighting (still roaming)",
       });
 
@@ -221,24 +210,3 @@ export default function ReportPet(props) {
     </>
   );
 }
-
-
-      {/* <Tabs
-  activeKey={props.showLogin}
-  onSelect={(k) => props.setShowLogin(k)}
-  className="mb-3 mt-5"
->
-  <Tab style={{ minHeight: "100vh" }} eventKey="LOG IN" title="Log in">
-    <LoginForm
-      showLogin={props.showLogin}
-      setShowLogin={props.setShowLogin}
-      setUser={props.setUser}
-    />
-  </Tab>
-  <Tab style={{ minHeight: "100vh" }} eventKey="SIGN UP" title="Sign Up">
-    <SignUpForm
-      setShowLogin={props.setShowLogin}
-      setUser={props.setUser}
-    />
-  </Tab>
-</Tabs> */}

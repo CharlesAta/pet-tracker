@@ -41,7 +41,6 @@ export default function PlacesAutocomplete(props) {
           try {
             let zipCode = await getZipCode(results[0])
             let {lat, lng} = await getLatLng(results[0])           
-            console.log("ZIP Code: ", zipCode);
             if(!zipCode) {
               zipCode = props.user.postalCode
             }

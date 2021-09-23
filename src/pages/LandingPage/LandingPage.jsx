@@ -28,8 +28,6 @@ export default function LandingPage(props) {
      }
 
     }, [setLatestPost])
-  
-  
 
   return (
     <div

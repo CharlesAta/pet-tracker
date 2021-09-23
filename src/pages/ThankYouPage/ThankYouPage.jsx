@@ -1,6 +1,7 @@
 import "./ThankYouPage.css";
 import React from 'react'
 import NavBar from "../../components/NavBar/NavBar";
+import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Button, Row, Col, Container} from "react-bootstrap";
@@ -23,7 +24,7 @@ export default function ThankYouPage(props) {
             <Row>
             <Row>
                <Col xs={2}>
-               <FontAwesomeIcon icon={faCheckCircle} style={{color: "#11AA66", fontSize: "7rem"}}/>
+               <FontAwesomeIcon icon={faCheckCircle} style={{color: "#11AA66", fontSize: "8rem"}}/>
                </Col>
                <Col xs={9}>
                 {props.thankYouPost.status === "found" ? 
@@ -31,25 +32,37 @@ export default function ThankYouPage(props) {
                 <h2>Thank you for your submission!</h2>
                 <hr/>
                 <p className="subheader-content">We appreciate your help, and your report is a lifesaver for owners who have lost a family member.</p>
-                <p className="post-id-content">POST ID {props.thankYouPost.id}</p>
+                <p className="post-id-content">          
+                    <Link className="link-style" to={{pathname: '/details/' + props.thankYouPost.id}}>
+                    POST ID: {props.thankYouPost.id}
+                    </Link>
+                </p>
                 </>
                 :
                 <>
                 <h2>Losing your pet can be terrifying, but we’re right here with you!</h2>
                 <hr/>
                 <p className="subheader-content">We at Paway and those in your areas are here to help! We hope you and your pet can be reunited soon!</p>
-                <p className="post-id-content">POST ID: {props.thankYouPost.id}</p>
+                <p className="post-id-content">
+                    <Link className="link-style" to={{pathname: '/details/' + props.thankYouPost.id}}>
+                    POST ID: {props.thankYouPost.id}
+                    </Link>
+                </p>
                 </>
                 }
                </Col>
-
                <Col xs={1} className="closing-icon"  >
+               <Link className="link-style" to={{pathname: '/details/' + props.thankYouPost.id}}>
                     <FontAwesomeIcon icon={faTimes} />
+                </Link>
                </Col> 
             </Row>
         </Row>
         </div>        
         </div>
+
+
+
 
        <div className="text-submission">
         Go Above and Beyond!
@@ -73,7 +86,9 @@ export default function ThankYouPage(props) {
             <div className="thankyou-content">
                 <div className="sub-container-text">Search Paway's Databse</div>
                 <div class="search-reports-button">
+                <Link to="/postings" >
                 <Button>Search Reports</Button>
+                </Link>
                 </div>
             </div>
             </figure>
@@ -85,7 +100,7 @@ export default function ThankYouPage(props) {
             </div>
                 <div className="sub-container-text">Share Your Post</div>
                 <div className="share-container">
-                <p style={{fontSize: "1.2rem"}}>Share to</p>
+                <span style={{fontSize: "1.2rem"}}>Share to</span>
                 <i className="fab fa-facebook-f"></i>
                 <i className="fab fa-instagram"></i>
                 <i className="fab fa-twitter"></i>

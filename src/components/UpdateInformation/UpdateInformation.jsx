@@ -19,7 +19,7 @@ export default function UpdateInformation(props) {
 
     const handleSubmit = async(evt) => {
         evt.preventDefault()
-        console.log("userInfo", userInfo)
+
             try {
             let jwt = localStorage.getItem("token");
             const fetchResponse = await fetch(`/api/users/${props.user._id}/update`, {

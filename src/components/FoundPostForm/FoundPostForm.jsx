@@ -21,12 +21,6 @@ export default class FoundPostForm extends Component {
     });
   }
 
-  // handleClick=() =>{
-  //     this.props.setSubmit(true)
-  //     this.props.history.push('/thankyouforsubmission') 
-  //     console.log(history)
-  // }
-
   render() {
     return (
       <>

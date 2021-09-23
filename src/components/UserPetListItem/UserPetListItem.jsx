@@ -30,8 +30,6 @@ export default function PetListItem(props) {
         }
     }
 
-    showDate()
-
     return (
         <>
         <MDBContainer>

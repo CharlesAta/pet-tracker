@@ -12,11 +12,6 @@ export default function NavBar(props) {
         <Search />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          {/* {props.user ? (
-            <Navbar.Brand className="navbar-center" as={NavLink} to="/postings">
-              <b>PAWAY</b>
-            </Navbar.Brand>
-          ) : ( */}
           <Nav.Link
             className="navbar-center"
             onClick={() => {
@@ -25,7 +20,6 @@ export default function NavBar(props) {
           >
             <b>PAWAY</b>
           </Nav.Link>
-          {/* )} */}
           <Nav className="ml-auto bar">
             <Nav.Link as={NavLink} to="/postings">
               Search
@@ -38,9 +32,6 @@ export default function NavBar(props) {
                 <Nav.Link as={NavLink} to="/profile">
                   {props.user ? `Hi, ${props.user.name.split(" ")[0]}!` : "Hi, User!"}
                 </Nav.Link>
-            <Nav.Link as={NavLink} to="/thankyouforsubmission">
-              Thank You
-            </Nav.Link>
 
             <LogOut user={props.user} setUser={props.setUser} />
               </>

@@ -58,22 +58,6 @@ export default class LostPostForm extends Component {
                   </div>
                 </div>
 
-                {/* <Form.Group>
-                  <Form.Label>
-                    <span style={{ color: "red" }}>*</span>Select Circumstance
-                  </Form.Label>
-                  <select
-                    name="circumstance"
-                    onChange={this.props.handleChange}
-                    className="select form-select mt-2 mr-2"
-                  >
-                    <option selected>Select Circumstance</option>
-                    {this.props.circumstanceOptions.map((s) => (
-                      <option value={s}>{s}</option>
-                    ))}
-                  </select>
-                </Form.Group> */}
-
                 <Row>
                   <Col>
                     <Form.Group>
@@ -373,32 +357,6 @@ export default class LostPostForm extends Component {
             </Form>
           </div>
         </div>
-
-        {/* <Row>
-          <Col>
-          <Form.Group style={{display: "flex", alignItems: "center"}}>
-              <select name="sex" onChange={this.props.handleChange} className="mt-2 mr-2 select form-select">
-              <option selected>Pet's Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Unknown">Unknown</option>
-            </select>
-            </Form.Group>
-          </Col>
-          <Col>
-          <Form.Group style={{display: "flex", alignItems: "center"}}>
-              <Form.Control 
-              name="breed"
-              type="text"
-              placeholder="Breed"
-              value={this.props.petState.breed}
-              onChange={this.props.handleChange} 
-              className="mt-2 mr-2"
-              />
-              <FontAwesomeIcon size="lg" className="fa-blank" icon={faExclamationCircle} />
-          </Form.Group>              
-          </Col>
-        </Row>  */}
       </>
     );
   }

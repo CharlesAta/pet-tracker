@@ -9,6 +9,7 @@ router.post('/image', postsCtrl.createImage);
 router.get('/', postsCtrl.postsIndex);
 router.get('/latest', postsCtrl.postLatest);
 router.delete('/:userid/:postid', postsCtrl.deletePost)
+router.get('/search', postsCtrl.searchPost);
 router.get('/:id', postsCtrl.postShow);
 
 module.exports = router;

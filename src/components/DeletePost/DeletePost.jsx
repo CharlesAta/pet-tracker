@@ -4,8 +4,6 @@ import { Modal, Button } from 'react-bootstrap';
 export default function DeletePost(props) {
 
     const handleSubmit = async (evt) => {
-        console.log("post", props.post)
-        console.log("user", props.user)
         evt.preventDefault();
         try {
           let jwt = localStorage.getItem("token");
@@ -17,15 +15,13 @@ export default function DeletePost(props) {
             },
           });
           props.setUpdateDelete(true)
-    
+          props.closeModal()
           let serverResponse = await fetchResponse.json();
-          console.log("Success:", serverResponse);
+
         } catch (err) {
             console.log(err.message)
         }
     }
-
-
 
     return (
         <div>
