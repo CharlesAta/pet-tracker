@@ -28,10 +28,15 @@ export default function PetPosting(props) {
         setPage(e.target.textContent)
       }
 
+  function searchExecute() {
+    props.history.push('/searchresults') 
+  }
+  
+
     return (
       <>
-        <div className="posting">
-        <NavBar user={props.user} setUser={props.setUser}/>
+        <div className="posting" style={{ minHeight: "100vh" }}>
+        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
         <Container>
           <Row >
               <Col className="d-flex justify-content-center">

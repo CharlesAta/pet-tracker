@@ -31,10 +31,14 @@ export default function Details(props) {
       }
       }, [])
 
+  function searchExecute() {
+    props.history.push('/searchresults') 
+  }
+
     return (
         <>
         <div className="details"  style={{ minHeight: "100vh" }}>
-          <NavBar user={props.user} setUser={props.setUser}/>
+          <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
           <div class="detail-center mt-5">
           <div class="detail-container">
             <div style={{paddingLeft: "15%", paddingRight: "15%"}}>

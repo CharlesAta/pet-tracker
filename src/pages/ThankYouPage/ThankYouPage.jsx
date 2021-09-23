@@ -13,12 +13,15 @@ import { ReactComponent as SearchwithCloud } from "../../assets/SearchwithCloud.
 
 export default function ThankYouPage(props) {
 
-    console.log(props.thankYouPost)
     
+    function searchExecute() {
+        props.history.push('/searchresults') 
+      }
+
     return (
         <>
         <div className="thankyou-page" style={{ minHeight: "100vh"}}>
-        <NavBar user={props.user} setUser={props.setUser}/>
+        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
         <div className="center-thankyou mt-5">
         <div className="thankyou-container">
             <Row>

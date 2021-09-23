@@ -146,10 +146,14 @@ export default function ReportPet(props) {
     }
   };
 
+  function searchExecute() {
+    props.history.push('/searchresults') 
+  }
+
   return (
     <>
       <div className="report"  style={{ minHeight: "100vh" }}>
-        <NavBar user={props.user} setUser={props.setUser} />
+        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser} />
         <div className="post">
         <Tabs activeKey={props.petStatus}
               onSelect={changeStatus}
@@ -204,8 +208,8 @@ export default function ReportPet(props) {
           </Tabs>
         </div>
       </div>
-      <footer>
-        {" "}
+      <footer className="mb-5">
+      {" "}
       </footer>
     </>
   );

@@ -17,6 +17,8 @@ export default function LandingPage(props) {
     location: ""
   })
 
+  // const [searchMade, setSearchMade] = useState(false);
+
   useEffect(async() => {
 
      try {
@@ -29,6 +31,10 @@ export default function LandingPage(props) {
 
     }, [setLatestPost])
 
+    function searchExecute() {
+      props.history.push('/searchresults') 
+    }
+
   return (
     <div
       className="landing"
@@ -39,7 +45,7 @@ export default function LandingPage(props) {
           : { minHeight: "96vh", maxWidth: "100%"}
       }
     >
-      <NavBar user={props.user} setUser={props.setUser} />
+      <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} user={props.user} setUser={props.setUser} />
       {props.user ? 
       <div className="d-flex margin-top">
         <Link to="/reportpet" onClick={()=> props.setPetStatus("lost")} >

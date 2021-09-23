@@ -5,20 +5,20 @@ import { MDBCol } from "mdbreact";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-export default function Search() {
-  const [searchResult, setSearchResult] = useState()
-
+export default function Search(props) {
+  const [searchQuery, setSearchQuery] = useState()
+  
 
   function handleChange(e) {
     console.log(e.target.value)
-    setSearchResult(e.target.value)
+    setSearchQuery(e.target.value)
   }
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
       let jwt = localStorage.getItem("token");
-      let fetchResponse = await fetch(`/api/posts/search?s=${searchResult}`, {
+      let fetchResponse = await fetch(`/api/posts/search?s=${searchQuery}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,9 @@ export default function Search() {
       });
 
       let serverResponse = await fetchResponse.json();
-
+      props.setSearchResults(serverResponse)
+      props.searchExecute()
+      // props.history.push('/searchresults') 
     } catch (err) {
       console.log(err)
     }
@@ -57,7 +59,7 @@ export default function Search() {
                 name="search"
                 placeholder= "Search..."
                 id="search"
-                value={searchResult}
+                value={searchQuery}
                 onChange={handleChange}
                 required
               />

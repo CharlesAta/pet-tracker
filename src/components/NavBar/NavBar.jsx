@@ -9,7 +9,7 @@ export default function NavBar(props) {
   return (
     <Navbar collapseOnSelect expand="lg" className="pt-3" variant="dark">
       <Container>
-        <Search />
+        <Search searchExecute={props.searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav.Link

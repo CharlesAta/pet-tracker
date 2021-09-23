@@ -8,6 +8,10 @@ import { ReactComponent as AuthSvg } from "../../assets/Auth.svg";
 
 export default function AuthPage(props) {
 
+  function searchExecute() {
+    props.history.push('/searchresults') 
+  }
+
   return (
     <div className="auth-page" id="auth" >
       <h6 style={{ textAlign: "center", color: "white" }} className="pt-2">
@@ -17,7 +21,7 @@ export default function AuthPage(props) {
           What is PAWAY?
           </span>
       </h6>
-      <NavBar />
+      <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults} />
       <Container stye={{ minHeight: "100vh" }}>
         <Row className="margin-container">
           <Col className="auth-pic">

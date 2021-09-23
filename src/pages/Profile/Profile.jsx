@@ -31,10 +31,14 @@ export default function Profile(props) {
       }, [setUserInformation, props.updatedAccount, updateDelete])
 
 
+    function searchExecute() {
+      props.history.push('/searchresults') 
+    }
+
     return (
         <>
         <div className="profile" style={{ minHeight: "100vh" }}>
-        <NavBar user={props.user} setUser={props.setUser}/>
+        <NavBar searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
         <Container>
             <UserInfo updatedAccount={props.updatedAccount} setUpdatedAccount={props.setUpdatedAccount} userInformation={userInformation} setUserInformation={setUserInformation}/>
         </Container>
