@@ -11,6 +11,7 @@ import "bs-stepper/dist/css/bs-stepper.min.css";
 import Stepper from "bs-stepper";
 import PetImage from "../PetImage/PetImage";
 import UploadImage from "../UploadImage/UploadImage";
+import { Link } from "react-router-dom";
 
 export default class FoundPostForm extends Component {
   componentDidMount() {
@@ -19,6 +20,13 @@ export default class FoundPostForm extends Component {
       animation: true,
     });
   }
+
+  // handleClick=() =>{
+  //     this.props.setSubmit(true)
+  //     this.props.history.push('/thankyouforsubmission') 
+  //     console.log(history)
+  // }
+
   render() {
     return (
       <>
@@ -29,33 +37,33 @@ export default class FoundPostForm extends Component {
           </span>
           {this.props.petState.status === "lost" ? "My" : "a"} Pet
         </h1>
-        <div id="stepper1" class="bs-stepper">
-          <div class="bs-stepper-header">
-            <div class="step" data-target="#test-l-1">
-              <button class="step-trigger">
-                <span class="bs-stepper-circle">1</span>
-                <span class="bs-stepper-label">Basic Info</span>
+        <div id="stepper1" className="bs-stepper">
+          <div className="bs-stepper-header">
+            <div className="step" data-target="#test-l-1">
+              <button className="step-trigger">
+                <span className="bs-stepper-circle">1</span>
+                <span className="bs-stepper-label">Basic Info</span>
               </button>
             </div>
-            <div class="line"></div>
-            <div class="step" data-target="#test-l-2">
-              <button class="step-trigger">
-                <span class="bs-stepper-circle">2</span>
-                <span class="bs-stepper-label">Contact</span>
+            <div className="line"></div>
+            <div className="step" data-target="#test-l-2">
+              <button className="step-trigger">
+                <span className="bs-stepper-circle">2</span>
+                <span className="bs-stepper-label">Contact</span>
               </button>
             </div>
-            <div class="line"></div>
-            <div class="step" data-target="#test-l-3">
-              <button class="step-trigger">
-                <span class="bs-stepper-circle">3</span>
-                <span class="bs-stepper-label">Overview</span>
+            <div className="line"></div>
+            <div className="step" data-target="#test-l-3">
+              <button className="step-trigger">
+                <span className="bs-stepper-circle">3</span>
+                <span className="bs-stepper-label">Overview</span>
               </button>
             </div>
           </div>
-          <div class="bs-stepper-content">
+          <div className="bs-stepper-content">
             <Form onSubmit={this.props.handleSubmit}>
-              <div id="test-l-1" class="content">
-                <div class="form-group">
+              <div id="test-l-1" className="content">
+                <div className="form-group">
                   <div className="d-flex flex-row">
                     <PetImage photo={this.props.petState.photo} />
                     <UploadImage handleChange={this.props.handleChange} />
@@ -364,7 +372,7 @@ export default class FoundPostForm extends Component {
                 </Form.Group>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <Button
-                    onClick={this.props.setSubmit(true)}
+                    onClick={()=>this.props.setSubmit(true)}
                     className="mt-3 btn btn-primary btn-block mt-3 mb-3"
                     variant="primary"
                     type="submit"

@@ -136,7 +136,8 @@ async function createPost(req, res){
             postalCode: req.body.formData.userInfo.postalCode,
         })
          console.log("user", user)
-         res.status(200).json('ok')
+         
+         res.status(200).json(created)
          let type = created.photo.match(/\.[0-9a-z]+$/i)[0]
             readHTMLFile(__dirname + '/../views/main.html', function(err, html) {
                 let template = handlebars.compile(html)
@@ -153,7 +154,7 @@ async function createPost(req, res){
                 let htmlToSend = template(replacements)
                 let mailOptions = {
                 from: process.env.EMAIL_ADDRESS,
-                to: 'lynnyangnc@gmail.com',
+                to: user.email,
                 subject: 'EMERGENCY - PET LOST',
                 html: htmlToSend,
                 attachments:[

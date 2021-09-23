@@ -23,6 +23,11 @@ export default function App() {
     status: "",
   });
 
+  const [thankYouPost, setThankYouPost] = useState({
+    id: "",
+    status: ""
+  })
+
   const [petStatus, setPetStatus] = useState("lost")
 
   const [showLogin, setShowLogin] = useState("LOG IN");
@@ -39,8 +44,8 @@ export default function App() {
       // console.log("App.js user", user);
       // console.log("App.js userDoc", userDoc);
     }
-    
-  }, []);
+    console.log("APP", thankYouPost)
+  }, [thankYouPost]);
 
 
   return (
@@ -71,7 +76,7 @@ export default function App() {
           <Route
             path="/reportpet"
             render={(props) => (
-              <ReportPet petStatus={petStatus} setPetStatus={setPetStatus} {...props} user={user} setUser={setUser} />
+              <ReportPet thankYouPost={thankYouPost} setThankYouPost={setThankYouPost} petStatus={petStatus} setPetStatus={setPetStatus} {...props} user={user} setUser={setUser} />
             )}
           />
           <Route
@@ -96,7 +101,7 @@ export default function App() {
           <Route
             path="/thankyouforsubmission"
             render={(props) => (
-              <ThankYouPage {...props} user={user} setUser={setUser}/>
+              <ThankYouPage {...props} thankYouPost={thankYouPost} user={user} setUser={setUser}/>
             )}
           />
 

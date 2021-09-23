@@ -58,7 +58,7 @@ export default class LostPostForm extends Component {
                   </div>
                 </div>
 
-                <Form.Group>
+                {/* <Form.Group>
                   <Form.Label>
                     <span style={{ color: "red" }}>*</span>Select Circumstance
                   </Form.Label>
@@ -72,7 +72,8 @@ export default class LostPostForm extends Component {
                       <option value={s}>{s}</option>
                     ))}
                   </select>
-                </Form.Group>
+                </Form.Group> */}
+
                 <Row>
                   <Col>
                     <Form.Group>
@@ -212,11 +213,8 @@ export default class LostPostForm extends Component {
                     <span style={{ color: "red" }}>*</span>Email Address
                   </Form.Label>
                   <Form.Control
-                    // name="email"
-                    // type="email"
                     placeholder="findmypet@gmail.com"
                     value={this.props.userInfo.email}
-                    // onChange={this.props.handleUserChange}
                     className="mt-2 mr-2"
                     disabled
                   />
@@ -332,13 +330,6 @@ export default class LostPostForm extends Component {
                     value={`${this.props.petState.radius} meters`}
                   />
                 </Form.Group>
-
-                {/* <div className="d-flex justify-content-center mt-4">
-        <Form.Control
-          disabled
-          value={`${this.props.petState.radius} meters`} 
-          />
-        </div> */}
 
                 <div className="d-flex justify-content-center mt-4">
                   <Map

@@ -9,14 +9,6 @@ export default function UserInfo(props) {
         setShowModal(false)
     }
     
-    // useEffect(async() => {
-    //     try {
-
-    //     } catch (err) {
-    //     }
-    //    }, [props.userInformation])
-
-    console.log("profile page - hello", props.userInformation)
     return (
         <div className="center-account">
         <div className="user-container mt-5 mb-5">

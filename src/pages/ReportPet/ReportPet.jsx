@@ -47,7 +47,6 @@ export default function ReportPet(props) {
   });
 
 
-
   const [userInfo, setUserInfo] = useState({
     name: props.user.name || "",
     phoneNumber: props.user.phoneNumber || "",
@@ -67,12 +66,16 @@ export default function ReportPet(props) {
     }
     setPetState({...petState, status: props.petStatus})
     
-  }, [submit, props.petStatus]);
+  }, [submit, props.petStatus, props.setThankYouPost]);
 
   const changeStatus = (k) => {
     props.setPetStatus(k)
   }
   
+  // const handleSubmitClick=() =>{
+  //  setSubmit(true)
+    
+
 
   const handleChange = async (evt) => {
     if (evt.target.name === "imageUpload") {
@@ -122,6 +125,8 @@ export default function ReportPet(props) {
       let serverResponse = await fetchResponse.json();
       console.log("Success:", serverResponse);
 
+      props.setThankYouPost({id: serverResponse._id, status:serverResponse.status})
+      props.history.push('/thankyouforsubmission') 
       setPetState({
         name: "",
         species: "Others",
@@ -179,6 +184,7 @@ export default function ReportPet(props) {
                 setPetState={setPetState}
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
+
               />
             </Container>
           </div>
@@ -215,6 +221,7 @@ export default function ReportPet(props) {
     </>
   );
 }
+
 
       {/* <Tabs
   activeKey={props.showLogin}

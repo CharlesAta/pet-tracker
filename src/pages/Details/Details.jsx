@@ -7,8 +7,6 @@ export default function Details(props) {
   
     const [petState, setPetState] = useState([])
 
-
-
     useEffect(async() => {
         try {
           let fetchItemsResponse = await fetch(`/api/posts/${props.match.params.id}`) 

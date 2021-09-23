@@ -11,23 +11,39 @@ import { ReactComponent as SearchwithCloud } from "../../assets/SearchwithCloud.
 
 
 export default function ThankYouPage(props) {
+
+    console.log(props.thankYouPost)
+    
     return (
         <>
-        <div className="thankyou-page" stye={{ minHeight: "100vh" }}>
+        <div className="thankyou-page" style={{ minHeight: "100vh"}}>
         <NavBar user={props.user} setUser={props.setUser}/>
         <div className="center-thankyou mt-5">
         <div className="thankyou-container">
             <Row>
             <Row>
                <Col xs={2}>
-               <FontAwesomeIcon icon={faCheckCircle} style={{color: "#11AA66", fontSize: "5rem"}}/>
+               <FontAwesomeIcon icon={faCheckCircle} style={{color: "#11AA66", fontSize: "7rem"}}/>
                </Col>
                <Col xs={9}>
-                <h3>Thank you for your submission!</h3>
-                <p>We appreciate your help, and your report is a lifesaver for owners who have lost a family member.</p>
-                <p>POST ID</p>
+                {props.thankYouPost.status === "found" ? 
+                   <>
+                <h2>Thank you for your submission!</h2>
+                <hr/>
+                <p className="subheader-content">We appreciate your help, and your report is a lifesaver for owners who have lost a family member.</p>
+                <p className="post-id-content">POST ID {props.thankYouPost.id}</p>
+                </>
+                :
+                <>
+                <h2>Losing your pet can be terrifying, but we’re right here with you!</h2>
+                <hr/>
+                <p className="subheader-content">We at Paway and those in your areas are here to help! We hope you and your pet can be reunited soon!</p>
+                <p className="post-id-content">POST ID: {props.thankYouPost.id}</p>
+                </>
+                }
                </Col>
-               <Col xs={1}>
+
+               <Col xs={1} className="closing-icon"  >
                     <FontAwesomeIcon icon={faTimes} />
                </Col> 
             </Row>
@@ -35,34 +51,48 @@ export default function ThankYouPage(props) {
         </div>        
         </div>
 
-       <div>
+       <div className="text-submission">
         Go Above and Beyond!
       </div>
 
         <div className="thankyou-sub-containers">
 
             <Col xs={4} className="thankyou-sub-container">
-            <figure class="snip1192">
-            <div class="author">
-                <BellWithClouds className="img-fluid image-thing" />
+            <figure className="snip1192">
+            <div className="author">
+                <BellWithClouds className="img-fluid image-thing mt-5" />
             </div>
-            <div>Calvin: Sometimes when I'm talking with others, my words can't keep up with my thoughts. I wonder why we think faster than we speak. Hobbes: Probably so we can think twice. </div>
+            <div className="sub-container-text">Check Your Email</div>
             </figure>
             </Col>
             <Col xs={4} className="thankyou-sub-container" >
-                <div>
-                    <SearchwithCloud className="img-fluid" />
+            <figure className="snip1192">
+            <div className="author">
+                <SearchwithCloud className="img-fluid image-thing mt-5" />
+            </div>
+            <div className="thankyou-content">
+                <div className="sub-container-text">Search Paway's Databse</div>
+                <div class="search-reports-button">
+                <Button>Search Reports</Button>
                 </div>
-                lalalala
+            </div>
+            </figure>
             </Col>
             <Col xs={4} className="thankyou-sub-container">
-                <div>
-                    <PaperairplanewithCloud className="img-fluid" />
+            <figure className="snip1192">
+            <div className="author">
+                <PaperairplanewithCloud className="img-fluid image-thing mt-5" />
+            </div>
+                <div className="sub-container-text">Share Your Post</div>
+                <div className="share-container">
+                <p style={{fontSize: "1.2rem"}}>Share to</p>
+                <i className="fab fa-facebook-f"></i>
+                <i className="fab fa-instagram"></i>
+                <i className="fab fa-twitter"></i>
+
                 </div>
-                lalalal
+            </figure>
             </Col>
-
-
         </div>
         </div>
         </>
