@@ -113,9 +113,20 @@
 .detailButtons {
   display: flex;
   flex-direction: row;
+  padding-right: 40px !important;
+  padding-left: 0px !important
 }
 
 .post-id {
   display: flex;
   justify-content: flex-end;
+}
+
+.right-padding {
+  padding-right: 40px !important;
+  
+}
+
+.left-padding {
+  padding-left:40px !important
 }

@@ -3,20 +3,33 @@ import NavBar from '../../components/NavBar/NavBar'
 import "./Details.css";
 import DetailsMap from '../../components/DetailsMap/DetailsMap.jsx';
 import { Badge, Row, Col, Container, Button, Modal } from "react-bootstrap";
+import Email from '../../components/Email/Email';
+import PhoneNumber from '../../components/PhoneNumber/PhoneNumber';
+
 export default function Details(props) {
   
-    const [petState, setPetState] = useState([])
+  const [showModal, setShowModal] = useState(false)
+  function closeModal(){
+      setShowEmailModal(false)
+      setShowPhoneModal(false)
+  }
 
-    useEffect(async() => {
-        try {
-          let fetchItemsResponse = await fetch(`/api/posts/${props.match.params.id}`) 
-          let details = await fetchItemsResponse.json(); 
-          setPetState(details)
-          console.log("pet:", petState)
-        } catch (err) {
-          console.error('ERROR:', err) 
-        }
-       }, [])
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+
+
+  const [petState, setPetState] = useState([])
+
+  useEffect(async() => {
+      try {
+        let fetchItemsResponse = await fetch(`/api/posts/${props.match.params.id}`) 
+        let details = await fetchItemsResponse.json(); 
+        setPetState(details)
+        console.log("pet:", petState)
+      } catch (err) {
+        console.error('ERROR:', err) 
+      }
+      }, [])
 
     return (
         <>
@@ -41,7 +54,7 @@ export default function Details(props) {
             <Col></Col>
           </Row>
           <Row>
-            <Col xs={6} class="">
+            <Col xs={6} className="right-padding">
             <Row>
               <Col> 
               <div className="detailLabels">
@@ -82,7 +95,7 @@ export default function Details(props) {
               <DetailsMap location={petState.location} lat={petState.lat} lng={petState.lng} radius={petState.radius}/>
             </Row>
             </Col>
-            <Col xs={6} className="mt-5">
+            <Col xs={6} className="mt-5 left-padding">
               
               {petState.description ? 
               <>
@@ -102,15 +115,15 @@ export default function Details(props) {
           </Row>
           <Row>
             <Col className="detailButtons">
-            <Col>
+            <Col >
               <Button className="btn-block mt-5 mb-5" variant="primary">Share</Button>
             </Col>
             <Col>
-              <Button className="btn-block mt-5 mb-5" variant="primary">View Phone</Button>
+              <Button className="btn-block mt-5 mb-5" onClick={() => setShowPhoneModal(true)} variant="primary">View Phone</Button>
             </Col>
             </Col>
-            <Col>
-            <Button className="btn-block mt-5 mb-5" variant="primary">{petState.status === "lost"? "Contact Owner": "Contact Finder"}</Button>
+            <Col className="left-padding">
+            <Button className="btn-block mt-5 mb-5" onClick={() => setShowEmailModal(true)} variant="primary">{petState.status === "lost"? "Contact Owner": "Contact Finder"}</Button>
             </Col>
           </Row>
           </Container>
@@ -118,6 +131,12 @@ export default function Details(props) {
           </div>
           </div>
         </div>
+        <Modal show={showEmailModal} onHide={closeModal}>
+            <Email petState={petState} closeModal={closeModal}/>
+        </Modal>
+        <Modal show={showPhoneModal} onHide={closeModal}>
+            <PhoneNumber petState={petState} closeModal={closeModal}/>
+        </Modal>
         </>
     )
 }

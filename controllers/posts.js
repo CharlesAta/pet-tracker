@@ -43,7 +43,7 @@ async function searchPost(req, res) {
 }
 
 async function deletePost(req, res) {
-    console.log(req.params)
+
     try {
         let post = await PostModel.findById(req.params.postid);
         let user = await UserModel.findById(req.params.userid);
@@ -87,7 +87,7 @@ async function postsIndex(req, res) {
 
 async function postShow(req, res) {
     try {
-        let post = await PostModel.findById(req.params.id).populate("user").exec()
+        let post = await PostModel.findById(req.params.id).exec()
         console.log(post)
         res.status(200).json(post)
     }catch(err){

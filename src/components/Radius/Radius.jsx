@@ -16,8 +16,9 @@ export default class Radius extends React.Component {
             {...props}
             style={{
               ...props.style,
-              height: '6px',
+              height: '15px',
               width: '100%',
+              borderRadius:"8px",
               backgroundColor: '#fff'
             }}
           >
