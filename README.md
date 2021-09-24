@@ -35,7 +35,7 @@ A hub to search for your lost loved one, and also to post a found one - Paway is
 
 ## :cat2: Getting Started 
 
-### [PAWAY](paway.herokuapp.com/)
+### [PAWAY](https://paway.herokuapp.com/)
 
 ## :llama: Future Enhancements
 
