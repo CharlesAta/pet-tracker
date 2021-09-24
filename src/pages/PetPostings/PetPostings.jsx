@@ -53,7 +53,6 @@ export default function PetPosting(props) {
     useEffect(() => {
         if (date) {
           const filtered = allPosts.filter(post => {
-          console.log("post.date", post.date)
             if (post.date) {
               return new Date(post.date).toISOString().split('T')[0] == date
             } else {
@@ -99,7 +98,6 @@ export default function PetPosting(props) {
     }
 
     function handleDateChange (e) {
-      console.log(e.target.value)
       setDate(new Date(e.target.value).toISOString().split('T')[0])
       setFilterOn(true)
       setNewPostSearch(true)
@@ -144,10 +142,6 @@ export default function PetPosting(props) {
           <Col className="d-flex justify-content-center mt-2">
           <LocationFilter locationSearch={locationSearch} handleLocationChange={handleLocationChange}/>
           <Button className="search-reset" onClick={()=> handleReset()}>Reset Filter</Button>
-
-          {/* <Col xs={9}><LocationFilter locationSearch={locationSearch} handleLocationChange={handleLocationChange}/></Col>
-          <Col xs={2}><Button onClick={()=> handleReset()}>Reset Filter</Button></Col>
-          <Col xs={1}></Col> */}
           </Col>
         </Row>
         </Container>

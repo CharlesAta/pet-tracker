@@ -25,7 +25,6 @@ export default function Details(props) {
         let fetchItemsResponse = await fetch(`/api/posts/${props.match.params.id}`) 
         let details = await fetchItemsResponse.json(); 
         setPetState(details)
-        console.log("pet:", petState)
       } catch (err) {
         console.error('ERROR:', err) 
       }

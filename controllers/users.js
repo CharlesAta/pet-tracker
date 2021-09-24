@@ -39,17 +39,15 @@ async function update(req, res) {
 
 
 async function create(req, res) {
+  const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS);
   try {
-    
-    const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS);
     
     const user = await UserModel.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
-      phoneNumber: req.body.phoneNumber,
-      postalCode: req.body.postalCode,
     });
+
     const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
     res.status(200).json(token);
   } catch (err) {
