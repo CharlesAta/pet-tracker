@@ -24,18 +24,27 @@ app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
 app.use('/api/posts', require('./routes/api/posts'))
 
-//THIS IS THE ERROR FUNCTION MIDDLEWARE
 app.use(function (err, req, res, next) {
-  //This will catch all errors that are passed to next from our middleware
   res.status(500).json(err);
 });
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// app.get('/*', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//   });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
+}
 
 const port = process.env.PORT || 3001;
 
 app.listen(port, function() {
   console.log(`Express app running on port ${port}`)
 });
+
+
+
