@@ -20,6 +20,7 @@ A hub to search for your lost loved one, and also to post a found one - Paway is
 
 - HTML
 - CSS
+- Bootstrap
 - Material UI
 - JavaScript
 - React
@@ -27,7 +28,7 @@ A hub to search for your lost loved one, and also to post a found one - Paway is
 - Express
 - MongoDB
 - Imgur API
-- Google MAps API
+- Google Maps API
 - React Share API
 - Nodemailer
 - Heroku
