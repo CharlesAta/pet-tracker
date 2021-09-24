@@ -13,7 +13,7 @@ module.exports = {
 
 async function show(req, res) {
   try {
-      let user = await UserModel.findById(req.params.userid).populate("post").exec()
+      let user = await UserModel.findById(req.params.userid).populate({path: "post", options: { sort: { 'createdAt': -1 } }} ).exec()
       res.status(200).json(user)
   }catch(err){
       res.status(400).json(error)

@@ -185,7 +185,7 @@ export default class FoundPostForm extends Component {
                     <span style={{ color: "red" }}>*</span>Contact Name
                   </Form.Label>
                   <Form.Control
-                    name="contact"
+                    name="name"
                     type="text"
                     placeholder="Ms. xx"
                     value={this.props.userInfo.name}

@@ -19,10 +19,6 @@ module.exports = {
     allPosts
 }
 
-// function escapeRegex(text) {
-//     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/gi, "");
-// };
-
 async function allPosts(req, res) {
     try {
     const allPosts = await PostModel.find().sort([['createdAt', -1]]).exec()
