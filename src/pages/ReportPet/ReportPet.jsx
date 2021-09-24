@@ -85,8 +85,10 @@ export default function ReportPet(props) {
 
   const handleUserChange = (evt) => {
     setUserInfo({ ...userInfo, [evt.target.name]: evt.target.value });
-    setPetState({ ...petState, [evt.target.name]: evt.target.value });
-  };
+    if (evt.target.name != "name") {
+      setPetState({ ...petState, [evt.target.name]: evt.target.value });
+    }
+    };
 
   const handleSubmitImage = async (file) => {
     try {

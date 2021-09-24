@@ -168,7 +168,7 @@ export default class LostPostForm extends Component {
                     <span style={{ color: "red" }}>*</span>Contact Name
                   </Form.Label>
                   <Form.Control
-                    name="contact"
+                    name="name"
                     type="text"
                     placeholder="Ms. xx"
                     value={this.props.userInfo.name}

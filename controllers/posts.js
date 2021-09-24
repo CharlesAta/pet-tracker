@@ -19,10 +19,6 @@ module.exports = {
     allPosts
 }
 
-// function escapeRegex(text) {
-//     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/gi, "");
-// };
-
 async function allPosts(req, res) {
     try {
     const allPosts = await PostModel.find().sort([['createdAt', -1]]).exec()
@@ -36,7 +32,6 @@ async function searchPost(req, res) {
 
     results = ".*" + req.query.s + ".*";
     let searchResults = []
-    console.log("backend req.query.s",req.query.s)
     try {
         if(mongoose.Types.ObjectId.isValid(results)){
             searchResults = await PostModel.find({_id: results}).exec();
@@ -48,7 +43,6 @@ async function searchPost(req, res) {
                 { "postalCode":  new RegExp(results, 'i')  }
             ]}).exec();
         }
-        console.log("backend  searchResults", searchResults)
     res.status(200).json(searchResults)  
     } catch (err) {
         res.status(400).json(err);
@@ -61,7 +55,6 @@ async function deletePost(req, res) {
         let post = await PostModel.findById(req.params.postid);
         let user = await UserModel.findById(req.params.userid);
         if (user.post.includes(post._id)) {
-            console.log("post included in user")
             let postIdx = user.post.indexOf(post._id);
             user.post.splice(postIdx, 1);
             await user.save();
@@ -101,7 +94,6 @@ async function postsIndex(req, res) {
 async function postShow(req, res) {
     try {
         let post = await PostModel.findById(req.params.id).exec()
-        console.log(post)
         res.status(200).json(post)
     }catch(err){
         res.status(400).json(error)
@@ -168,7 +160,7 @@ async function createPost(req, res){
          let user = await UserModel.findOne({email: req.body.formData.userInfo.email})
          
          let created = await PostModel.create(req.body.formData.petState)
-         console.log("created post", created)
+
          user.post.push(created._id)
          await user.save()
          await user.update({
@@ -176,7 +168,6 @@ async function createPost(req, res){
             phoneNumber: req.body.formData.userInfo.phoneNumber,
             postalCode: req.body.formData.userInfo.postalCode,
         })
-         console.log("user", user)
          
          res.status(200).json(created)
          let type = created.photo.match(/\.[0-9a-z]+$/i)[0]
