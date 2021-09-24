@@ -6,7 +6,6 @@ var bb = require('express-busboy');
 
 require('dotenv').config();
 require('./config/database');
-const port = process.env.PORT || 3001;
 
 const app = express();
 
@@ -34,6 +33,8 @@ app.use(function (err, req, res, next) {
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
+
+const port = process.env.PORT || 3001;
 
 app.listen(port, function() {
   console.log(`Express app running on port ${port}`)
