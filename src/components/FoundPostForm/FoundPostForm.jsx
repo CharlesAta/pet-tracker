@@ -238,6 +238,8 @@ export default class FoundPostForm extends Component {
                   />
                 </Form.Group>
 
+                <h6 style={{ fontSize: "0.8rem" }}>Please Note: Changes here will be reflected on your profile.</h6>
+
                 <div style={{ display: "flex", justifyContent: "center" }} className="form-pb-5">
                   <button
                     className="btn btn-primary btn-block mt-5 mb-5"

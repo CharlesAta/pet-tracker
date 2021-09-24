@@ -43,10 +43,15 @@
 }
 
 .card-description {
-  min-height: 100px;
-  max-height: 100px;
+  min-height: 30px;
+  height: 50px;
+
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.card-description-row {
+  height: 120px;
+  margin-bottom: 5%;
 }
 
 .posting-image {

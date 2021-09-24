@@ -48,7 +48,7 @@ export default function PetListItem(props) {
                     <p className="card-location" style={{textAlign: "right"}}>{props.post.location.split(",")[0]}, {props.post.postalCode}</p>
                 </div>
                 </Row>
-                <Row> 
+                <Row className="card-description-row"> 
                     <MDBCardText className="card-description" >
                         {props.post.description}
                     </MDBCardText>

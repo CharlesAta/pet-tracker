@@ -5,7 +5,6 @@ import {Container, Row, Col} from "react-bootstrap";
 import PetList from '../../components/PetList/PetList';
 import "./SearchResults.css";
 
-// searchResults={props.searchResults} setSearchResults={props.setSearchResults} 
 
 export default function SearchResults(props) {
 

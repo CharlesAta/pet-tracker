@@ -220,6 +220,9 @@ export default class LostPostForm extends Component {
                     required
                   />
                 </Form.Group>
+                
+                  <h6 style={{ fontSize: "0.8rem" }}>Please Note: Changes here will be reflected on your profile.</h6>
+                
 
                 <div style={{ display: "flex", justifyContent: "center" }} className="form-pb-5">
                   <button
