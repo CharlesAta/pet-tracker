@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: {
     type: String,
-    //  required: true
     },
   email: {
     type: String,
@@ -22,11 +21,9 @@ const userSchema = new Schema({
   phoneNumber: {
       type: String,
       unique: true,
-      // required: true
   },
   postalCode: {
       type: String,
-      // required: true
   },
   notification: {
       type: Boolean,
