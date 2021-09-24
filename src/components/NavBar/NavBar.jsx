@@ -14,11 +14,7 @@ export default function NavBar(props) {
   let history = useHistory();
 
   function goHome() {
-    // const aboutPageNode = document.getElementById('auth')
-    // aboutPageNode.scrollIntoView({behavior: "smooth"});
     history.push('/')
-    // console.log("history", history)
-    // history.push("/#auth")
   }
 
   function goAuth() {

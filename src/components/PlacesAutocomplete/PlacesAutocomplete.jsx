@@ -88,17 +88,3 @@ export default function PlacesAutocomplete(props) {
     </>
   );
 };
-
-
-{/* <MDBInput
-label="Last known location"
-name="location"
-icon="exclamation-circle deep-orange-text pr-3"
-type="text"
-value={props.petState.location}
-onChange={props.handleChange}
-containerClass="d-flex flex-row-reverse"
-className="ml-0 mr-5"
-labelClass="ml-0"
-required
-/> */}
