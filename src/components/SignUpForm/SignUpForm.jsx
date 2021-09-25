@@ -5,11 +5,8 @@ import "./SignUpForm.css";
 
 export default function SignUpForm(props) {
   const [signUpState, setSignUpState] = useState({
-    name: "",
     email: "",
     password: "",
-    phoneNumber: "",
-    postalCode: "",
     error: "",
     passwordConfirm: "",
   });
@@ -32,11 +29,8 @@ export default function SignUpForm(props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name: signUpState.name,
             email: signUpState.email,
             password: signUpState.password,
-            phoneNumber: signUpState.phoneNumber,
-            postalCode: signUpState.postalCode,
           }),
         });
 
@@ -48,13 +42,10 @@ export default function SignUpForm(props) {
         const userDoc = JSON.parse(atob(token.split(".")[1])).user;
         props.setUser(userDoc);
         setSignUpState({
-          name: "",
           email: "",
           password: "",
-          phoneNumber: "",
-          postalCode: "",
-          error: "",
           passwordConfirm: "",
+          error: "",
         });
       } catch (err) {
         console.log("SignupForm error", err.message);
@@ -71,7 +62,7 @@ export default function SignUpForm(props) {
           <Form onSubmit={handleSubmit}>
             <Form.Text style={{ textAlign: "center" }}>
               Already a member?
-              <span class="link" style={{color: "red"}} onClick={() => props.setShowLogin("LOG IN")}>
+              <span className="link" style={{color: "red"}} onClick={() => props.setShowLogin("LOG IN")}>
                 &nbsp;Log In
               </span>
             </Form.Text>
@@ -100,7 +91,7 @@ export default function SignUpForm(props) {
               onChange={handleChange}
               required
             />
-            <p style={{ fontSize: "10px" }}>
+            <div style={{ fontSize: "10px" }}>
               <Form.Group>
                 <Form.Check
                   type="radio"
@@ -108,13 +99,13 @@ export default function SignUpForm(props) {
                   label={<>Creating an account means you are okay with our <span style={{color: "red"}}>Terms of Service</span>, <span style={{color: "red"}}>Privacy Policy</span> and our default <span style={{color: "red"}}>Notification Settings</span></>}
                 />
               </Form.Group>
-            </p>
+            </div>
             <Button type="submit" className="SignUpButton me-2 mt-2">
               Sign Up
             </Button>
           </Form>
         </Container>
-        <p className="error-message mt-3">&nbsp; {signUpState.error}</p>
+        <div><p className="error-message mt-3">&nbsp; {signUpState.error}</p></div>
       </div>
     </div>
   );

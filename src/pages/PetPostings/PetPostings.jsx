@@ -63,7 +63,7 @@ export default function PetPosting(props) {
         
         } else if (species) {
           const filtered = allPosts.filter(post => {
-          return post.species.toLowerCase() == species})
+          return post.species.toLowerCase().includes(species)})
           setFilteredPosts(filtered)
         } else if (normalSearch) {
           const filtered = allPosts.filter(post => {
@@ -104,7 +104,7 @@ export default function PetPosting(props) {
     }
 
     function handleSpeciesSelect (e) {
-      setSpecies((e.target.value).toLowerCase())
+      setSpecies((e.target.value).toLowerCase().trim())
       setFilterOn(true)
       setNewPostSearch(true)
     }

@@ -1,6 +1,7 @@
 {
   "name": "project4",
   "version": "0.1.0",
+  "proxy": "http://localhost:3001/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",

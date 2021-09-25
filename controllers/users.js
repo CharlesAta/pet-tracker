@@ -1,4 +1,4 @@
-const UserModel = require("../models/user");
+const UserModel = require("../models/user")
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 6;
@@ -40,18 +40,15 @@ async function update(req, res) {
 
 async function create(req, res) {
   const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS);
-  console.log(req.body)
   try {
-  console.log(req.body)
-    
-    const user = await UserModel.create({
+    const user = await new UserModel({
       email: req.body.email,
       password: hashedPassword,
     });
-    console.log(user)
+    await user.save()
 
     const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
-    console.log(token)
+
     res.status(200).json(token);
   } catch (err) {
     res.status(400).json(err);

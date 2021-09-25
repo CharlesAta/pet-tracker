@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: {
     type: String,
+    default:"",
     },
   email: {
     type: String,
@@ -20,10 +21,11 @@ const userSchema = new Schema({
   }, 
   phoneNumber: {
       type: String,
-      unique: true,
+      default:"",
   },
   postalCode: {
       type: String,
+      default:"",
   },
   notification: {
       type: Boolean,
