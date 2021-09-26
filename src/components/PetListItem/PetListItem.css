@@ -64,6 +64,8 @@
   background-color: #013f7c !important;
   border-radius: 10px !important;
 }
+
+
 @media screen and (max-width: 800px) {
   .posting-status-font {
     font-size: 1.25rem !important;

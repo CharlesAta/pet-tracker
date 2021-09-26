@@ -13,6 +13,7 @@ export default function Search(props) {
     setLocalSearchQuery(e.target.value)
   }
 
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     props.setSearchQuery(localSearchQuery)
@@ -34,7 +35,8 @@ export default function Search(props) {
 
 
   return (
-      <div>
+      <div className="search-icon">
+        <i class="fas fa-search"></i>
         <Form onSubmit={handleSubmit}>
             <Form.Group className="search">
               <Form.Control

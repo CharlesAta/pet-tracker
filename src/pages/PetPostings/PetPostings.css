@@ -1,0 +1,5 @@
+.filter-components{
+    display:flex;
+    flex-direction: column;
+    max-width:55vw;
+}

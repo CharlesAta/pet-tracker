@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Testimonial from "../../components/Testimonial/Testimonial";
 import { Container, Row, Col } from "react-bootstrap";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
-import JumboTron from "../../components/JumboTron/JumboTron";
 import {FacebookShareButton, TwitterShareButton, WhatsappShareButton} from "react-share";
 import ReactLoading from 'react-loading';
 

@@ -130,7 +130,7 @@ export default function PetPosting(props) {
       <>
         <div className="posting" style={{ minHeight: "100vh" }}>
         <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
-        <Container>
+        <Container className="filter-components">
           <Row >
             <Col className="d-flex justify-content-center mt-5">
         <RegularFilter handleRegularChange={handleRegularChange} normalSearch={normalSearch} setNormalSearch={setNormalSearch}/>

@@ -5,6 +5,7 @@ import DetailsMap from '../../components/DetailsMap/DetailsMap.jsx';
 import { Badge, Row, Col, Container, Button, Modal } from "react-bootstrap";
 import Email from '../../components/Email/Email';
 import PhoneNumber from '../../components/PhoneNumber/PhoneNumber';
+import Share from '../../components/Share/Share';
 
 export default function Details(props) {
   
@@ -12,11 +13,12 @@ export default function Details(props) {
   function closeModal(){
       setShowEmailModal(false)
       setShowPhoneModal(false)
+      setShowShareModal(false)
   }
 
   const [showPhoneModal, setShowPhoneModal] = useState(false);
   const [showEmailModal, setShowEmailModal] = useState(false);
-
+  const [showShareModal, setShowShareModal] = useState(false);
 
   const [petState, setPetState] = useState([])
 
@@ -119,7 +121,7 @@ export default function Details(props) {
           <Row>
             <Col className="detailButtons">
             <Col >
-              <Button className="btn-block mt-5 mb-5" variant="primary">Share</Button>
+              <Button className="btn-block mt-5 mb-5" onClick={() => setShowShareModal(true)} variant="primary">Share</Button>
             </Col>
             <Col>
               <Button className="btn-block mt-5 mb-5" onClick={() => setShowPhoneModal(true)} variant="primary">View Phone</Button>
@@ -134,6 +136,9 @@ export default function Details(props) {
           </div>
           </div>
         </div>
+        <Modal show={showShareModal} onHide={closeModal}>
+            <Share petState={petState} closeModal={closeModal}/>
+        </Modal>
         <Modal show={showEmailModal} onHide={closeModal}>
             <Email petState={petState} closeModal={closeModal}/>
         </Modal>

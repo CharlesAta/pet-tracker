@@ -6,3 +6,23 @@
     border-radius: 15px !important;
     margin-bottom: 0px !important
 }
+
+.search-icon{
+    display: flex;
+    align-items: center;
+}
+
+.search-icon i {
+    position: absolute;
+    padding-left: 10px;
+    color: gray;
+}
+
+.search-icon i::selection {
+    color:white;
+}
+
+#search{
+    padding-left: 35px;
+    max-width:90%;
+}

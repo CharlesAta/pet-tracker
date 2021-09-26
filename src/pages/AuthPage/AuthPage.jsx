@@ -5,18 +5,30 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import NavBar from "../../components/NavBar/NavBar";
 import { ReactComponent as AuthSvg } from "../../assets/Auth.svg";
+import { NavLink, useHistory } from "react-router-dom";
+import {scroller} from 'react-scroll';
 
 export default function AuthPage(props) {
 
+  let history = useHistory();
+
   function searchExecute() {
     props.history.push('/searchresults') 
+  }
+
+  function goHome() {
+    history.push('/')
+  }
+
+  function goAuth() {
+    scroller.scrollTo('auth')
   }
 
   return (
     <div className="auth-page" id="auth" >
       <h6 style={{ textAlign: "center", color: "white" }} className="pt-2">
         <span  onClick={() => {
-                    window.location.replace("/#auth");
+                    goAuth()
                   }}>
           What is PAWAY?
           </span>

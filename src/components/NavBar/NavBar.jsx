@@ -5,9 +5,7 @@ import "./NavBar.css";
 import LogOut from "../LogOut/LogOut";
 import Search from "../Search/Search";
 import {scroller} from 'react-scroll';
-import Scroll from "react-scroll";
-import { Link } from 'react-scroll'
-const ScrollLink = Scroll.Link;
+
 
 export default function NavBar(props) {
 
@@ -15,6 +13,7 @@ export default function NavBar(props) {
 
   function goHome() {
     history.push('/')
+    scroller.scrollTo('landing')
   }
 
   function goAuth() {
