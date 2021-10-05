@@ -6,12 +6,14 @@
 
 .detail-container {
   background-color: rgba(255, 255, 255, 0.35);
-  min-width: 75rem;
+  min-width: 75vw;
+  max-width:95vw;
   z-index: 1;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   backdrop-filter: blur(30px);
   color: #274168;
+  margin-bottom: 0.5vh;
 }
 
 .detail-container:before {
@@ -25,7 +27,7 @@
 
 .detail-badge-found {
   background-color: #274168 !important;
-  width: 25rem;
+  width: 25vw;
   padding-top: 5%;
   padding-bottom: 5%;
 }
@@ -33,7 +35,7 @@
 .detail-badge-lost {
   background-color: #d23622 !important;
   text-transform: capitalize;
-  width: 25rem;
+  width: 25vw;
 }
 
 .detail-page {
@@ -129,4 +131,74 @@
 
 .left-padding {
   padding-left:40px !important
+}
+
+.pet-info-container{
+  padding-left: 15%;
+  padding-right: 15%
+}
+
+@media screen and (max-width: 1364px) {
+  .btn{
+    font-size: 0.8rem !important;
+  }
+  .detailLabels{
+    font-size: 0.8rem !important;
+  }
+}
+
+@media screen and (max-width: 997px) {
+  .pet-post-status{
+    flex-direction: column;
+  }
+  .post-id {
+    justify-content: flex-start;
+  }
+  .pet-info-container{
+    padding-left:5%;
+    padding-right: 5%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .right-padding {
+    padding-right:0px !important;
+  }
+  .left-padding {
+    padding-left:0px !important;
+  }
+  .map-detail{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .all-buttons{
+    flex-direction: column;
+  }
+  .detailButtons{
+    padding-right:0px !important;
+  }
+  .btn-primary{
+    margin-top: 1vh !important;
+  }
+  .details-image{
+    max-width: 15rem;
+  }
+  .left-padding{
+    padding-right:0px !important
+  }
+}
+
+@media screen and (max-width: 310px){
+  .btn{
+    font-size: 0.7rem !important;
+  }
+  .detailLabels{
+    font-size: 0.7rem !important;
+  }
+  .details-image{
+    max-width: 12rem;
+  }
 }

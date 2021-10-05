@@ -10,8 +10,8 @@ import {
 import { Range } from 'react-range'; // npm install react-rang
 
 const containerStyle = {
-  width: '800px',
-  height: '400px'
+  width: '80vw',
+  height: '40vh'
 };
 
 function Map(props) {
@@ -36,7 +36,7 @@ function Map(props) {
   
   
   return isLoaded ? (
-      <GoogleMap className="mt-3"
+      <GoogleMap className="mt-3 map-container"
         mapContainerStyle={containerStyle}
         center={center}
         zoom={zoom}

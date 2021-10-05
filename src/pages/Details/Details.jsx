@@ -40,11 +40,11 @@ export default function Details(props) {
         <>
         <div className="details"  style={{ minHeight: "100vh" }}>
           <NavBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery} searchExecute={searchExecute} searchResults={props.searchResults} setSearchResults={props.setSearchResults}  user={props.user} setUser={props.setUser}/>
-          <div class="detail-center mt-5">
-          <div class="detail-container">
-            <div style={{paddingLeft: "15%", paddingRight: "15%"}}>
+          <div className="detail-center mt-5">
+          <div className="detail-container">
+            <div className="pet-info-container">
             <Container>
-          <Row>
+          <Row className="pet-post-status">
             <Col>
             <div className={petState.status === "lost"? "detail-badge-lost mt-5 detail-page":"detail-badge-found mt-5 detail-page"}><p>{petState.status === "lost" ? "lost" : petState.circumstance}</p></div>
             </Col>
@@ -59,7 +59,7 @@ export default function Details(props) {
             <Col></Col>
           </Row>
           <Row>
-            <Col xs={6} className="right-padding">
+            <Col lg={6} className="right-padding">
             <Row>
               <Col> 
               <div className="detailLabels">
@@ -96,11 +96,11 @@ export default function Details(props) {
               </div>
               </Col>
             </Row>
-            <Row className="mt-5">
+            <Row className="mt-5 map-detail">
               <DetailsMap location={petState.location} lat={petState.lat} lng={petState.lng} radius={petState.radius}/>
             </Row>
             </Col>
-            <Col xs={6} className="mt-5 left-padding">
+            <Col lg={6} className="mt-5 left-padding">
               
               {petState.description ? 
               <>
@@ -118,17 +118,17 @@ export default function Details(props) {
               
             </Col>
           </Row>
-          <Row>
+          <Row className="all-buttons">
             <Col className="detailButtons">
             <Col >
-              <Button className="btn-block mt-5 mb-5" onClick={() => setShowShareModal(true)} variant="primary">Share</Button>
+              <Button className="btn-block mt-4 mt-sm-5 mb-4 mb-sm-5" onClick={() => setShowShareModal(true)} variant="primary">Share</Button>
             </Col>
             <Col>
-              <Button className="btn-block mt-5 mb-5" onClick={() => setShowPhoneModal(true)} variant="primary">View Phone</Button>
+              <Button className="btn-block mt-4 mt-sm-5 mb-4 mb-sm-5" onClick={() => setShowPhoneModal(true)} variant="primary">Phone</Button>
             </Col>
             </Col>
             <Col className="left-padding">
-            <Button className="btn-block mt-5 mb-5" onClick={() => setShowEmailModal(true)} variant="primary">{petState.status === "lost"? "Contact Owner": "Contact Finder"}</Button>
+            <Button className="btn-block mt-3 mt-sm-5 mb-4 mb-sm-5" onClick={() => setShowEmailModal(true)} variant="primary">{petState.status === "lost"? "Contact Owner": "Contact Finder"}</Button>
             </Col>
           </Row>
           </Container>

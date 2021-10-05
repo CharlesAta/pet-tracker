@@ -5,8 +5,7 @@
 
 .user-container {
     background-color: rgba(255, 255, 255, 0.35);
-    min-width: 50rem;
-    /* max-width: 60rem; */
+    min-width: 60rem;
     z-index: 1;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -51,3 +50,14 @@
   max-width: 32.6% !important;
 }
 
+@media screen and (max-width: 1645px){
+.user-container{
+  min-width:60vw
+}
+}
+
+@media screen and (max-width: 1397px){
+  .user-container{
+    min-width:70vw
+  }
+  }

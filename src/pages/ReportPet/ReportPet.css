@@ -1,11 +1,12 @@
 .glassContainer {
   background-color: rgba(255, 255, 255, 0.35);
-  min-width: 75rem;
+  min-width: 75vw;
   z-index: 0;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   backdrop-filter: blur(30px);
   color: #274168;
+  margin-bottom: 0.5vh;
 
 }
 
@@ -36,4 +37,30 @@
 
 .search-reset {
   margin: 0 0 0 10px !important;
+}
+
+.glass{
+  z-index: 10;
+  padding-left:15% !important;
+  padding-right: 15% !important;
+}
+
+@media screen and (max-width: 588px) {
+  .glass{
+    padding-left:5% !important;
+    padding-right:5% !important;
+  }
+  .form-label{
+    font-size:0.8rem;
+  }
+  .glassContainer {
+    min-width: 90vw;
+    max-width: 90vw;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .nav-tabs .nav-link {
+    font-size:15px
+  }
 }

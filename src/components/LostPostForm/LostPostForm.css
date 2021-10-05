@@ -31,3 +31,18 @@
 .active > .step-trigger > .bs-stepper-label {
   color: #118c99 !important;
 }
+
+@media screen and (max-width: 580px) {
+  .bs-stepper-label{
+    font-size:0.8rem;
+  }
+  .bs-stepper-circle{
+    width:1.5rem;
+    height:1.5rem;
+    font-size:0.8rem;
+  }
+
+  h1{
+    font-size: 2rem !important;
+  }
+}

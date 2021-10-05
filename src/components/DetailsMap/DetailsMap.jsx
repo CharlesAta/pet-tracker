@@ -7,8 +7,8 @@ import {
 } from "@react-google-maps/api"; // npm install react-google-maps/api
 
 const containerStyle = {
-  width: '600px',
-  height: '300px'
+  width: '80vw',
+  height: '40vh'
 };
 
 function DetailsMap(props) {

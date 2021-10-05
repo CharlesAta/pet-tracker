@@ -1,3 +1,23 @@
 .PetImage {
   margin-right: 3%;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50% !important;
+}
+
+.card-img-top{
+  width: 18rem !important;
+  height: 18rem;
+  border-radius: 50% !important;
+}
+
+@media screen and (max-width: 580px) {
+  .PetImage{
+    width: 10rem !important;
+    height: 10rem
+  }
+  .card-img-top {
+    width:10rem !important;
+    height: 10rem;
+  }
 }

@@ -18,7 +18,7 @@ export default function UserInfo(props) {
         </Row>
         <Row className="user-row">
             <Col xs={8} className="account-input" >{props.userInformation.name ? `${props.userInformation.name}` : "No Name Provided"}</Col>
-            <Col xs={3}><Button className="btn-block" onClick={() => setShowModal(true)}>Update</Button></Col>
+            <Col sm={3}><Button className="btn-block" onClick={() => setShowModal(true)}>Update</Button></Col>
         </Row>
         <Row className="user-row">
         <Col xs={4} className="account-input account-two-inputs">{props.userInformation.phoneNumber ? `${props.userInformation.phoneNumber}` : "No Phone Number Provided"}</Col>

@@ -169,8 +169,7 @@ export default function ReportPet(props) {
             <Tab style={{color: "black"}} eventKey="found" title="I Found A Pet">
           <div className="glassContainer">
             <Container
-              style={{ zIndex: "10", paddingLeft: "15%", paddingRight: "15%" }}
-              className="justify-content-center d-flex text-left flex-column mt-3"
+              className="justify-content-center d-flex text-left flex-column mt-3 glass"
             >
               { loading ? 
 
@@ -198,8 +197,7 @@ export default function ReportPet(props) {
             <Tab style={{color: "black"}} eventKey="lost"  title="I Lost My Pet">
           <div className="glassContainer">
             <Container
-            style={{ zIndex: "10", paddingLeft: "15%", paddingRight: "15%" }}
-            className="justify-content-center d-flex text-left flex-column mt-3"
+            className="justify-content-center d-flex text-left flex-column mt-3 glass"
           >
             { loading ? 
             
