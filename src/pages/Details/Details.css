@@ -112,7 +112,7 @@
   padding: 15px;
 }
 
-.detailButtons {
+.detail-buttons {
   display: flex;
   flex-direction: row;
   padding-right: 40px !important;
@@ -139,7 +139,7 @@
 }
 
 @media screen and (max-width: 1364px) {
-  .btn{
+  .detail-buttons > div > .btn, .left-padding > .btn{
     font-size: 0.8rem !important;
   }
   .detailLabels{
@@ -177,7 +177,7 @@
   .all-buttons{
     flex-direction: column;
   }
-  .detailButtons{
+  .detail-buttons{
     padding-right:0px !important;
   }
   .btn-primary{
@@ -192,7 +192,7 @@
 }
 
 @media screen and (max-width: 310px){
-  .btn{
+  .detail-buttons > div > .btn, .left-padding > .btn{
     font-size: 0.7rem !important;
   }
   .detailLabels{

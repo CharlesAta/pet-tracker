@@ -2,11 +2,12 @@ import React from 'react'
 
 export default function RegularFilter(props) {
 
-    const BarStyling = {width:"18vw",background:"#F2F1F9", border:"none", borderTopLeftRadius: "15px", borderBottomLeftRadius: "15px", padding:"0.5rem", borderRight: "1px dotted green"};
+    const BarStyling = {width:"278px",background:"#F2F1F9", border:"none", borderTopLeftRadius: "15px", borderBottomLeftRadius: "15px", padding:"0.5rem", borderRight: "1px dotted green"};
 
     return (
         <>
         <input 
+        className="regular-filter"
         style={BarStyling}
         key="random3"
         type="text"

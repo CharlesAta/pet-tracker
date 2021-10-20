@@ -85,7 +85,7 @@
   }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 575px) {
   .posting-status-font {
     font-size: 2rem !important;
   }

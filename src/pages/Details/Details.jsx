@@ -119,7 +119,7 @@ export default function Details(props) {
             </Col>
           </Row>
           <Row className="all-buttons">
-            <Col className="detailButtons">
+            <Col className="detail-buttons">
             <Col >
               <Button className="btn-block mt-4 mt-sm-5 mb-4 mb-sm-5" onClick={() => setShowShareModal(true)} variant="primary">Share</Button>
             </Col>

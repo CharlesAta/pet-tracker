@@ -9,6 +9,12 @@
   color: #013f7c;
 }
 
+.card-information{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .list-item-image {
   border-radius: 20px;
 }
@@ -72,8 +78,72 @@
   }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 575px) {
   .posting-status-font {
     font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .list-item-body{
+    min-width: 850px !important;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  .list-item-body{
+    min-width: 690px !important;
+  }
+  .card-location, .detail-link, .search-date{
+    font-size: 1.0rem !important
+  }
+}
+
+@media screen and (max-width: 807px) {
+  .list-item-body{
+    min-width: 620px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .list-item-body{
+    min-width: 520px !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .list-item-body{
+    min-width: 370px !important;
+  }
+  .card-information{
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .card-location{
+    text-align: left !important;
+  }
+  .detail-link{
+    font-size: 1.2rem !important;
+  }
+}
+
+@media screen and (max-width: 451px){
+  .list-item-body{
+    min-width: 300px !important;
+  }
+  .card-title{
+    font-size: 1.1rem !important;
+  }
+
+}
+
+@media screen and (max-width: 353px) {
+  .list-item-body{
+    min-width: 250px !important;
+  }
+}
+@media screen and (max-width: 303px) {
+  .list-item-body{
+    min-width: 215px !important;
   }
 }
