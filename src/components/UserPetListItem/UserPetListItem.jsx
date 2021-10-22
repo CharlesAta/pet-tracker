@@ -43,7 +43,7 @@ export default function PetListItem(props) {
                 </Col>
                 <Col className="mr-3">
                 <Row className="pt-3">
-                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <div className="card-information">
                     <MDBCardTitle>{props.post.name}</MDBCardTitle>
                     <p className="card-location" style={{textAlign: "right"}}>{props.post.location.split(",")[0]}, {props.post.postalCode}</p>
                 </div>
@@ -58,7 +58,7 @@ export default function PetListItem(props) {
                 <div className="d-flex flex-row alignBottom" style={{justifyContent: "space-between", alignItems: "flex-end"}}>
                     <span className="search-date">{showDate()}</span>
 
-                    <h6 className="delete-link" onClick={() => setShowModal(true)}>Delete</h6>
+                    <span className="delete-link" onClick={() => setShowModal(true)}>Delete</span>
                     <Link className="detail-link" to={{pathname: '/details/' + props.post._id}}>Details</Link>
                     </div>
                 </Row>

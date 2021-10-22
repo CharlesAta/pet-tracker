@@ -24,10 +24,9 @@
 }
 
 .delete-link {
-  font-size: 20px;
+  font-size: 23px;
   color: gray;
   font-weight: 300;
-  margin-bottom: 5px;
   margin-left: 30%;
 }
 
@@ -88,5 +87,30 @@
 @media screen and (max-width: 575px) {
   .posting-status-font {
     font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 993px) {
+  .delete-link {
+    font-size: 1.0rem !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .delete-link {
+    font-size: 1.2rem !important;
+    margin-left: 10% !important;
+  }
+}
+
+@media screen and (max-width: 451px) {
+  .delete-link{
+    font-size: 1.0rem !important
+  }
+}
+
+@media screen and (max-width: 353px) {
+  .delete-link{
+    font-size: 0.8rem !important;
   }
 }
